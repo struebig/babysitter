@@ -7,5 +7,5 @@ export function getHouseholdFromStorage() {
 }
 
 export function setHouseholdtoStorage(newHousehold) {
-    localStorage.setItem("HouseholdStorage", JSON.stringify(newHousehold));
+    localStorage.setItem("householdStorage", JSON.stringify(newHousehold));
 }

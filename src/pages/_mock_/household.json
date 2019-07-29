@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "familyName": "Doe",
+        "nameParentOne": "John Doe",
+        "roleParentOne": "Father",
+        "phoneParentOne": "01600000001",
+        "nameParentOne": "Jane Doe",
+        "roleParentOne": "Mother",
+        "phoneParentOne": "01600000002",
+        "street": "First Avenue",
+        "houseNo": "398",
+        "zip": "NL-5638",
+        "city": "Springfield"
+    }
+]

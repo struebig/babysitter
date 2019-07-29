@@ -15,48 +15,49 @@ export default function HouseholdForm() {
         getHouseholdFromStorage()
     ]);
 
-    function handleChange() {
-        /* const newHousehold =  */
-        /*Array household aktualisieren*/
+    function handleChange(newHousehold) {
+        setHousehold = newHousehold;
     }
 
     function handleSubmit(newHousehold) {
         setHouseholdtoStorage(newHousehold);
+        /* route to app*/
     }
 
-    return;
-    <StyledForm onChange={handleChange} onSubmit={handleSubmit}>
-        Family name
-        <StyledInput />
-        <div>
-            <h3>"Parents / legal guardians"</h3>
+    return (
+        <StyledForm onChange={handleChange} onSubmit={handleSubmit}>
+            Family name
+            <StyledInput />
             <div>
-                <StyledInput
-                    value={household}
-                    placeholder="Name"
-                    requiredplaceholder="Name"
-                />
-                <StyledInput placeholder="Role" />
-                <StyledInput placeholder="Phone" />
+                <h3>"Parents / legal guardians"</h3>
+                <div>
+                    <StyledInput
+                        value={household}
+                        placeholder="Name"
+                        requiredplaceholder="Name"
+                    />
+                    <StyledInput placeholder="Role" />
+                    <StyledInput placeholder="Phone" />
+                </div>
+                <div>
+                    <StyledInput placeholder="Name" />
+                    <StyledInput placeholder="Role" />
+                    <StyledInput placeholder="Phone" />
+                </div>
             </div>
             <div>
-                <StyledInput placeholder="Name" />
-                <StyledInput placeholder="Role" />
-                <StyledInput placeholder="Phone" />
+                <h3>"Adress"</h3>
+                <div>
+                    <StyledInput placeholder="Street" />
+                    <StyledInput placeholder="HouseNo." />
+                </div>
+                <div>
+                    <StyledInput placeholder="Zip-code" />
+                    <StyledInput placeholder="City" />
+                </div>
             </div>
-        </div>
-        <div>
-            <h3>"Adress"</h3>
-            <div>
-                <StyledInput placeholder="Street" />
-                <StyledInput placeholder="HouseNo." />
-            </div>
-            <div>
-                <StyledInput placeholder="Zip-code" />
-                <StyledInput placeholder="City" />
-            </div>
-        </div>
-    </StyledForm>;
+        </StyledForm>
+    );
 }
 
 /*Form(ActionButton).propTypes = {
