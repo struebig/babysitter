@@ -1,6 +1,7 @@
 /* import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
+/* import ActionButton from "../components/ActionButton";*/
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -12,7 +13,9 @@ const StyledInput = styled.input``;
 
 const Container = styled.div``;
 
-function HouseholdForm() {
+const ButtonHeader = styled.div``;
+
+function HouseholdForm({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {
             familyName: "",
@@ -36,94 +39,107 @@ function HouseholdForm() {
     }
 
     function handleSubmit(event) {
+        event.preventDefault();
         setHouseholdtoStorage(household);
-        /* route to app*/
+        history.replace("/");
+    }
+    function handleCancel() {
+        history.push("/");
     }
 
     return (
-        <StyledForm onSubmit={handleSubmit}>
-            Family name
-            <StyledInput
-                value={household.familyName}
-                name="familyName"
-                placeholder="Family name"
-                onChange={handleChange}
-            />
-            <Container>
-                <h3>"Parents / legal guardians"</h3>
+        <>
+            <ButtonHeader>
+                <button onClick={handleSubmit}>ADD</button>
+                <button type="button" onClick={handleCancel}>
+                    CANCEL
+                </button>
+            </ButtonHeader>
+            <h2>Family Data</h2>
+            <StyledForm /* onSubmit={handleSubmit}*/>
+                Family name
+                <StyledInput
+                    value={household.familyName}
+                    name="familyName"
+                    placeholder="Family name"
+                    onChange={handleChange}
+                />
                 <Container>
-                    <StyledInput
-                        value={household.nameParentOne}
-                        name="nameParentOne"
-                        placeholder="Name"
-                        onChange={handleChange}
-                    />
-                    <StyledInput
-                        value={household.roleParentOne}
-                        placeholder="Role (e.g. father, mother, aunt)"
-                        name="roleParentOne"
-                        onChange={handleChange}
-                    />
-                    <StyledInput
-                        value={household.phoneParentOne}
-                        placeholder="PhoneNo."
-                        name="phoneParentOne"
-                        onChange={handleChange}
-                    />
+                    <h3>"Parents / legal guardians"</h3>
+                    <Container>
+                        <StyledInput
+                            value={household.nameParentOne}
+                            name="nameParentOne"
+                            placeholder="Name"
+                            onChange={handleChange}
+                        />
+                        <StyledInput
+                            value={household.roleParentOne}
+                            placeholder="Role (e.g. father, mother, aunt)"
+                            name="roleParentOne"
+                            onChange={handleChange}
+                        />
+                        <StyledInput
+                            value={household.phoneParentOne}
+                            placeholder="PhoneNo."
+                            name="phoneParentOne"
+                            onChange={handleChange}
+                        />
+                    </Container>
+                    <Container>
+                        <StyledInput
+                            value={household.nameParentTwo}
+                            placeholder="Name"
+                            name="nameParentTwo"
+                            onChange={handleChange}
+                        />
+                        <StyledInput
+                            value={household.roleParentTwo}
+                            placeholder="Role (e.g. father, mother, aunt)"
+                            name="roleParentTwo"
+                            onChange={handleChange}
+                        />
+                        <StyledInput
+                            value={household.phoneParentTwo}
+                            placeholder="PhoneNo."
+                            name="phoneParentTwo"
+                            onChange={handleChange}
+                        />
+                    </Container>
                 </Container>
                 <Container>
-                    <StyledInput
-                        value={household.nameParentTwo}
-                        placeholder="Name"
-                        name="nameParentTwo"
-                        onChange={handleChange}
-                    />
-                    <StyledInput
-                        value={household.roleParentTwo}
-                        placeholder="Role (e.g. father, mother, aunt)"
-                        name="roleParentTwo"
-                        onChange={handleChange}
-                    />
-                    <StyledInput
-                        value={household.phoneParentTwo}
-                        placeholder="PhoneNo."
-                        name="phoneParentTwo"
-                        onChange={handleChange}
-                    />
+                    <h3>"Adress"</h3>
+                    <Container>
+                        <StyledInput
+                            name="street"
+                            value={household.street}
+                            placeholder="Street"
+                            onChange={handleChange}
+                        />
+                        <StyledInput
+                            name="houseNo"
+                            value={household.HouseNo}
+                            placeholder="House No."
+                            onChange={handleChange}
+                        />
+                    </Container>
+                    <Container>
+                        <StyledInput
+                            name="zip"
+                            value={household.zip}
+                            placeholder="Zip-code"
+                            onChange={handleChange}
+                        />
+                        <StyledInput
+                            name="city"
+                            value={household.city}
+                            placeholder="City"
+                            onChange={handleChange}
+                        />
+                    </Container>
                 </Container>
-            </Container>
-            <Container>
-                <h3>"Adress"</h3>
-                <Container>
-                    <StyledInput
-                        name="street"
-                        value={household.street}
-                        placeholder="Street"
-                        onChange={handleChange}
-                    />
-                    <StyledInput
-                        name="houseNo"
-                        value={household.HouseNo}
-                        placeholder="House No."
-                        onChange={handleChange}
-                    />
-                </Container>
-                <Container>
-                    <StyledInput
-                        name="zip"
-                        value={household.zip}
-                        placeholder="Zip-code"
-                        onChange={handleChange}
-                    />
-                    <StyledInput
-                        name="city"
-                        value={household.city}
-                        placeholder="City"
-                        onChange={handleChange}
-                    />
-                </Container>
-            </Container>
-        </StyledForm>
+            </StyledForm>
+        </>
     );
 }
 
