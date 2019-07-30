@@ -1,11 +1,13 @@
 /* import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
+import Headline from "../components/Headline";
 /* import ActionButton from "../components/ActionButton";*/
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
+import HeaderForm from "../components/HeaderForm";
 
 const StyledForm = styled.form``;
 
@@ -50,12 +52,14 @@ function HouseholdForm({ history }) {
     return (
         <>
             <ButtonHeader>
-                <button onClick={handleSubmit}>ADD</button>
-                <button type="button" onClick={handleCancel}>
-                    CANCEL
-                </button>
+                <HeaderForm
+                    submit="submit"
+                    handleSubmit={handleSubmit}
+                    button="button"
+                    handleCancel={handleCancel}
+                />
             </ButtonHeader>
-            <h2>Family Data</h2>
+            <Headline size="S">Family Data</Headline>
             <StyledForm /* onSubmit={handleSubmit}*/>
                 Family name
                 <StyledInput
@@ -65,7 +69,7 @@ function HouseholdForm({ history }) {
                     onChange={handleChange}
                 />
                 <Container>
-                    <h3>"Parents / legal guardians"</h3>
+                    <Headline size="XS">Parents / legal guardians</Headline>
                     <Container>
                         <StyledInput
                             value={household.nameParentOne}
@@ -108,7 +112,7 @@ function HouseholdForm({ history }) {
                     </Container>
                 </Container>
                 <Container>
-                    <h3>"Adress"</h3>
+                    <Headline size="XS">Address</Headline>
                     <Container>
                         <StyledInput
                             name="street"
@@ -149,3 +153,8 @@ function HouseholdForm({ history }) {
 };*/
 
 export default HouseholdForm;
+
+/* <button onClick={handleSubmit}>ADD</button>
+                <button type="button" onClick={handleCancel}>
+                    CANCEL
+                </button>*/

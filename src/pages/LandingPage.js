@@ -1,18 +1,19 @@
 /*import PropTypes from "prop-types";*/
 import React from "react";
-/*import styled from "styled-components";*/
+import Headline from "../components/Headline";
+/* import styled from "styled-components"; */
 
-function Menue({ history }) {
+function Menu({ history }) {
     function handleClick() {
         history.push("familyData");
     }
 
     return (
         <div>
-            <h1>Test</h1>
+            <Headline size="L">Test</Headline>
             <button onClick={handleClick}>Family Data</button>
         </div>
     );
 }
 
-export default Menue;
+export default Menu;
