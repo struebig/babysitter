@@ -1,11 +1,11 @@
 export function getHouseholdFromStorage() {
     try {
-        return JSON.parse(localStorage.getItem("householdStorage")) || [];
+        return JSON.parse(localStorage.getItem("householdStorage")) || {};
     } catch (error) {
-        return [];
+        return {};
     }
 }
 
-export function setHouseholdtoStorage(newHousehold) {
-    localStorage.setItem("householdStorage", JSON.stringify(newHousehold));
+export function setHouseholdtoStorage(household) {
+    localStorage.setItem("householdStorage", JSON.stringify(household));
 }
