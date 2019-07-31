@@ -4,6 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
 import HouseholdForm from "../pages/Household";
 import Menu from "../pages/LandingPage";
+import ShowGeneralData from "../pages/GeneralData";
+/* import ShowFoodData from "../pages/FoodData";
+import ShowClothingData from "../pages/ClothingData";
+import ShowContactsData from "../pages/ContactsData";
+*/
 
 function App() {
     return (
@@ -12,9 +17,19 @@ function App() {
             <Switch>
                 <Route path="/" exact component={Menu} />
                 <Route path="/familyData" exact component={HouseholdForm} />
+                <Route path="/generalData" exact component={ShowGeneralData} />
             </Switch>
         </Router>
     );
 }
 
 export default App;
+
+/*
+<Route path="/foodData" exact component={ShowGeneralData} />
+<Route path="/clothingData" exact component={ShowClothingData} />
+<Route path="/contactsData" exact component={ShowContactsData} />
+
+
+
+<Route component={Not Found} />*/

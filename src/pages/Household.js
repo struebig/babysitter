@@ -12,8 +12,6 @@ import HeaderForm from "../components/HeaderForm";
 
 const StyledForm = styled.form``;
 
-const StyledInput = styled(Input)``;
-
 function HouseholdForm({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {

@@ -2,43 +2,49 @@ import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 
-const StyledFooter = styled.div``;
-
-const PageSwitchButton = styled.button`
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: none;
-    /*color: ${props => (props.active ? "goldenrod" : "white")};*/
-    background: mediumseagreen;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+const StyledFooter = styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 60px;
+    background: #2892d7;
 `;
 
-function ActionButton(/*{ icon, active, onClick, className }*/) {
+const PageSwitchButton = styled.button`
+    width: 100%;
+    height: 100%;
+    font-size: 100%;
+    border: none;
+    /*color: ${props => (props.active ? "#1B4353" : "2892D7")};*/
+    background: #2892D7;
+`;
+
+function ShowPages({ active, onClick }) {
     return (
         <StyledFooter>
-            <PageSwitchButton
-            /* className={className}
-                active={active}
-                onClick={onClick}
-            >
-                <i className={`fas ${icon}`} /*/
-            />
+            <PageSwitchButton active={active} onClick={onClick}>
+                <i class="far fa-address-card" />
+            </PageSwitchButton>
+            <PageSwitchButton active={active} onClick={onClick}>
+                <i class="fas fa-utensils" />
+            </PageSwitchButton>
+            <PageSwitchButton active={active} onClick={onClick}>
+                <i class="fas fa-tshirt" />
+            </PageSwitchButton>
+            <PageSwitchButton active={active} onClick={onClick}>
+                <i class="far fa-address-book" />
+            </PageSwitchButton>
         </StyledFooter>
     );
 }
 
-/*ActionButton.propTypes = {
-    icon: PropTypes.string.isRequired,
+PageSwitchButton.propTypes = {
     active: PropTypes.bool,
-    className: PropTypes.string,
     onClick: PropTypes.func
 };
 
-ActionButton.defaultProps = {
+PageSwitchButton.defaultProps = {
     active: false
-};*/
+};
 
-export default ActionButton;
+export default ShowPages;
