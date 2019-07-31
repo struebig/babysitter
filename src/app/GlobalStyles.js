@@ -6,5 +6,6 @@ export default createGlobalStyle`
 }
 body{
     background-color: lightgray;
+    font-size: 20px;
 }
 `;

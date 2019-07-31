@@ -4,15 +4,15 @@ import styled from "styled-components";
 
 const sizes = {
     L: "36px",
-    M: "24px",
-    S: "20px",
-    XS: "18px"
+    M: "30px",
+    S: "26px",
+    XS: "22px"
 };
 function getSize(size) {
     return sizes[size] || sizes.S;
 }
 const StyledHeadline = styled.h1`
-    margin: 0;
+    margin-bottom: 5px;
     font-size: ${props => getSize(props.size)};
 `;
 
