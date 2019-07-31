@@ -69,20 +69,24 @@ function HouseholdForm({ history }) {
                     onChange={handleChange}
                 />
                 <Container>
-                    <Headline size="XS">Parents / legal guardians</Headline>
+                    <Headline size="XS">Parents</Headline>
                     <Container>
+                        <label for="nameParentOne">Name </label>
                         <StyledInput
+                            id="nameParentOne"
                             value={household.nameParentOne}
                             name="nameParentOne"
                             placeholder="Name"
                             onChange={handleChange}
                         />
+                        Role
                         <StyledInput
                             value={household.roleParentOne}
                             placeholder="Role (e.g. father, mother, aunt)"
                             name="roleParentOne"
                             onChange={handleChange}
                         />
+                        Phone
                         <StyledInput
                             value={household.phoneParentOne}
                             placeholder="PhoneNo."
@@ -91,18 +95,21 @@ function HouseholdForm({ history }) {
                         />
                     </Container>
                     <Container>
+                        Name
                         <StyledInput
                             value={household.nameParentTwo}
                             placeholder="Name"
                             name="nameParentTwo"
                             onChange={handleChange}
                         />
+                        Role
                         <StyledInput
                             value={household.roleParentTwo}
                             placeholder="Role (e.g. father, mother, aunt)"
                             name="roleParentTwo"
                             onChange={handleChange}
                         />
+                        Phone
                         <StyledInput
                             value={household.phoneParentTwo}
                             placeholder="PhoneNo."
@@ -114,12 +121,14 @@ function HouseholdForm({ history }) {
                 <Container>
                     <Headline size="XS">Address</Headline>
                     <Container>
+                        Street
                         <StyledInput
                             name="street"
                             value={household.street}
                             placeholder="Street"
                             onChange={handleChange}
                         />
+                        House No.
                         <StyledInput
                             name="houseNo"
                             value={household.HouseNo}
@@ -128,12 +137,14 @@ function HouseholdForm({ history }) {
                         />
                     </Container>
                     <Container>
+                        Zip-code
                         <StyledInput
                             name="zip"
                             value={household.zip}
                             placeholder="Zip-code"
                             onChange={handleChange}
                         />
+                        City
                         <StyledInput
                             name="city"
                             value={household.city}
