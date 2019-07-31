@@ -4,7 +4,9 @@ export default createGlobalStyle`
 * {
     box-sizing: border-box;
 }
-body{
+body {
     background-color: lightgray;
+    margin: 0;
+    font-size: 24px;
 }
 `;

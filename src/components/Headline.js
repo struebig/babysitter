@@ -3,16 +3,17 @@ import React from "react";
 import styled from "styled-components";
 
 const sizes = {
-    L: "36px",
-    M: "24px",
-    S: "20px",
-    XS: "18px"
+    L: "40px",
+    M: "32px",
+    S: "28px",
+    XS: "24px"
 };
 function getSize(size) {
     return sizes[size] || sizes.S;
 }
 const StyledHeadline = styled.h1`
-    margin: 0;
+    margin-bottom: 5px;
+    margin-left: 5px;
     font-size: ${props => getSize(props.size)};
 `;
 
