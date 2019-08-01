@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import Headline from "../components/Headline";
 import Input from "../components/Input";
-/* import ActionButton from "../components/ActionButton";*/
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -11,8 +10,6 @@ import {
 import HeaderForm from "../components/HeaderForm";
 
 const StyledForm = styled.form``;
-
-const StyledInput = styled(Input)``;
 
 function HouseholdForm({ history }) {
     const [household, setHousehold] = React.useState(
