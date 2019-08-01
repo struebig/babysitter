@@ -4,11 +4,6 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../ressources/logo.png";
 
-const Inner = styled.span`
-    position: relative;
-    top: -5px;
-`;
-
 const Grid = styled.div`
     display: grid;
     height: 100vh;
