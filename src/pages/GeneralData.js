@@ -5,10 +5,11 @@ import Headline from "../components/Headline";
 import Output from "../components/Output";
 import ShowPages from "../components/Footer";
 import { getHouseholdFromStorage } from "../utils/storage";
+import HeaderData from "../components/ShowDataHeader";
 
 const Container = styled.div``;
 
-function ShowGeneralData() {
+function ShowGeneralData(history) {
     const data = getHouseholdFromStorage() || {
         familyName: "",
         nameParentOne: "",
@@ -23,12 +24,20 @@ function ShowGeneralData() {
         city: ""
     };
 
+    function handleCancel() {
+        history.replace("/");
+    }
+
     return (
         <>
+            <HeaderData
+                title="General Data"
+                button="button"
+                handleCancel={handleCancel}
+            />
             <Container>
-                <Headline size="M">General Data</Headline>
                 <Headline size="S">Family Data</Headline>
-                <Headline size="XS">Family: {data.familyName}</Headline>
+                <Headline size="XS">Family {data.familyName}</Headline>
                 <Headline size="XS">{data.roleParentOne}</Headline>
                 <Output label="Name" name={data.nameParentOne} />
                 <Output label="Phone" name={data.phoneParentOne} />

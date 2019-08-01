@@ -19,7 +19,8 @@ const StyledOutput = styled.div`
     width: 95%;
     height: 40px;
     margin-left: 5px;
-    background-color: #a0d2ff;
+    color: #004242;
+    background-color: #c3c3e6;
 `;
 
 function Output({ className, name, label }) {

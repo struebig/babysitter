@@ -3,7 +3,6 @@ import React from "react";
 import styled from "styled-components";
 import Headline from "../components/Headline";
 import Input from "../components/Input";
-/* import ActionButton from "../components/ActionButton";*/
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
