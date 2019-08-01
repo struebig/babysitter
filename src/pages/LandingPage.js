@@ -4,9 +4,15 @@ import React from "react";
 import styled from "styled-components";
 import logo from "../ressources/logo.png";
 
+const Inner = styled.span`
+    position: relative;
+    top: -5px;
+`;
+
 const Grid = styled.div`
-    /*display: grid;
-    grid-template-columns: 40%, auto, 20%;*/
+    display: grid;
+    height: 100vh;
+    grid-template-rows: 20% auto 10%;
 `;
 
 const StyledLogo = styled.div`
@@ -17,6 +23,7 @@ const StyledLogo = styled.div`
 const Main = styled.div`
     display: flex;
     justify-content: center;
+    overflow: auto;
 `;
 const Credit = styled.div`
     font-size: 5px;
@@ -37,6 +44,7 @@ function Menu({ history }) {
             </StyledLogo>
             <Main>
                 <button onClick={handleClick}>Family Data</button>
+
                 <button onClick={showData}>Babysitter</button>
             </Main>
             <Credit>

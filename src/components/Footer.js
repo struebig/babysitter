@@ -7,7 +7,8 @@ const StyledFooter = styled.div`
     justify-content: space-evenly;
     width: 100%;
     height: 60px;
-    background: #2892d7;
+    background-color: #6175b3;
+    border-top: solid #a2ebef 5px;
 `;
 
 const PageSwitchButton = styled.button`
@@ -16,7 +17,7 @@ const PageSwitchButton = styled.button`
     font-size: 100%;
     border: none;
     /*color: ${props => (props.active ? "#1B4353" : "2892D7")};*/
-    background: #2892D7;
+    background: #6175b3;
 `;
 
 function ShowPages({ active, onClick }) {

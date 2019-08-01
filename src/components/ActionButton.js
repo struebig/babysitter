@@ -1,28 +1,40 @@
-import PropTypes from "prop-types";
+/*import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
+    text-align: center;
+    padding: 0px;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
     border: none;
-    color: ${props => (props.active ? "goldenrod" : "white")};
-    background: mediumseagreen;
-    font-size: 20px;
-    cursor: pointer;
+    border-radius: 50%;
+    background-color: #960000;
+    color: #6175B3;
+    /*color: ${props => (props.active ? "goldenrod" : "white")};*/
+    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+`;
+const StyledButtonTwo = styled.button`
+  text-align: center;
+  padding: 0px;
+    width: 50px;
+    height: 50px;
+    font-size: 40px;
+    border: solid 5px #960000;
+    border-radius: 10%;
+    background-color: #6175B3;
+    color: #960000;
+    font-style: bold;
+    /*color: ${props => (props.active ? "goldenrod" : "white")};*/
     box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
 `;
 
-function ActionButton({ icon, active, onClick, className }) {
-    return (
-        <StyledButton className={className} active={active} onClick={onClick}>
-            <i className={`fas ${icon}`} />
-        </StyledButton>
-    );
+function ActionButton({ children }) {
+    return <StyledButtonTwo>{children}</StyledButtonTwo>;
 }
 
-ActionButton.propTypes = {
+/*ActionButton.propTypes = {
     icon: PropTypes.string.isRequired,
     active: PropTypes.bool,
     className: PropTypes.string,
@@ -32,5 +44,5 @@ ActionButton.propTypes = {
 ActionButton.defaultProps = {
     active: false
 };
-
+*/
 export default ActionButton;

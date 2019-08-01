@@ -9,5 +9,6 @@ body {
     margin: 0;
     font-size: 24px;
     color: #A2EBEF;
+    font-family: sans-serif;
 }
 `;

@@ -7,19 +7,25 @@ const StyledHeaderForm = styled.div`
     justify-content: space-evenly;
     width: 100%;
     height: 60px;
-    background-color: #2892d7;
+    background-color: #6175b3;
+    border-bottom: solid #a2ebef 5px;
 `;
+const types = {
+    button: "#960000",
+    submit: "#00965F"
+};
+function getType(type) {
+    return types[type] || type.button;
+}
 
 const StyledButton = styled.button`
-    width: 100%;
-    height: 100%;
-    font-size: 100%;
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
     border: none;
-    background-color: #2892d7;
-    /*color: ${props => (props.active ? "goldenrod" : "white")};
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);*/
+    background-color: #6175b3;
+    font-weight: bold;
+    color: ${props => getType(props.type)};
 `;
 
 function HeaderForm({ submit, handleSubmit, button, handleCancel }) {
