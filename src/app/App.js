@@ -5,10 +5,9 @@ import GlobalStyles from "./GlobalStyles";
 import HouseholdForm from "../pages/Household";
 import Menu from "../pages/LandingPage";
 import ShowGeneralData from "../pages/GeneralData";
-/* import ShowFoodData from "../pages/FoodData";
+import ShowFoodData from "../pages/FoodData";
 import ShowClothingData from "../pages/ClothingData";
 import ShowContactsData from "../pages/ContactsData";
-*/
 
 function App() {
     return (
@@ -18,6 +17,17 @@ function App() {
                 <Route path="/" exact component={Menu} />
                 <Route path="/familyData" exact component={HouseholdForm} />
                 <Route path="/generalData" exact component={ShowGeneralData} />
+                <Route path="/foodData" exact component={ShowFoodData} />
+                <Route
+                    path="/clothingData"
+                    exact
+                    component={ShowClothingData}
+                />
+                <Route
+                    path="/contactsData"
+                    exact
+                    component={ShowContactsData}
+                />
             </Switch>
         </Router>
     );
@@ -26,9 +36,6 @@ function App() {
 export default App;
 
 /*
-<Route path="/foodData" exact component={ShowGeneralData} />
-<Route path="/clothingData" exact component={ShowClothingData} />
-<Route path="/contactsData" exact component={ShowContactsData} />
 
 
 
