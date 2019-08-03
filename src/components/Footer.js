@@ -1,44 +1,38 @@
-import PropTypes from "prop-types";
+/*import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
+import ButtonLink from "../components/LinkButton";
 
 const StyledFooter = styled.div`
     display: flex;
     justify-content: space-evenly;
+    align-items: center;
     width: 100%;
     height: 60px;
     background-color: #6175b3;
     border-top: solid #a2ebef 5px;
 `;
 
-const PageSwitchButton = styled.button`
-    width: 100%;
-    height: 100%;
-    font-size: 100%;
-    border: none;
-    /*color: ${props => (props.active ? "#1B4353" : "2892D7")};*/
-    background: #6175b3;
-`;
-
 function ShowPages({ active, onClick }) {
     return (
         <StyledFooter>
-            <PageSwitchButton active={active} onClick={onClick}>
+            <ButtonLink to="/generalData" active={active} onClick={onClick}>
                 <i class="far fa-address-card" />
-            </PageSwitchButton>
-            <PageSwitchButton active={active} onClick={onClick}>
+            </ButtonLink>
+            <ButtonLink to="/foodData" active={active} onClick={onClick}>
                 <i class="fas fa-utensils" />
-            </PageSwitchButton>
-            <PageSwitchButton active={active} onClick={onClick}>
+            </ButtonLink>
+            <ButtonLink to="/clothingData" active={active} onClick={onClick}>
                 <i class="fas fa-tshirt" />
-            </PageSwitchButton>
-            <PageSwitchButton active={active} onClick={onClick}>
+            </ButtonLink>
+            <ButtonLink to="/contactsData" active={active} onClick={onClick}>
                 <i class="far fa-address-book" />
-            </PageSwitchButton>
+            </ButtonLink>
         </StyledFooter>
     );
 }
 
+/*
 PageSwitchButton.propTypes = {
     active: PropTypes.bool,
     onClick: PropTypes.func
@@ -46,6 +40,6 @@ PageSwitchButton.propTypes = {
 
 PageSwitchButton.defaultProps = {
     active: false
-};
+};*/
 
 export default ShowPages;

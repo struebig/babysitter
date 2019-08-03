@@ -3,12 +3,8 @@ import React from "react";
 /*import Headline from "../components/Headline";*/
 import styled from "styled-components";
 import logo from "../ressources/logo.png";
-
-const Grid = styled.div`
-    display: grid;
-    height: 100vh;
-    grid-template-rows: 20% auto 10%;
-`;
+import Grid from "../components/Grid";
+import Headline from "../components/Headline";
 
 const StyledLogo = styled.div`
     display: flex;
@@ -17,11 +13,24 @@ const StyledLogo = styled.div`
 `;
 const Main = styled.div`
     display: flex;
-    justify-content: center;
-    overflow: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 `;
 const Credit = styled.div`
-    font-size: 5px;
+    font-size: 10px;
+    display: flex;
+    align-items: flex-end;
+`;
+
+const MenuButton = styled.button`
+    height: 100px;
+    width: 100px;
+    border: solid 5px #a2ebef;
+    border-radius: 10%;
+    font-size: 80px;
+    background-color: transparent;
+    color: #a2ebef;
 `;
 
 function Menu({ history }) {
@@ -33,14 +42,29 @@ function Menu({ history }) {
     }
 
     return (
-        <Grid>
+        <Grid type="main">
             <StyledLogo>
                 <img src={logo} alt="Logo" width="110%" />
             </StyledLogo>
+            <Headline size="M">Family</Headline>
             <Main>
-                <button onClick={handleClick}>Family Data</button>
-
-                <button onClick={showData}>Babysitter</button>
+                <MenuButton onClick={handleClick}>
+                    <i class="fas fa-home" />
+                </MenuButton>
+            </Main>
+            <Main>
+                <MenuButton>
+                    <i class="fas fa-child" />
+                </MenuButton>
+                <MenuButton>
+                    <i class="fas fa-plus" />
+                </MenuButton>
+            </Main>
+            <Headline size="M">Nanny</Headline>
+            <Main>
+                <MenuButton onClick={showData}>
+                    <i class="fas fa-baby-carriage" />
+                </MenuButton>
             </Main>
             <Credit>
                 Logo erstellt mit{" "}

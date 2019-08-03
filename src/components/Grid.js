@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 const types = {
-    main: "20% auto 10%",
-    showData: "20% auto 10%",
+    main: "20% 5% 20% 20% 5% 20% 10%",
+    showData: "auto auto 10%",
     form: "auto auto"
 };
 function getType(type) {

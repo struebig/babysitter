@@ -11,4 +11,9 @@ body {
     color: #A2EBEF;
     font-family: sans-serif;
 }
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 `;
