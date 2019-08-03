@@ -144,14 +144,4 @@ function HouseholdForm({ history }) {
     );
 }
 
-/* StyledInput.propTypes = {
-    value: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired
-};*/
-
 export default HouseholdForm;
-
-/* <button onClick={handleSubmit}>ADD</button>
-                <button type="button" onClick={handleCancel}>
-                    CANCEL
-                </button>*/

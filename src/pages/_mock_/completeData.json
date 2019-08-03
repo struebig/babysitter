@@ -1,0 +1,63 @@
+[
+    {
+        "familyName": "Doe",
+        "nameParentOne": "John Doe",
+        "roleParentOne": "Father",
+        "phoneParentOne": "01600000001",
+        "nameParentTwo": "Jane Doe",
+        "roleParentTwo": "Mother",
+        "phoneParentTwo": "01600000002",
+        "street": "First Avenue",
+        "houseNo": "398",
+        "zip": "NL-5638",
+        "city": "Springfield"
+    },
+    "children",
+    [
+        {
+            "profilePicture": "",
+            "profileColor": "",
+            "firstName": "",
+            "lastName": "",
+            "birthday": "",
+            "medicalInfo": {
+                "bloodType": "",
+                "medicalConditions": [{ "title": "", "description": "" }],
+                "foodAllergies": [{ "title": "", "description": "" }],
+                "otherAllergies": [{ "title": "", "description": "" }],
+                "foodintolerances": [{ "title": "", "description": "" }],
+                "otherintolerances": [{ "title": "", "description": "" }]
+            },
+            "food": {
+                "diet": "",
+                "preferences": {},
+                "descriptionPreferences": "",
+                "dislikes": {},
+                "descriptionDislikes": ""
+            },
+            "contacts": {
+                "nameICEOne": "",
+                "descriptionICEOne": "",
+                "phoneICEOne": "",
+                "nameICETwo": "",
+                "descriptionICETwo": "",
+                "phoneICETwo": "",
+                "nameICEThree": "",
+                "descriptionICEThree": "",
+                "phoneICEThree": "",
+                "contactsFamily": [
+                    { "name": "", "description": "", "phone": "" }
+                ],
+                "contactsDoctors": [
+                    { "name": "", "description": "", "phone": "" }
+                ],
+                "contactsFriends": [
+                    { "name": "", "description": "", "phone": "" }
+                ],
+                "contactsOther": [
+                    { "name": "", "description": "", "phone": "" }
+                ]
+            }
+        }
+    ]
+]

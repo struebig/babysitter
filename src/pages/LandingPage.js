@@ -40,6 +40,9 @@ function Menu({ history }) {
     function showData() {
         history.push("generalData");
     }
+    function addChild() {
+        history.push("childrenData");
+    }
 
     return (
         <Grid type="main">
@@ -56,7 +59,7 @@ function Menu({ history }) {
                 <MenuButton>
                     <i class="fas fa-child" />
                 </MenuButton>
-                <MenuButton>
+                <MenuButton onClick={addChild}>
                     <i class="fas fa-plus" />
                 </MenuButton>
             </Main>
