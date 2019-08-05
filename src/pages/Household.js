@@ -12,6 +12,10 @@ import HeaderForm from "../components/HeaderForm";
 
 const StyledForm = styled.form``;
 
+const GridBody = styled.div`
+    overflow: auto;
+`;
+
 function HouseholdForm({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {
@@ -28,9 +32,6 @@ function HouseholdForm({ history }) {
             city: ""
         }
     );
-    const GridBody = styled.div`
-        overflow: auto;
-    `;
 
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });
@@ -120,7 +121,7 @@ function HouseholdForm({ history }) {
                     <Input
                         label="House No."
                         name="houseNo"
-                        value={household.HouseNo}
+                        value={household.houseNo}
                         placeholder="House No."
                         onChange={handleChange}
                     />

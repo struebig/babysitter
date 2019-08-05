@@ -16,7 +16,11 @@ function App() {
             <GlobalStyles />
             <Switch>
                 <Route path="/" exact component={Menu} />
-                <Route path="/familyData" exact component={HouseholdForm} />
+                <Route
+                    path="/familyData"
+                    exact
+                    render={props => <HouseholdForm {...props} />}
+                />
                 <Route path="/childrenData" exact component={AddChildrenForm} />
                 <Route path="/generalData" exact component={ShowGeneralData} />
                 <Route path="/foodData" exact component={ShowFoodData} />

@@ -4,6 +4,8 @@ import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
 import DropDown from "../components/Dropdown";
+import MedicalCard from "../components/MedicalCard";
+
 /*import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -58,14 +60,16 @@ function AddChildrenForm({ history }) {
             <GridBody>
                 <Headline size="S">General information</Headline>
                 <StyledForm /* onSubmit={handleSubmit}*/>
-                    <DropDown name="Profile color">
+                    <DropDown /*onChange={handleChange}*/ name="Profile color">
                         <option value="Black">Select color</option>
                         <option value="">---</option>
-                        <option value="Blue">Blue</option>
-                        <option value="Red">Red</option>
-                        <option value="Green">Green</option>
-                        <option value="Yellow">Yellow</option>
-                        <option value="Pink">Pink</option>
+                        <option value="#0000FF">Blue</option>
+                        <option value="#FF0000">Red</option>
+                        <option value="#008000">Green</option>
+                        <option value="#FFFF00">Yellow</option>
+                        <option value="#FFA500">Orange</option>
+                        <option value="#FF00FF">Pink</option>
+                        <option value="#800080">Purple</option>
                     </DropDown>
                     <Input
                         label="First name"
@@ -85,32 +89,38 @@ function AddChildrenForm({ history }) {
                         label="Birthday"
                         //    value={household.birthday}
                         name="birthday"
-                        placeholder="Birthday"
+                        placeholder="DD/MM/YYYY"
                         //   onChange={handleChange}
                     />
                     <Headline size="S">Medical information</Headline>
-                    <Input
-                        label="Bloodtype"
-                        //    value={household.bloodtype}
-                        name="bloodtype"
-                        placeholder="Bloodtype"
-                        //  onChange={handleChange}
-                    />
+                    <DropDown /*onChange={handleChange}*/ name="Profile color">
+                        <option value="">Select bloodtype</option>
+                        <option value="">---</option>
+                        <option value="ap">A positiv</option>
+                        <option value="bp">B positiv</option>
+                        <option value="abp">AB positiv</option>
+                        <option value="0p">0 positiv</option>
+                        <option value="an">A negativ</option>
+                        <option value="bn">B negativ</option>
+                        <option value="abn">AB negativ</option>
+                        <option value="0n">0 negativ</option>
+                    </DropDown>
+                    <MedicalCard />
                     <Headline size="XS">Medical conditions</Headline>
                     <Headline size="XS">Allergies</Headline>
                     <Headline size="XS">Intolerances</Headline>
-                    <Headline size="XS">Clothing</Headline>
-                    <Headline size="XS">Food</Headline>
+                    <Headline size="S">Food</Headline>
                     <Input
                         label="Diet"
                         //    value={household.diet}
-                        name="ndiet"
+                        name="diet"
                         placeholder="Diet (e.g. vegetarian, vegan...)"
                         //   onChange={handleChange}
                     />
                     <Headline size="XS">Preferences</Headline>
                     <Headline size="XS">Dislikes</Headline>
-                    <Headline size="XS">Food</Headline>
+                    <Headline size="S">Clothing</Headline>
+                    <Headline size="S">Contacts</Headline>
                     <Headline size="XS">In case of emergency</Headline>
                     <Input
                         label="Name"
@@ -120,7 +130,7 @@ function AddChildrenForm({ history }) {
                         //   onChange={handleChange}
                     />
                     <Input
-                        label="Dscription"
+                        label="Description"
                         //    value={household.descriptionICEOne}
                         placeholder="Description"
                         name="description"
@@ -141,7 +151,7 @@ function AddChildrenForm({ history }) {
                         //   onChange={handleChange}
                     />
                     <Input
-                        label="Dscription"
+                        label="Description"
                         //    value={household.descriptionICETwo}
                         placeholder="Description"
                         name="description"
@@ -162,7 +172,7 @@ function AddChildrenForm({ history }) {
                         //   onChange={handleChange}
                     />
                     <Input
-                        label="Dscription"
+                        label="Description"
                         //   value={household.descriptionICEThree}
                         placeholder="Description"
                         name="description"
