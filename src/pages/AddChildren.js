@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
+import DropDown from "../components/Dropdown";
 /*import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -57,6 +58,15 @@ function AddChildrenForm({ history }) {
             <GridBody>
                 <Headline size="S">General information</Headline>
                 <StyledForm /* onSubmit={handleSubmit}*/>
+                    <DropDown name="Profile color">
+                        <option value="Black">Select color</option>
+                        <option value="">---</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Red">Red</option>
+                        <option value="Green">Green</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Pink">Pink</option>
+                    </DropDown>
                     <Input
                         label="First name"
                         //    value={household.fistName}

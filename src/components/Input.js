@@ -22,13 +22,15 @@ const StyledInput = styled.input`
 function Input({ className, value, name, placeholder, onChange, label }) {
     return (
         <Container className={className}>
-            <StyledLabel>{label}</StyledLabel>
-            <StyledInput
-                value={value}
-                name={name}
-                placeholder={placeholder}
-                onChange={onChange}
-            />
+            <StyledLabel>
+                {label}
+                <StyledInput
+                    value={value}
+                    name={name}
+                    placeholder={placeholder}
+                    onChange={onChange}
+                />
+            </StyledLabel>
         </Container>
     );
 }
