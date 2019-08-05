@@ -15,7 +15,7 @@ const StyledInput = styled.textarea`
     border-radius: 3px;
     font-size: 20px;
     width: 95%;
-    height: auto;
+    height: 60px;
     margin-left: 5px;
 `;
 

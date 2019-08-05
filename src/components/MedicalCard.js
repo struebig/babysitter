@@ -38,6 +38,7 @@ function MedicalCard() {
                 placeholder="Description"
                 //   onChange={handleChange}
             />
+            <button>ADD</button>
         </StyledCard>
     );
 }
