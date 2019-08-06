@@ -4,63 +4,75 @@ import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
 import DropDown from "../components/Dropdown";
-import MedicalCard from "../components/MedicalCard";
-
-/*import {
-    getHouseholdFromStorage,
-    setHouseholdtoStorage
-} from "../utils/storage";*/
+import MedicalCard from "../components/MedicalCardInput";
+import ShowMedicalCard from "../components/MedicalCardOutput";
+import WeatherCardInput from "../components/WeatherCardInput";
+import ShowWeatherCard from "../components/WeatherCardOutput";
+import ContactCardInput from "../components/ContactCardInput";
+import ShowContactCard from "../components/ContactCardOutput";
+import FoodCardInput from "../components/FoodCardInput";
+import ShowFoodCard from "../components/FoodCardOutput";
+import {
+    getChildrenFromStorage,
+    setChildrentoStorage
+} from "../utils/StorageChildren";
 import HeaderForm from "../components/HeaderForm";
 
 const StyledForm = styled.form``;
 
+const GridBody = styled.div`
+    overflow: auto;
+`;
+
 function AddChildrenForm({ history }) {
-    /*const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {
-            familyName: "",
-            nameParentOne: "",
-            roleParentOne: "Mother",
-            phoneParentOne: "",
-            nameParentTwo: "",
-            roleParentTwo: "Father",
-            phoneParentTwo: "",
-            street: "",
-            houseNo: "",
-            zip: "",
-            city: ""
-        }
-    );*/
-    const GridBody = styled.div`
-        overflow: auto;
-    `;
+    const [conditions, setConditions] = React.useState([]);
+    const [preferences, setPreferences] = React.useState([]);
+    const [weatherConditions, setWeatherConditions] = React.useState([]);
+    const [contacts, setContacts] = React.useState([]);
+    const [values, setValues] = React.useState([]);
 
     /*function handleChange(event) {
-        setHousehold({ ...household, [event.target.name]: event.target.value });
+        setChildren({ ...children, [event.target.name]: event.target.value });
         console.log(event.target.name);
         console.log(event.target.value);
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        setHouseholdtoStorage(household);
+        setChildrentoStorage(children);
         history.replace("/");
     }*/
     function handleCancel() {
         history.push("/");
     }
 
+    function handleAddCondition(condition) {
+        setConditions([...conditions, condition]);
+    }
+    function handleAddPreference(preference) {
+        setPreferences([...preferences, preference]);
+    }
+    function handleAddWeatherCard(weatherCondition) {
+        setWeatherConditions([...weatherConditions, weatherCondition]);
+    }
+    function handleAddContact(contact) {
+        setContacts([...contacts, contact]);
+    }
+
     return (
         <Grid type="form">
             <HeaderForm
                 submit="submit"
-                //   handleSubmit={handleSubmit}
+                // handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
             />
             <GridBody>
                 <Headline size="S">General information</Headline>
                 <StyledForm /* onSubmit={handleSubmit}*/>
-                    <DropDown /*onChange={handleChange}*/ name="Profile color">
+                    <DropDown
+                        /*onChange={handleChange} value={household.profileColor}*/ name="profileColor"
+                    >
                         <option value="Black">Select color</option>
                         <option value="">---</option>
                         <option value="#0000FF">Blue</option>
@@ -105,90 +117,51 @@ function AddChildrenForm({ history }) {
                         <option value="abn">AB negativ</option>
                         <option value="0n">0 negativ</option>
                     </DropDown>
-                    <MedicalCard />
-                    <Headline size="XS">Medical conditions</Headline>
-                    <Headline size="XS">Allergies</Headline>
-                    <Headline size="XS">Intolerances</Headline>
+                    {conditions.map(condition => (
+                        <ShowMedicalCard
+                            category={condition.category}
+                            title={condition.title}
+                            description={condition.description}
+                        />
+                    ))}
+                    <MedicalCard onCreate={handleAddCondition} />
                     <Headline size="S">Food</Headline>
-                    <Input
-                        label="Diet"
-                        //    value={household.diet}
-                        name="diet"
-                        placeholder="Diet (e.g. vegetarian, vegan...)"
-                        //   onChange={handleChange}
-                    />
-                    <Headline size="XS">Preferences</Headline>
-                    <Headline size="XS">Dislikes</Headline>
+                    <DropDown /*onChange={handleChange}*/ name="diet">
+                        <option value="">Select diet</option>
+                        <option value="">---</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                    </DropDown>
+                    {preferences.map(preference => (
+                        <ShowFoodCard
+                            category={preference.category}
+                            name={preference.name}
+                            description={preference.description}
+                        />
+                    ))}
+                    <FoodCardInput onCreate={handleAddPreference} />
                     <Headline size="S">Clothing</Headline>
+
+                    {weatherConditions.map(weatherCondition => (
+                        <ShowWeatherCard
+                            category={weatherCondition.category}
+                            temperatur={weatherCondition.temperatur}
+                            degree={weatherCondition.degree}
+                            description={weatherCondition.description}
+                        />
+                    ))}
+                    <WeatherCardInput onCreate={handleAddWeatherCard} />
                     <Headline size="S">Contacts</Headline>
-                    <Headline size="XS">In case of emergency</Headline>
-                    <Input
-                        label="Name"
-                        //    value={household.nameICEOne}
-                        name="nameContact"
-                        placeholder="Name"
-                        //   onChange={handleChange}
-                    />
-                    <Input
-                        label="Description"
-                        //    value={household.descriptionICEOne}
-                        placeholder="Description"
-                        name="description"
-                        //   onChange={handleChange}
-                    />
-                    <Input
-                        label="Phone"
-                        //    value={household.phoneICEOne}
-                        placeholder="Phone No.)"
-                        name="phoneContact"
-                        //   onChange={handleChange}
-                    />
-                    <Input
-                        label="Name"
-                        //    value={household.nameICETwo}
-                        name="nameContact"
-                        placeholder="Name"
-                        //   onChange={handleChange}
-                    />
-                    <Input
-                        label="Description"
-                        //    value={household.descriptionICETwo}
-                        placeholder="Description"
-                        name="description"
-                        //   onChange={handleChange}
-                    />
-                    <Input
-                        label="Phone"
-                        //    value={household.phoneICETwo}
-                        placeholder="Phone No.)"
-                        name="phoneContact"
-                        //   onChange={handleChange}
-                    />
-                    <Input
-                        label="Name"
-                        //    value={household.nameICEThree}
-                        name="nameContact"
-                        placeholder="Name"
-                        //   onChange={handleChange}
-                    />
-                    <Input
-                        label="Description"
-                        //   value={household.descriptionICEThree}
-                        placeholder="Description"
-                        name="description"
-                        //   onChange={handleChange}
-                    />
-                    <Input
-                        label="Phone"
-                        //   value={household.phoneICEThree}
-                        placeholder="Phone No.)"
-                        name="phoneContact"
-                        //   onChange={handleChange}
-                    />
-                    <Headline size="XS">Family</Headline>
-                    <Headline size="XS">Doctors</Headline>
-                    <Headline size="XS">Friends</Headline>
-                    <Headline size="XS">Other</Headline>
+                    {contacts.map(contact => (
+                        <ShowContactCard
+                            category={contact.category}
+                            name={contact.name}
+                            phoneNo={contact.phoneNo}
+                            description={contact.description}
+                        />
+                    ))}
+
+                    <ContactCardInput onCreate={handleAddContact} />
                 </StyledForm>
             </GridBody>
         </Grid>
