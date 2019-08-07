@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
+import ShowChildren from "../components/ShowChildren";
+import AddChild from "../components/AddChild";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -29,9 +31,12 @@ function HouseholdForm({ history }) {
             street: "",
             houseNo: "",
             zip: "",
-            city: ""
+            city: "",
+            children: []
         }
     );
+
+    const [children, setChildren] = React.useState([]);
 
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });
@@ -46,6 +51,9 @@ function HouseholdForm({ history }) {
     }
     function handleCancel() {
         history.push("/");
+    }
+    function handleAddChildren(child) {
+        setChildren([...children, child]);
     }
 
     return (
@@ -139,6 +147,15 @@ function HouseholdForm({ history }) {
                         placeholder="City"
                         onChange={handleChange}
                     />
+                    <AddChild
+                        name="firstName"
+                        //value={household.children}
+                        placeholder="First name"
+                        onCreate={handleAddChildren}
+                    />
+                    {children.map(child => (
+                        <ShowChildren name={child.firstName} />
+                    ))}
                 </StyledForm>
             </GridBody>
         </Grid>

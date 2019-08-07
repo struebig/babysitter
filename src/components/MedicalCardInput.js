@@ -9,7 +9,7 @@ const StyledCard = styled.form`
     border: solid 2px black;
 `;
 
-function MedicalCard({ onCreate }) {
+function MedicalCard({ onCreate, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -21,6 +21,7 @@ function MedicalCard({ onCreate }) {
         });
 
         form.reset();
+        onClose();
     }
     return (
         <StyledCard onSubmit={handleSubmit}>
@@ -49,6 +50,7 @@ function MedicalCard({ onCreate }) {
                 //   onChange={handleChange}
             />
             <button>ADD</button>
+            <button onClick={onClose}>Cancel</button>
         </StyledCard>
     );
 }

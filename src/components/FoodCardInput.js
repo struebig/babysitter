@@ -8,7 +8,7 @@ const StyledCard = styled.form`
     border: solid 2px black;
 `;
 
-function FoodCardInput({ onCreate }) {
+function FoodCardInput({ onCreate, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -20,6 +20,7 @@ function FoodCardInput({ onCreate }) {
         });
 
         form.reset();
+        onClose();
     }
     return (
         <StyledCard onSubmit={handleSubmit}>
@@ -45,6 +46,7 @@ function FoodCardInput({ onCreate }) {
                 //   onChange={handleChange}
             />
             <button>ADD</button>
+            <button onClick={onClose}>Cancel</button>
         </StyledCard>
     );
 }

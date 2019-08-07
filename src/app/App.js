@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 /*import styled from "styled-components";*/
 import GlobalStyles from "./GlobalStyles";
 import HouseholdForm from "../pages/Household";
-import AddChildrenForm from "../pages/AddChildren";
+import EditChildrenForm from "../pages/EditChildren";
 import Menu from "../pages/LandingPage";
 import ShowGeneralData from "../pages/GeneralData";
 import ShowFoodData from "../pages/FoodData";
@@ -21,7 +21,11 @@ function App() {
                     exact
                     render={props => <HouseholdForm {...props} />}
                 />
-                <Route path="/childrenData" exact component={AddChildrenForm} />
+                <Route
+                    path="/childrenData"
+                    exact
+                    component={EditChildrenForm}
+                />
                 <Route path="/generalData" exact component={ShowGeneralData} />
                 <Route path="/foodData" exact component={ShowFoodData} />
                 <Route

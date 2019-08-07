@@ -9,7 +9,7 @@ const StyledCard = styled.form`
     border: solid 2px black;
 `;
 
-function WeatherCardInput({ onCreate }) {
+function WeatherCardInput({ onCreate, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -22,6 +22,7 @@ function WeatherCardInput({ onCreate }) {
         });
 
         form.reset();
+        onClose();
     }
     return (
         <StyledCard onSubmit={handleSubmit}>
@@ -56,6 +57,7 @@ function WeatherCardInput({ onCreate }) {
                 //   onChange={handleChange}
             />
             <button>ADD</button>
+            <button onClick={onClose}>Cancel</button>
         </StyledCard>
     );
 }

@@ -8,7 +8,7 @@ const StyledCard = styled.form`
     border: solid 2px black;
 `;
 
-function ContactCardInput({ onCreate }) {
+function ContactCardInput({ onCreate, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -21,6 +21,7 @@ function ContactCardInput({ onCreate }) {
         });
 
         form.reset();
+        onClose();
     }
     return (
         <StyledCard onSubmit={handleSubmit}>
@@ -56,6 +57,7 @@ function ContactCardInput({ onCreate }) {
                 //   onChange={handleChange}
             />
             <button>ADD</button>
+            <button onClick={onClose}>Cancel</button>
         </StyledCard>
     );
 }

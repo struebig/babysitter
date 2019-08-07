@@ -40,7 +40,7 @@ function Menu({ history }) {
     function showData() {
         history.push("generalData");
     }
-    function addChild() {
+    function editChild() {
         history.push("childrenData");
     }
 
@@ -59,7 +59,7 @@ function Menu({ history }) {
                 <MenuButton>
                     <i class="fas fa-child" />
                 </MenuButton>
-                <MenuButton onClick={addChild}>
+                <MenuButton onClick={editChild}>
                     <i class="fas fa-plus" />
                 </MenuButton>
             </Main>
