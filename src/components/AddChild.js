@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
+import HouseholdForm from "../pages/Household";
 
 const Container = styled.form`
     margin-bottom: 10px;
@@ -29,16 +30,29 @@ const AddButton = styled.button`
     color: #00965f;
 `;
 
-function AddChild({ onCreate, value, placeholder, onChange, onClick }) {
+function AddChild({
+    household,
+    setHousehold,
+    onCreate,
+    value,
+    placeholder,
+    onChange
+}) {
+    console.log(household);
     function handleSubmit(event) {
+        // console.log(event);
         event.preventDefault();
         const form = event.target;
 
-        onCreate({
-            firstName: form.name.value
-        });
-
+        // onCreate({
+        //     firstName: form.name.value
+        // });
         form.reset();
+
+        setHousehold({
+            ...household,
+            children: [...household.children, event.target.name.value]
+        });
     }
 
     return (
@@ -51,7 +65,7 @@ function AddChild({ onCreate, value, placeholder, onChange, onClick }) {
                     placeholder={placeholder}
                     onChange={onChange}
                 />
-                <AddButton type="button" onClick={onClick}>
+                <AddButton type="submit">
                     <i class="far fa-plus-square" />
                 </AddButton>
             </InputField>

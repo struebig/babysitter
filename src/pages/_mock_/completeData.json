@@ -12,15 +12,13 @@
     "city": "Springfield",
     "children": [
         {
-            "generalInfo": {
-                "profilePicture": "",
-                "profileColor": "",
-                "firstName": "",
-                "lastName": "",
-                "birthday": "",
-                "bloodType": "",
-                "diet": ""
-            },
+            "profilePicture": "",
+            "profileColor": "",
+            "firstName": "",
+            "lastName": "",
+            "birthday": "",
+            "bloodType": "",
+            "diet": "",
             "medicalInfo": [{ "category": "", "title": "", "description": "" }],
             "food": [{ "category": "", "title": "", "description": "" }],
             "clothing": [

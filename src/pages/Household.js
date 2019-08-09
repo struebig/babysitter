@@ -36,6 +36,10 @@ function HouseholdForm({ history }) {
         }
     );
 
+    React.useEffect(() => {
+        console.log(household);
+    }, [household]);
+
     const [children, setChildren] = React.useState([]);
 
     function handleChange(event) {
@@ -53,6 +57,7 @@ function HouseholdForm({ history }) {
         history.push("/");
     }
     function handleAddChildren(child) {
+        console.log(child);
         setChildren([...children, child]);
     }
 
@@ -148,13 +153,15 @@ function HouseholdForm({ history }) {
                         onChange={handleChange}
                     />
                     <AddChild
+                        household={household}
+                        setHousehold={setHousehold}
                         name="firstName"
                         //value={household.children}
                         placeholder="First name"
                         onCreate={handleAddChildren}
                     />
-                    {children.map(child => (
-                        <ShowChildren name={child.firstName} />
+                    {household.children.map(child => (
+                        <ShowChildren name={child} />
                     ))}
                 </StyledForm>
             </GridBody>
