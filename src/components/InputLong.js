@@ -10,16 +10,16 @@ const StyledLabel = styled.label`
     margin-left: 5px;
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled.textarea`
     border: 1px gray solid;
     border-radius: 3px;
     font-size: 20px;
     width: 95%;
-    height: 40px;
+    height: 60px;
     margin-left: 5px;
 `;
 
-function Input({ className, value, name, placeholder, onChange, label }) {
+function InputLong({ className, value, name, placeholder, onChange, label }) {
     return (
         <Container className={className}>
             <StyledLabel>
@@ -35,4 +35,4 @@ function Input({ className, value, name, placeholder, onChange, label }) {
     );
 }
 
-export default Input;
+export default InputLong;

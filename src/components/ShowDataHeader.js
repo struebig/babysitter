@@ -19,7 +19,7 @@ const StyledIcon = styled.img`
 const StyledButton = styled.button`
     width: 20%;
     height: 100%;
-    font-size: 50px
+    font-size: 50px;
     border: none;
     background-color: #6175b3;
     color: #960000;

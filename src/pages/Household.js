@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
+import ShowChildren from "../components/ShowChildren";
+import AddChild from "../components/AddChild";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -11,6 +13,10 @@ import {
 import HeaderForm from "../components/HeaderForm";
 
 const StyledForm = styled.form``;
+
+const GridBody = styled.div`
+    overflow: auto;
+`;
 
 function HouseholdForm({ history }) {
     const [household, setHousehold] = React.useState(
@@ -25,12 +31,16 @@ function HouseholdForm({ history }) {
             street: "",
             houseNo: "",
             zip: "",
-            city: ""
+            city: "",
+            children: []
         }
     );
-    const GridBody = styled.div`
-        overflow: auto;
-    `;
+
+    React.useEffect(() => {
+        console.log(household);
+    }, [household]);
+
+    const [children, setChildren] = React.useState([]);
 
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });
@@ -45,6 +55,10 @@ function HouseholdForm({ history }) {
     }
     function handleCancel() {
         history.push("/");
+    }
+    function handleAddChildren(child) {
+        console.log(child);
+        setChildren([...children, child]);
     }
 
     return (
@@ -120,7 +134,7 @@ function HouseholdForm({ history }) {
                     <Input
                         label="House No."
                         name="houseNo"
-                        value={household.HouseNo}
+                        value={household.houseNo}
                         placeholder="House No."
                         onChange={handleChange}
                     />
@@ -138,20 +152,21 @@ function HouseholdForm({ history }) {
                         placeholder="City"
                         onChange={handleChange}
                     />
+                    <AddChild
+                        household={household}
+                        setHousehold={setHousehold}
+                        name="firstName"
+                        //value={household.children}
+                        placeholder="First name"
+                        onCreate={handleAddChildren}
+                    />
+                    {household.children.map(child => (
+                        <ShowChildren name={child} />
+                    ))}
                 </StyledForm>
             </GridBody>
         </Grid>
     );
 }
 
-/* StyledInput.propTypes = {
-    value: PropTypes.string.isRequired,
-    placeholder: PropTypes.string.isRequired
-};*/
-
 export default HouseholdForm;
-
-/* <button onClick={handleSubmit}>ADD</button>
-                <button type="button" onClick={handleCancel}>
-                    CANCEL
-                </button>*/

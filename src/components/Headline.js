@@ -7,27 +7,36 @@ const sizes = {
         fontSize: "40px",
         decoration: "",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        marginBottom: "5px"
     },
     M: {
         fontSize: "32px",
         decoration: "",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        marginBottom: "5px"
     },
     S: {
         fontSize: "28px",
         decoration: "underline",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        marginBottom: "10px"
     },
-    XS: { fontSize: "24px", decoration: "", justifyContent: "", alignItems: "" }
+    XS: {
+        fontSize: "24px",
+        decoration: "",
+        justifyContent: "",
+        alignItems: "",
+        marginBottom: "5px"
+    }
 };
 function getSize(size) {
     return sizes[size] || sizes.S;
 }
 const StyledHeadline = styled.h1`
-    margin-bottom: 5px;
+    margin-bottom: ${props => getSize(props.size).marginBottom};
     margin-left: 5px;
     font-size: ${props => getSize(props.size).fontSize};
     text-decoration: ${props => getSize(props.size).decoration};

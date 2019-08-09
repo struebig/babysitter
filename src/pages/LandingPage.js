@@ -5,6 +5,11 @@ import styled from "styled-components";
 import logo from "../ressources/logo.png";
 import Grid from "../components/Grid";
 import Headline from "../components/Headline";
+import ChildProfile from "../components/ChildProfile";
+import {
+    getHouseholdFromStorage,
+    setHouseholdtoStorage
+} from "../utils/storage";
 
 const StyledLogo = styled.div`
     display: flex;
@@ -16,11 +21,6 @@ const Main = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-`;
-const Credit = styled.div`
-    font-size: 10px;
-    display: flex;
-    align-items: flex-end;
 `;
 
 const MenuButton = styled.button`
@@ -34,11 +34,15 @@ const MenuButton = styled.button`
 `;
 
 function Menu({ history }) {
+    const childButtons = getHouseholdFromStorage();
     function handleClick() {
         history.push("familyData");
     }
     function showData() {
         history.push("generalData");
+    }
+    function editChild() {
+        history.push("childrenData");
     }
 
     return (
@@ -53,10 +57,10 @@ function Menu({ history }) {
                 </MenuButton>
             </Main>
             <Main>
-                <MenuButton>
-                    <i class="fas fa-child" />
-                </MenuButton>
-                <MenuButton>
+                {childButtons.children.map(child => (
+                    <ChildProfile name={child} />
+                ))}
+                <MenuButton onClick={editChild}>
                     <i class="fas fa-plus" />
                 </MenuButton>
             </Main>
@@ -66,12 +70,6 @@ function Menu({ history }) {
                     <i class="fas fa-baby-carriage" />
                 </MenuButton>
             </Main>
-            <Credit>
-                Logo erstellt mit{" "}
-                <a href="/de/" title="Kostenloser Online-Logo-Editor">
-                    DesignEvo
-                </a>
-            </Credit>
         </Grid>
     );
 }

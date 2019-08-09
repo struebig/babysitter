@@ -8,6 +8,7 @@ const Container = styled.div`
 const StyledLabel = styled.div`
     display: block;
     margin-left: 5px;
+    font-size: 18px;
 `;
 
 const StyledOutput = styled.div`

@@ -1,0 +1,43 @@
+{
+    "familyName": "Doe",
+    "nameParentOne": "John Doe",
+    "roleParentOne": "Father",
+    "phoneParentOne": "01600000001",
+    "nameParentTwo": "Jane Doe",
+    "roleParentTwo": "Mother",
+    "phoneParentTwo": "01600000002",
+    "street": "First Avenue",
+    "houseNo": "398",
+    "zip": "NL-5638",
+    "city": "Springfield",
+    "children": [
+        {
+            "profilePicture": "",
+            "profileColor": "",
+            "firstName": "",
+            "lastName": "",
+            "birthday": "",
+            "bloodType": "",
+            "diet": "",
+            "medicalInfo": [{ "category": "", "title": "", "description": "" }],
+            "food": [{ "category": "", "title": "", "description": "" }],
+            "clothing": [
+                {
+                    "category": "",
+                    "temperature": "",
+                    "degree": "",
+                    "description": ""
+                }
+            ],
+
+            "contacts": [
+                {
+                    "category": "",
+                    "name": "",
+                    "description": "",
+                    "phone": ""
+                }
+            ]
+        }
+    ]
+}
