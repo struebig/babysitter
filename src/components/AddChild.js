@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
-import HouseholdForm from "../pages/Household";
+import uuid from "uuid/v1";
 
 const Container = styled.form`
     margin-bottom: 10px;
@@ -33,8 +33,8 @@ const AddButton = styled.button`
 function AddChild({
     household,
     setHousehold,
-    onCreate,
-    value,
+    //onCreate,
+    // value,
     placeholder,
     onChange
 }) {
@@ -47,12 +47,15 @@ function AddChild({
         // onCreate({
         //     firstName: form.name.value
         // });
-        form.reset();
 
         setHousehold({
             ...household,
-            children: [...household.children, event.target.name.value]
+            children: [
+                ...household.children,
+                { firstName: event.target.name.value, id: uuid() }
+            ]
         });
+        form.reset();
     }
 
     return (
@@ -60,7 +63,7 @@ function AddChild({
             <Headline size="S">Add child</Headline>
             <InputField>
                 <StyledInput
-                    value={value}
+                    //value={value}
                     name="name"
                     placeholder={placeholder}
                     onChange={onChange}

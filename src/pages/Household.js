@@ -40,7 +40,7 @@ function HouseholdForm({ history }) {
         console.log(household);
     }, [household]);
 
-    const [children, setChildren] = React.useState([]);
+    //const [children, setChildren] = React.useState([]);
 
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });
@@ -56,10 +56,10 @@ function HouseholdForm({ history }) {
     function handleCancel() {
         history.push("/");
     }
-    function handleAddChildren(child) {
+    /* function handleAddChildren(child) {
         console.log(child);
         setChildren([...children, child]);
-    }
+    }*/
 
     return (
         <Grid type="form">
@@ -158,10 +158,10 @@ function HouseholdForm({ history }) {
                         name="firstName"
                         //value={household.children}
                         placeholder="First name"
-                        onCreate={handleAddChildren}
+                        // onCreate={handleAddChildren}
                     />
                     {household.children.map(child => (
-                        <ShowChildren name={child} />
+                        <ShowChildren name={child.firstName} />
                     ))}
                 </StyledForm>
             </GridBody>
