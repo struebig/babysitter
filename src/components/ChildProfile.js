@@ -4,7 +4,7 @@ import Headline from "./Headline";
 
 const StyledContainer = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 `;
 
 const StyledButton = styled.button`
@@ -16,14 +16,19 @@ const StyledButton = styled.button`
     box-shadow: 1px 1px 10px #fff, 1px 1px 10px #ccc;
 `;
 
-function childProfile({ name }) {
+function childProfile({ history, child }) {
+    function handleClick() {
+        // history.push(`/childrenData${child.id}`);
+        history.push("childrenData");
+    }
+    // useEffect ()*/
     return (
-        <>
-            <StyledButton>
+        <StyledContainer onClick={handleClick}>
+            <StyledButton type="button">
                 <i class="fas fa-child" />
             </StyledButton>
-            <Headline size="M">{name}</Headline>
-        </>
+            <Headline size="M">{child}</Headline>
+        </StyledContainer>
     );
 }
 

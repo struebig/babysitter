@@ -44,7 +44,7 @@ function Menu({ history }) {
     function editChild() {
         history.push("childrenData");
     }
-
+    console.log(childButtons.children);
     return (
         <Grid type="main">
             <StyledLogo>
@@ -58,7 +58,11 @@ function Menu({ history }) {
             </Main>
             <Main>
                 {childButtons.children.map(child => (
-                    <ChildProfile name={child} />
+                    // Link to=`/childrenData${child.id}`
+                    <ChildProfile
+                        child={child.firstName}
+                        //to={`/childrenData${child.id}`}
+                    />
                 ))}
                 <MenuButton onClick={editChild}>
                     <i class="fas fa-plus" />

@@ -25,7 +25,8 @@ const GridBody = styled.div`
     overflow: auto;
 `;
 
-function EditChildrenForm({ history }) {
+function EditChildrenForm({ history, child }) {
+    console.log(child);
     const [conditions, setConditions] = React.useState([]);
     const [renderAddMedicalCard, setRenderAddMedicalCard] = React.useState(
         null
@@ -43,7 +44,7 @@ function EditChildrenForm({ history }) {
     const [values, setValues] = React.useState([]);
 
     /*function handleChange(event) {
-        setValiues({ ...value, [event.target.name]: event.target.value });
+        setValues({ ...value, [event.target.name]: event.target.value });
         console.log(event.target.name);
         console.log(event.target.value);
     }
