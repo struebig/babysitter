@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
 import HouseholdForm from "../pages/Household";
 import EditChildrenForm from "../pages/EditChildren";
-import Menu from "../pages/LandingPage";
+import Menu from "../pages/LandingPageFamily";
+import BabysitterMenu from "../pages/LandingPageBabysitter";
+import LogIn from "../pages/LoginPage";
 import ShowGeneralData from "../pages/GeneralData";
 import ShowFoodData from "../pages/FoodData";
 import ShowClothingData from "../pages/ClothingData";
@@ -15,7 +17,13 @@ function App() {
         <Router>
             <GlobalStyles />
             <Switch>
-                <Route path="/" exact component={Menu} />
+                <Route path="/" exact component={LogIn} />
+                <Route
+                    path="/babysitterMenu"
+                    exact
+                    component={BabysitterMenu}
+                />
+                <Route path="/familyMenu" exact component={Menu} />
                 <Route
                     path="/familyData"
                     exact
