@@ -55,7 +55,7 @@ function EditChildrenForm({ history, child }) {
         history.replace("/");
     }*/
     function handleCancel() {
-        history.push("/");
+        history.push("/familyMenu");
     }
 
     function handleAddCondition(condition) {

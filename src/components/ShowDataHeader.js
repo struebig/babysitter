@@ -7,7 +7,7 @@ const StyledHeaderData = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    height: 60px;
+    height: auto;
     background-color: #6175b3;
     border-bottom: solid #a2ebef;
 `;

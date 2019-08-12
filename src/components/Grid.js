@@ -3,8 +3,10 @@ import styled from "styled-components";
 
 const types = {
     main: "20% 5% 20% 30% 5% 20%",
-    showData: "auto auto 10%",
-    form: "auto auto"
+    showData: "10% auto 10%",
+    form: "auto auto",
+    logIn: "20% 10% 35% 35%",
+    sitter: "10% auto auto auto"
 };
 function getType(type) {
     return types[type] || type.showData;

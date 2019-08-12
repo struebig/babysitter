@@ -51,10 +51,10 @@ function HouseholdForm({ history }) {
     function handleSubmit(event) {
         event.preventDefault();
         setHouseholdtoStorage(household);
-        history.replace("/");
+        history.replace("/familyMenu");
     }
     function handleCancel() {
-        history.push("/");
+        history.push("/familyMenu");
     }
     /* function handleAddChildren(child) {
         console.log(child);
