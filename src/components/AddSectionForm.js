@@ -7,12 +7,13 @@ const AddButton = styled.button`
     height: 40px;
     font-size: 40px;
     border: none;
-    background-color: #6175b3;
     font-weight: bold;
+    background-color: white
     color: #00965f;
     position: absolute;
     right: 10px;
     top: 15px;
+    font-weight: bold;
 `;
 
 const Section = styled.div`

@@ -15,13 +15,15 @@ const Main = styled.div`
     justify-content: space-around;
     align-items: center;
     background-color: #6175b3;
+    border: solid;
+    border-color: #6175b3;
 `;
 
 const MenuButton = styled.button`
     height: 100px;
     width: 300px;
     border: solid 5px #a2ebef;
-    border-radius: 40%;
+    border-radius: 40px;
     font-size: 50px;
     background-color: transparent;
     color: #a2ebef;

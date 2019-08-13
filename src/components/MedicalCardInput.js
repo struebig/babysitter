@@ -9,7 +9,7 @@ const StyledCard = styled.form`
     border: solid 2px black;
 `;
 
-function MedicalCard({ onCreate, onClose }) {
+function MedicalCardInput({ onCreate, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -55,4 +55,4 @@ function MedicalCard({ onCreate, onClose }) {
     );
 }
 
-export default MedicalCard;
+export default MedicalCardInput;

@@ -8,7 +8,7 @@ const StyledHeaderForm = styled.div`
     width: 100%;
     height: 60px;
     background-color: #6175b3;
-    border-bottom: solid #a2ebef 5px;
+    box-shadow: 0px 5px 8px grey;
 `;
 const types = {
     button: "#960000",

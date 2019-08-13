@@ -1,22 +1,14 @@
-/*import PropTypes from "prop-types";*/
 import React from "react";
 /*import Headline from "../components/Headline";*/
 import styled from "styled-components";
-import logo from "../ressources/logo.png";
 import Grid from "../components/Grid";
 import Headline from "../components/Headline";
 import HeaderData from "../components/ShowDataHeader";
-import ChildProfile from "../components/ChildProfile";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
 
-const StyledLogo = styled.div`
-    display: flex;
-    justify-content: center;
-    height: 150px;
-`;
 const Main = styled.div`
     display: flex;
     flex-direction: column;

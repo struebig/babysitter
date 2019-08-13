@@ -9,7 +9,8 @@ const StyledHeaderData = styled.div`
     width: 100%;
     height: auto;
     background-color: #6175b3;
-    border-bottom: solid #a2ebef;
+    color: #a2ebef;
+    box-shadow: 0px 5px 8px grey;
 `;
 
 const StyledIcon = styled.img`

@@ -31,6 +31,7 @@ function FoodCardInput({ onCreate, onClose }) {
                 <option value="preference">Preference</option>
                 <option value="dislike">Dislike</option>
             </DropDown>
+
             <Input
                 label="Name"
                 //   value={household.}

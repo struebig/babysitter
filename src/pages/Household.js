@@ -4,8 +4,8 @@ import styled from "styled-components";
 import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
-import ShowChildren from "../components/ShowChildren";
-import AddChild from "../components/AddChild";
+//import ChildrenCardOutput from "../components/ChildrenCardOutput";
+//import AddChild from "../components/AddChild";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -69,8 +69,10 @@ function HouseholdForm({ history }) {
                 button="button"
                 handleCancel={handleCancel}
             />
+
+            <Headline size="S">Family Data</Headline>
+            <div />
             <GridBody>
-                <Headline size="S">Family Data</Headline>
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     <Input
                         label="Family name"
@@ -152,7 +154,16 @@ function HouseholdForm({ history }) {
                         placeholder="City"
                         onChange={handleChange}
                     />
-                    <AddChild
+                </StyledForm>
+            </GridBody>
+        </Grid>
+    );
+}
+
+export default HouseholdForm;
+
+/*
+<AddChild
                         household={household}
                         setHousehold={setHousehold}
                         name="firstName"
@@ -161,12 +172,5 @@ function HouseholdForm({ history }) {
                         // onCreate={handleAddChildren}
                     />
                     {household.children.map(child => (
-                        <ShowChildren name={child.firstName} />
-                    ))}
-                </StyledForm>
-            </GridBody>
-        </Grid>
-    );
-}
-
-export default HouseholdForm;
+                        <ChildrenCardOutput name={child.firstName} />
+                    ))}*/

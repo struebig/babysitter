@@ -5,11 +5,12 @@ export default createGlobalStyle`
     box-sizing: border-box;
 }
 body {
-    background-color: #6175b3;
+    
     margin: 0;
     font-size: 24px;
-    color: #A2EBEF;
     font-family: sans-serif;
+    flex-wrap: wrap;
+    word-wrap: break-word;
 }
 button {
     display: flex;

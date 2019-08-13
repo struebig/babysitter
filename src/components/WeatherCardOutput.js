@@ -2,8 +2,40 @@ import React from "react";
 import styled from "styled-components";
 
 const WeatherCardOutput = styled.div`
-    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    height: auto;
+    width: 320px;
+    padding: 3px;
+    background: lightgrey;
+    margin-bottom: 10px;
 `;
+
+const StyledCardHead = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+`;
+
+const StyledCardBody = styled.div`
+    width: 290px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+    background-color: #f8f8ff;
+    border-radius: 10px;
+`;
+
+const StyledCategory = styled.div`
+    width: 100px;
+    height: 100px;
+    font-size: 100px;
+`;
+
 /*const category = {
     sun: "fa-sun",
     rain:"",
@@ -16,10 +48,16 @@ function getCategory(category) {
 function ShowWeatherCard({ category, temperatur, degree, description }) {
     return (
         <WeatherCardOutput>
-            <div>{category}</div>
-            <div>{temperatur}</div>
-            <div>{degree}</div>
-            <div>{description}</div>
+            <StyledCardHead>
+                <StyledCategory>
+                    <i className={`fas ${category}`} />
+                </StyledCategory>
+                <div>
+                    {temperatur} {degree} °C
+                </div>
+            </StyledCardHead>
+
+            <StyledCardBody>{description}</StyledCardBody>
         </WeatherCardOutput>
     );
 }
