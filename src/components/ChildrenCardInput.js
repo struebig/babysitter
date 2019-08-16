@@ -43,13 +43,6 @@ function ChildrenCardInput({ household, setHousehold, onClose }) {
         event.preventDefault();
         const form = event.target;
 
-        /*onCreate({
-            firstName: form.firstName.value,
-            lastName: form.lastName.value,
-            birthday: form.birthday.value,
-            bloodtype: form.bloodtype.value,
-            diet: form.diet.value
-        }); */
         setHousehold({
             ...household,
             children: [

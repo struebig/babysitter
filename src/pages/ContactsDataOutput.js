@@ -1,34 +1,24 @@
-/* import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
-//import Headline from "../components/Headline";
-//import Output from "../components/Output";
 import ShowPages from "../components/Footer";
-//import { getHouseholdFromStorage } from "../utils/storage";
+import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
+import ShowContactCard from "../components/ContactCardOutput";
 
 const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: auto;
+    margin-top: 20px;
 `;
 
 function ShowContactsData({ history }) {
-    /*const data = getHouseholdFromStorage() || {
-        familyName: "",
-        nameParentOne: "",
-        roleParentOne: "Mother",
-        phoneParentOne: "",
-        nameParentTwo: "",
-        roleParentTwo: "Father",
-        phoneParentTwo: "",
-        street: "",
-        houseNo: "",
-        zip: "",
-        city: ""
-    };*/
+    const data = getHouseholdFromStorage() || {};
 
     function handleCancel() {
-        history.replace("/");
+        history.replace("babysitterMenu");
     }
 
     return (
@@ -39,7 +29,18 @@ function ShowContactsData({ history }) {
                     button="button"
                     handleCancel={handleCancel}
                 />
-                <Container />
+
+                <Container>
+                    {data.contacts &&
+                        data.contacts.map(contact => (
+                            <ShowContactCard
+                                category={contact.category}
+                                name={contact.name}
+                                phoneNo={contact.phoneNo}
+                                description={contact.description}
+                            />
+                        ))}
+                </Container>
                 <ShowPages />
             </Grid>
         </>

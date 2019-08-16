@@ -6,6 +6,10 @@ import MedicalCardInput from "../components/MedicalCardInput";
 import ShowMedicalCard from "../components/MedicalCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import {
+    getHouseholdFromStorage,
+    setHouseholdtoStorage
+} from "../utils/storage";
 
 const StyledForm = styled.form``;
 
@@ -20,32 +24,35 @@ const GridBody = styled.div`
 `;
 
 function AddMedicalData({ history }) {
-    const [medicalConditions, setMedicalConditions] = React.useState([]);
+    const [household, setHousehold] = React.useState(
+        getHouseholdFromStorage() || {}
+    );
+
     const [renderAddMedicalCard, setRenderAddMedicalCard] = React.useState(
         null
     );
-    // const [values, setValues] = React.useState([]);
 
-    /*function handleChange(event) {
-        setValues({ ...value, [event.target.name]: event.target.value });
-        console.log(event.target.name);
-        console.log(event.target.value);
+    function handleChange(event) {
+        setHousehold({
+            ...household.medicalConditions,
+            [event.target.name]: event.target.value
+        });
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        setChildrentoStorage(children);
-        history.replace("/");
-    }*/
+        setHouseholdtoStorage(household);
+        history.replace("/familyMenu");
+    }
+
     function handleCancel() {
         history.push("/familyMenu");
     }
-    function handleAddMedicalCard(medicalCondition) {
-        setMedicalConditions([...medicalConditions, medicalCondition]);
-    }
+
     function showAddMedicalCard() {
         setRenderAddMedicalCard(true);
     }
+
     function hideAddMedicalCard() {
         setRenderAddMedicalCard(null);
     }
@@ -54,7 +61,7 @@ function AddMedicalData({ history }) {
         <Grid type="form">
             <HeaderForm
                 submit="submit"
-                // handleSubmit={handleSubmit}
+                handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
             />
@@ -70,17 +77,20 @@ function AddMedicalData({ history }) {
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     {renderAddMedicalCard && (
                         <MedicalCardInput
-                            onCreate={handleAddMedicalCard}
+                            household={household}
+                            setHousehold={setHousehold}
+                            onChange={handleChange}
                             onClose={hideAddMedicalCard}
                         />
                     )}
-                    {medicalConditions.map(medicalCondition => (
-                        <ShowMedicalCard
-                            category={medicalCondition.category}
-                            title={medicalCondition.title}
-                            description={medicalCondition.description}
-                        />
-                    ))}
+                    {household.medicalConditions &&
+                        household.medicalConditions.map(medicalCondition => (
+                            <ShowMedicalCard
+                                category={medicalCondition.category}
+                                title={medicalCondition.title}
+                                description={medicalCondition.description}
+                            />
+                        ))}
                 </StyledForm>
             </GridBody>
         </Grid>

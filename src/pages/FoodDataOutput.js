@@ -1,34 +1,24 @@
-/* import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
-//import Headline from "../components/Headline";
-//import Output from "../components/Output";
 import ShowPages from "../components/Footer";
-//import { getHouseholdFromStorage } from "../utils/storage";
+import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
+import ShowFoodCard from "../components/FoodCardOutput";
 
 const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: auto;
+    margin-top: 20px;
 `;
 
 function ShowFoodData({ history }) {
-    /*const data = getHouseholdFromStorage() || {
-        familyName: "",
-        nameParentOne: "",
-        roleParentOne: "Mother",
-        phoneParentOne: "",
-        nameParentTwo: "",
-        roleParentTwo: "Father",
-        phoneParentTwo: "",
-        street: "",
-        houseNo: "",
-        zip: "",
-        city: ""
-    };*/
+    const data = getHouseholdFromStorage() || {};
 
     function handleCancel() {
-        history.replace("/");
+        history.replace("babysitterMenu");
     }
 
     return (
@@ -39,7 +29,16 @@ function ShowFoodData({ history }) {
                     button="button"
                     handleCancel={handleCancel}
                 />
-                <Container />
+                <Container>
+                    {data.foodPreferences &&
+                        data.foodPreferences.map(foodPreference => (
+                            <ShowFoodCard
+                                category={foodPreference.category}
+                                name={foodPreference.name}
+                                description={foodPreference.description}
+                            />
+                        ))}
+                </Container>
                 <ShowPages />
             </Grid>
         </>

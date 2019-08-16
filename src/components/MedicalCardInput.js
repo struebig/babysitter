@@ -39,15 +39,21 @@ const StyledFooter = styled.div`
     margin-bottom: 10px;
 `;
 
-function MedicalCardInput({ onCreate, onClose }) {
+function MedicalCardInput({ household, setHousehold, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
-        onCreate({
-            category: form.category.value,
-            title: form.name.value,
-            description: form.description.value
+        setHousehold({
+            ...household,
+            medicalConditions: [
+                ...(household.medicalConditions || []),
+                {
+                    category: form.category.value,
+                    title: form.title.value,
+                    description: form.description.value
+                }
+            ]
         });
 
         form.reset();
@@ -56,7 +62,7 @@ function MedicalCardInput({ onCreate, onClose }) {
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add medical information</Headline>
-            <DropDown /*onChange={handleChange}*/ name="category">
+            <DropDown name="category">
                 <option value="medicalCondition">Type</option>
                 <option value="medicalCondition">---</option>
                 <option value="medicalCondition">Medical condition</option>
@@ -68,18 +74,14 @@ function MedicalCardInput({ onCreate, onClose }) {
             <Input
                 size="textShort"
                 label="Name"
-                //   value={household.}
                 name="firstName"
                 placeholder="Name"
-                //   onChange={handleChange}
             />
             <Input
                 size="textShort"
                 label="Description"
-                //   value={household.}
                 name="description"
                 placeholder="Description"
-                //   onChange={handleChange}
             />
             <StyledFooter>
                 <StyledButton type="submit">

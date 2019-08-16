@@ -49,14 +49,7 @@ function AddChildrenData({ history }) {
             ]
         }
     );
-    console.log(household);
-    /*console.log(household);
-    React.useEffect(() => {
-        console.log(household);
-    }, [household]);*/
     const [renderAddChildCard, setRenderAddChildCard] = React.useState(null);
-
-    //const [children, setChildren] = React.useState([]);
 
     function handleChange(event) {
         setHousehold({
@@ -73,10 +66,6 @@ function AddChildrenData({ history }) {
     function handleCancel() {
         history.push("/familyMenu");
     }
-    /*function handleAddChildCard(child) {
-        console.log(child);
-        setChildren([...children, child]);
-    }*/
     function showAddChildCard() {
         setRenderAddChildCard(true);
     }
@@ -126,18 +115,3 @@ function AddChildrenData({ history }) {
 }
 
 export default AddChildrenData;
-
-/*
-{household.children.map(child => (
-                        <ChildrenCardOutput
-                            firstName={child.firstName}
-                            lastName={child.lastName}
-                            birthday={child.birthday}
-                            bloodtype={child.bloodtype}
-                            diet={child.diet}
-                        />
-                    ))}
-                    */
-/*
-                   onCreate={handleAddChildCard}
-                   */

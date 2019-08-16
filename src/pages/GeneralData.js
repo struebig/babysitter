@@ -51,7 +51,7 @@ function ShowGeneralData({ history }) {
     };
 
     function handleCancel() {
-        history.replace("/");
+        history.replace("babysitterMenu");
     }
 
     return (

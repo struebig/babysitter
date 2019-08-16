@@ -4,6 +4,8 @@ import styled from "styled-components";
 import Grid from "../components/Grid";
 import Headline from "../components/Headline";
 import HeaderData from "../components/ShowDataHeader";
+
+import MenuCard from "../components/MenuCard";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -44,9 +46,11 @@ function BabysitterMenu({ history }) {
 
             <Main>
                 <Headline size="M">Upcoming</Headline>
-                <MenuButton onClick={showData}>
-                    <i class="fas fa-baby-carriage" />
-                </MenuButton>
+                <MenuCard
+                    icon="fa-baby-carriage"
+                    title="Babysitter"
+                    onClick={showData}
+                />
             </Main>
             <Main>
                 <Headline size="M">Requests</Headline>
