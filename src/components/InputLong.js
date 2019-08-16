@@ -16,7 +16,6 @@ const StyledInput = styled.textarea`
     font-size: 20px;
     width: 95%;
     height: 60px;
-    margin-left: 5px;
 `;
 
 function InputLong({ className, value, name, placeholder, onChange, label }) {

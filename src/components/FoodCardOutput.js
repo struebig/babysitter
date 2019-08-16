@@ -1,17 +1,51 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
+import CardOutputFooter from "../components/CardOutputFooter";
 
 const FoodCardOutput = styled.div`
-    border: solid 2px black;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    height: auto;
+    width: 320px;
+    padding: 3px;
+    background: lightgrey;
+    margin-bottom: 10px;
+    box-shadow: 5px 5px 8px grey;
+`;
+const StyledCardHead = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+const StyledTitle = styled.div`
+    display: flex;
+    justify-content: space-around;
+`;
+
+const StyledCardBody = styled.div`
+    width: 290px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 5px;
+    background-color: #f8f8ff;
+    border-radius: 10px;
 `;
 
 function ShowFoodCard({ category, name, description }) {
     return (
         <FoodCardOutput>
-            <Headline size="XS">{category}</Headline>
-            <div>{name}</div>
-            <div>{description}</div>
+            <StyledCardHead>
+                <Headline size="XS">{category}</Headline>
+            </StyledCardHead>
+
+            <StyledTitle>{name}</StyledTitle>
+            <StyledCardBody>{description}</StyledCardBody>
+            <CardOutputFooter />
         </FoodCardOutput>
     );
 }

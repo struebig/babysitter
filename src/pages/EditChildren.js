@@ -103,8 +103,8 @@ function EditChildrenForm({ history, child }) {
                 button="button"
                 handleCancel={handleCancel}
             />
+            <Headline size="S">General information</Headline>
             <GridBody>
-                <Headline size="S">General information</Headline>
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     <DropDown
                         /*onChange={handleChange} value={household.profileColor}*/ name="profilePic"

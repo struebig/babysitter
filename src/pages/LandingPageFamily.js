@@ -1,21 +1,16 @@
-/*import PropTypes from "prop-types";*/
 import React from "react";
 /*import Headline from "../components/Headline";*/
 import styled from "styled-components";
-import logo from "../ressources/logo.png";
 import Grid from "../components/Grid";
 import Headline from "../components/Headline";
-import ChildProfile from "../components/ChildProfile";
+import MenuCard from "../components/MenuCard";
+import HeaderData from "../components/ShowDataHeader";
+//import ChildProfile from "../components/ChildProfile";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
 
-const StyledLogo = styled.div`
-    display: flex;
-    justify-content: center;
-    height: 150px;
-`;
 const Main = styled.div`
     display: flex;
     flex-direction: row;
@@ -23,20 +18,25 @@ const Main = styled.div`
     align-items: center;
 `;
 
-const MenuButton = styled.button`
-    height: 100px;
-    width: 100px;
-    border: solid 5px #a2ebef;
-    border-radius: 10%;
-    font-size: 80px;
-    background-color: transparent;
-    color: #a2ebef;
-`;
-
 function Menu({ history }) {
     const childButtons = getHouseholdFromStorage();
     function handleClick() {
         history.push("familyData");
+    }
+    function handleClickChildren() {
+        history.push("childrenDataInput");
+    }
+    function handleClickMedical() {
+        history.push("medicalDataInput");
+    }
+    function handleClickFood() {
+        history.push("foodDataInput");
+    }
+    function handleClickClothing() {
+        history.push("clothingDataInput");
+    }
+    function handleClickContacts() {
+        history.push("contactsDataInput");
     }
     function showData() {
         history.push("generalData");
@@ -44,38 +44,84 @@ function Menu({ history }) {
     function editChild() {
         history.push("childrenData");
     }
-    console.log(childButtons.children);
+    function handleCancel() {
+        history.replace("/");
+    }
+
     return (
         <Grid type="main">
-            <StyledLogo>
-                <img src={logo} alt="Logo" width="110%" />
-            </StyledLogo>
-            <Headline size="M">Family</Headline>
+            <HeaderData
+                title="Menu"
+                button="button"
+                handleCancel={handleCancel}
+            />
+            <Headline size="M">Information</Headline>
             <Main>
-                <MenuButton onClick={handleClick}>
-                    <i class="fas fa-home" />
-                </MenuButton>
+                <MenuCard icon="fa-home" title="Family" onClick={handleClick} />
+                <MenuCard
+                    icon="fa-child"
+                    title="Children"
+                    onClick={handleClickChildren}
+                />
+                <MenuCard
+                    icon="fa-first-aid"
+                    title="Medical"
+                    onClick={handleClickMedical}
+                />
             </Main>
             <Main>
-                {childButtons.children.map(child => (
-                    // Link to=`/childrenData${child.id}`
-                    <ChildProfile
-                        child={child.firstName}
-                        //to={`/childrenData${child.id}`}
-                    />
-                ))}
-                <MenuButton onClick={editChild}>
-                    <i class="fas fa-plus" />
-                </MenuButton>
+                <MenuCard
+                    icon="fa-utensils"
+                    title="Food"
+                    onClick={handleClickFood}
+                />
+                <MenuCard
+                    icon="fa-tshirt"
+                    title="Clothing"
+                    onClick={handleClickClothing}
+                />
+                <MenuCard
+                    icon="fa-address-book"
+                    title="Contacts"
+                    onClick={handleClickContacts}
+                />
             </Main>
-            <Headline size="M">Nanny</Headline>
+            <Headline size="M">Other functions</Headline>
             <Main>
-                <MenuButton onClick={showData}>
-                    <i class="fas fa-baby-carriage" />
-                </MenuButton>
+                <MenuCard
+                    icon="fa-baby-carriage"
+                    title="Babysitter"
+                    onClick={showData}
+                />
             </Main>
         </Grid>
     );
 }
 
 export default Menu;
+
+/*
+
+Profilbild je Kind:
+
+{childButtons.children.map(child => (
+                    // Link to=`/childrenData${child.id}`
+                    <ChildProfile
+                        child={child.firstName}
+                        //to={`/childrenData${child.id}`}
+                    />
+                ))}
+
+
+
+
+
+Komplettes Formular:
+
+<MenuCard
+                    icon="fa-plus"
+                    title="Full form"
+                    onClick={editChild}
+                />
+
+*/

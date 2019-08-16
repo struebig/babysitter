@@ -5,7 +5,38 @@ import Input from "./Input";
 import Headline from "./Headline";
 
 const StyledCard = styled.form`
-    border: solid 2px black;
+    border-radius: 5px;
+    width: 96%;
+    min-height: 300px;
+    position: absolute;
+    top: 70px;
+    left: 2%;
+    right: 2%;
+    background: lightgrey;
+`;
+const types = {
+    button: "#960000",
+    submit: "#00965F"
+};
+function getType(type) {
+    return types[type] || type.button;
+}
+
+const StyledButton = styled.button`
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+    border: none;
+    background-color: lightgrey;
+    font-weight: bold;
+    color: ${props => getType(props.type)};
+`;
+
+const StyledFooter = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
 `;
 
 function ContactCardInput({ onCreate, onClose }) {
@@ -36,6 +67,7 @@ function ContactCardInput({ onCreate, onClose }) {
                 <option value="other">Other</option>
             </DropDown>
             <Input
+                size="textShort"
                 label="Name"
                 //   value={household.}
                 name="name"
@@ -43,6 +75,7 @@ function ContactCardInput({ onCreate, onClose }) {
                 //   onChange={handleChange}
             />
             <Input
+                size="numberLong"
                 label="Phone No."
                 //   value={household.}
                 name="phoneNo"
@@ -50,14 +83,21 @@ function ContactCardInput({ onCreate, onClose }) {
                 //   onChange={handleChange}
             />
             <Input
+                size="textLong"
                 label="Description"
                 //   value={household.}
                 name="description"
                 placeholder="Description"
                 //   onChange={handleChange}
             />
-            <button>ADD</button>
-            <button onClick={onClose}>Cancel</button>
+            <StyledFooter>
+                <StyledButton type="submit">
+                    <i class="far fa-check-circle" />
+                </StyledButton>
+                <StyledButton type="button" onClick={onClose}>
+                    <i class="far fa-window-close" />
+                </StyledButton>
+            </StyledFooter>
         </StyledCard>
     );
 }

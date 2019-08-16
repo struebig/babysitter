@@ -8,7 +8,8 @@ const sizes = {
         decoration: "",
         justifyContent: "center",
         alignItems: "center",
-        marginBottom: "5px"
+        marginBottom: "5px",
+        color: "#A2EBEF"
     },
     M: {
         fontSize: "32px",
@@ -43,6 +44,7 @@ const StyledHeadline = styled.h1`
     display: flex;
     justify-content: ${props => getSize(props.size).justifyContent};
     align-items: ${props => getSize(props.size).alignItems};
+    color: ${props => getSize(props.size).color};
 `;
 
 function Headline({ size, ...props }) {

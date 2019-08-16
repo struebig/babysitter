@@ -8,9 +8,9 @@ const StyledFooter = styled.div`
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 60px;
-    background-color: #6175b3;
-    border-top: solid #a2ebef 5px;
+    height: 100%;
+    background-color: #004242;
+    box-shadow: 0px -5px 8px grey;
 `;
 
 function ShowPages({ active, onClick }) {
@@ -19,13 +19,28 @@ function ShowPages({ active, onClick }) {
             <ButtonLink to="/generalData" active={active} onClick={onClick}>
                 <i class="far fa-address-card" />
             </ButtonLink>
-            <ButtonLink to="/foodData" active={active} onClick={onClick}>
+            <ButtonLink
+                to="/medicalDataOutput"
+                active={active}
+                onClick={onClick}
+            >
+                <i class="fas fa-first-aid" />
+            </ButtonLink>
+            <ButtonLink to="/foodDataOutput" active={active} onClick={onClick}>
                 <i class="fas fa-utensils" />
             </ButtonLink>
-            <ButtonLink to="/clothingData" active={active} onClick={onClick}>
+            <ButtonLink
+                to="/clothingDataOutput"
+                active={active}
+                onClick={onClick}
+            >
                 <i class="fas fa-tshirt" />
             </ButtonLink>
-            <ButtonLink to="/contactsData" active={active} onClick={onClick}>
+            <ButtonLink
+                to="/contactsDataOutput"
+                active={active}
+                onClick={onClick}
+            >
                 <i class="far fa-address-book" />
             </ButtonLink>
         </StyledFooter>
