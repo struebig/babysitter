@@ -6,6 +6,10 @@ import ContactCardInput from "../components/ContactCardInput";
 import ShowContactCard from "../components/ContactCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import {
+    getHouseholdFromStorage,
+    setHouseholdtoStorage
+} from "../utils/storage";
 
 const StyledForm = styled.form``;
 
@@ -24,19 +28,22 @@ function AddContactsData({ history, child }) {
     const [renderAddContactCard, setRenderAddContactCard] = React.useState(
         null
     );
-    const [values, setValues] = React.useState([]);
+    const [household, setHousehold] = React.useState(
+        getHouseholdFromStorage() || {}
+    );
 
-    /*function handleChange(event) {
-        setValues({ ...value, [event.target.name]: event.target.value });
-        console.log(event.target.name);
-        console.log(event.target.value);
+    function handleChange(event) {
+        setHousehold({
+            ...household.contacts,
+            [event.target.name]: event.target.value
+        });
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        setChildrentoStorage(children);
-        history.replace("/");
-    }*/
+        setHouseholdtoStorage(household);
+        history.replace("/familyMenu");
+    }
     function handleCancel() {
         history.push("/familyMenu");
     }
@@ -54,7 +61,7 @@ function AddContactsData({ history, child }) {
         <Grid type="form">
             <HeaderForm
                 submit="submit"
-                // handleSubmit={handleSubmit}
+                handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
             />
@@ -70,18 +77,21 @@ function AddContactsData({ history, child }) {
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     {renderAddContactCard && (
                         <ContactCardInput
+                            household={household}
+                            setHousehold={setHousehold}
                             onCreate={handleAddContact}
                             onClose={hideAddContactCard}
                         />
                     )}
-                    {contacts.map(contact => (
-                        <ShowContactCard
-                            category={contact.category}
-                            name={contact.name}
-                            phoneNo={contact.phoneNo}
-                            description={contact.description}
-                        />
-                    ))}
+                    {household.contacts &&
+                        household.contacts.map(contact => (
+                            <ShowContactCard
+                                category={contact.category}
+                                name={contact.name}
+                                phoneNo={contact.phoneNo}
+                                description={contact.description}
+                            />
+                        ))}
                 </StyledForm>
             </GridBody>
         </Grid>

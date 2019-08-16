@@ -39,16 +39,22 @@ const StyledFooter = styled.div`
     margin-bottom: 10px;
 `;
 
-function ContactCardInput({ onCreate, onClose }) {
+function ContactCardInput({ household, setHousehold, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
-        onCreate({
-            category: form.category.value,
-            name: form.name.value,
-            phoneNo: form.phoneNo.value,
-            description: form.description.value
+        setHousehold({
+            ...household,
+            contacts: [
+                ...(household.contacts || []),
+                {
+                    category: form.category.value,
+                    name: form.name.value,
+                    phoneNo: form.phoneNo.value,
+                    description: form.description.value
+                }
+            ]
         });
 
         form.reset();

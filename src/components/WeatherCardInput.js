@@ -46,18 +46,23 @@ const StyledTemperature = styled.div`
     align-items: flex-end;
 `;
 
-function WeatherCardInput({ onCreate, onClose }) {
+function WeatherCardInput({ household, setHousehold, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
-        onCreate({
-            category: form.category.value,
-            temperatur: form.temperatur.value,
-            degree: form.degree.value,
-            description: form.description.value
+        setHousehold({
+            ...household,
+            clothing: [
+                ...(household.clothing || []),
+                {
+                    category: form.category.value,
+                    temperatur: form.temperatur.value,
+                    degree: form.degree.value,
+                    description: form.description.value
+                }
+            ]
         });
-
         form.reset();
         onClose();
     }

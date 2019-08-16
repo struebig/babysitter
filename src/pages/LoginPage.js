@@ -1,22 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import logo from "../ressources/logo.png";
 import Headline from "../components/Headline";
 import Grid from "../components/Grid";
+import BrandName from "../components/Brand";
 
-const StyledLogo = styled.div`
-    display: flex;
-    justify-content: center;
-    height: 150px;
-`;
 const Main = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    background-color: #6175b3;
+    background-color: #004242;
     border: solid;
-    border-color: #6175b3;
+    border-color: #004242;
 `;
 
 const MenuButton = styled.button`
@@ -38,9 +33,7 @@ function LogIn({ history }) {
     }
     return (
         <Grid type="logIn">
-            <StyledLogo>
-                <img src={logo} alt="Logo" width="110%" />
-            </StyledLogo>
+            <BrandName />
             <Main>
                 <Headline size="M">LOGIN</Headline>
             </Main>

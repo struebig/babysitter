@@ -1,34 +1,24 @@
-/* import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
-//import Headline from "../components/Headline";
-//import Output from "../components/Output";
 import ShowPages from "../components/Footer";
-//import { getHouseholdFromStorage } from "../utils/storage";
+import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
+import ShowWeatherCard from "../components/WeatherCardOutput";
 
 const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     overflow: auto;
+    margin-top: 20px;
 `;
 
 function ShowClothingData({ history }) {
-    /*const data = getHouseholdFromStorage() || {
-        familyName: "",
-        nameParentOne: "",
-        roleParentOne: "Mother",
-        phoneParentOne: "",
-        nameParentTwo: "",
-        roleParentTwo: "Father",
-        phoneParentTwo: "",
-        street: "",
-        houseNo: "",
-        zip: "",
-        city: ""
-    };*/
+    const data = getHouseholdFromStorage() || {};
 
     function handleCancel() {
-        history.replace("/");
+        history.replace("babysitterMenu");
     }
 
     return (
@@ -39,7 +29,17 @@ function ShowClothingData({ history }) {
                     button="button"
                     handleCancel={handleCancel}
                 />
-                <Container />
+                <Container>
+                    {data.clothing &&
+                        data.clothing.map(clothes => (
+                            <ShowWeatherCard
+                                category={clothes.category}
+                                temperatur={clothes.temperatur}
+                                degree={clothes.degree}
+                                description={clothes.description}
+                            />
+                        ))}
+                </Container>
                 <ShowPages />
             </Grid>
         </>

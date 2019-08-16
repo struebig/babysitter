@@ -33,17 +33,18 @@ function AddClothingData({ history }) {
     );
     const [values, setValues] = React.useState([]);
 
-    /*function handleChange(event) {
-        setValues({ ...value, [event.target.name]: event.target.value });
-        console.log(event.target.name);
-        console.log(event.target.value);
+    function handleChange(event) {
+        setHousehold({
+            ...household.clothing,
+            [event.target.name]: event.target.value
+        });
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        setChildrentoStorage(children);
-        history.replace("/");
-    }*/
+        setHouseholdtoStorage(household);
+        history.replace("/familyMenu");
+    }
     function handleCancel() {
         history.push("/familyMenu");
     }
@@ -61,7 +62,7 @@ function AddClothingData({ history }) {
         <Grid type="form">
             <HeaderForm
                 submit="submit"
-                // handleSubmit={handleSubmit}
+                handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
             />
@@ -77,18 +78,21 @@ function AddClothingData({ history }) {
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     {renderAddWeatherCard && (
                         <WeatherCardInput
+                            household={household}
+                            setHousehold={setHousehold}
                             onCreate={handleAddWeatherCard}
                             onClose={hideAddWeatherCard}
                         />
                     )}
-                    {weatherConditions.map(weatherCondition => (
-                        <ShowWeatherCard
-                            category={weatherCondition.category}
-                            temperatur={weatherCondition.temperatur}
-                            degree={weatherCondition.degree}
-                            description={weatherCondition.description}
-                        />
-                    ))}
+                    {household.clothing &&
+                        household.clothing.map(clothes => (
+                            <ShowWeatherCard
+                                category={clothes.category}
+                                temperatur={clothes.temperatur}
+                                degree={clothes.degree}
+                                description={clothes.description}
+                            />
+                        ))}
                 </StyledForm>
             </GridBody>
         </Grid>

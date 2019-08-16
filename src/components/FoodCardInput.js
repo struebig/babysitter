@@ -39,15 +39,21 @@ const StyledFooter = styled.div`
     margin-bottom: 10px;
 `;
 
-function FoodCardInput({ onCreate, onClose }) {
+function FoodCardInput({ household, setHousehold, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
-        onCreate({
-            category: form.category.value,
-            name: form.name.value,
-            description: form.description.value
+        setHousehold({
+            ...household,
+            foodPreferences: [
+                ...(household.foodPreferences || []),
+                {
+                    category: form.category.value,
+                    name: form.name.value,
+                    description: form.description.value
+                }
+            ]
         });
 
         form.reset();
