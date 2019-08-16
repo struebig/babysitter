@@ -16,6 +16,7 @@ import AddContactsData from "../pages/ContactsDataInput";
 import ShowContactsData from "../pages/ContactsDataOutput";
 import AddChildrenData from "../pages/ChildrenDataInput";
 import AddMedicalData from "../pages/MedicalDataInput";
+import ShowMedicalData from "../pages/MedicalDataOutput";
 //import ChildrenDataOutput from "../pages/ChildrenDataOutput";
 
 function App() {
@@ -66,6 +67,11 @@ function App() {
                     component={EditChildrenForm}
                 />
                 <Route path="/generalData" exact component={ShowGeneralData} />
+                <Route
+                    path="/medicalDataOutput"
+                    exact
+                    component={ShowMedicalData}
+                />
                 <Route path="/foodDataOutput" exact component={ShowFoodData} />
                 <Route
                     path="/clothingDataOutput"

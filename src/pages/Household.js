@@ -1,21 +1,34 @@
-/* import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
 import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
-//import ChildrenCardOutput from "../components/ChildrenCardOutput";
-//import AddChild from "../components/AddChild";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
 import HeaderForm from "../components/HeaderForm";
 
-const StyledForm = styled.form``;
+const StyledForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+`;
 
 const GridBody = styled.div`
     overflow: auto;
+`;
+const StyledCard = styled.div`
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    height: auto;
+    width: 320px;
+    padding: 3px;
+    background: lightgrey;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 8px grey;
 `;
 
 function HouseholdForm({ history }) {
@@ -40,8 +53,6 @@ function HouseholdForm({ history }) {
         console.log(household);
     }, [household]);
 
-    //const [children, setChildren] = React.useState([]);
-
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });
         console.log(event.target.name);
@@ -56,13 +67,9 @@ function HouseholdForm({ history }) {
     function handleCancel() {
         history.push("/familyMenu");
     }
-    /* function handleAddChildren(child) {
-        console.log(child);
-        setChildren([...children, child]);
-    }*/
 
     return (
-        <Grid type="form">
+        <Grid type="formShort">
             <HeaderForm
                 submit="submit"
                 handleSubmit={handleSubmit}
@@ -74,86 +81,106 @@ function HouseholdForm({ history }) {
             <div />
             <GridBody>
                 <StyledForm /* onSubmit={handleSubmit}*/>
-                    <Input
-                        label="Family name"
-                        value={household.familyName}
-                        name="familyName"
-                        placeholder="Family name"
-                        onChange={handleChange}
-                    />
-                    <Headline size="XS">Parents</Headline>
-                    <Input
-                        label="Name"
-                        value={household.nameParentOne}
-                        name="nameParentOne"
-                        placeholder="Name"
-                        onChange={handleChange}
-                    />
-                    <Input
-                        label="Role"
-                        value={household.roleParentOne}
-                        placeholder="Role (e.g. father, mother, aunt)"
-                        name="roleParentOne"
-                        onChange={handleChange}
-                    />
-                    <Input
-                        label="Phone"
-                        value={household.phoneParentOne}
-                        placeholder="PhoneNo."
-                        name="phoneParentOne"
-                        onChange={handleChange}
-                    />
-                    <Input
-                        label="Name"
-                        value={household.nameParentTwo}
-                        placeholder="Name"
-                        name="nameParentTwo"
-                        onChange={handleChange}
-                    />
+                    <StyledCard>
+                        <Input
+                            size="textShort"
+                            label="Family name"
+                            value={household.familyName}
+                            name="familyName"
+                            placeholder="Family name"
+                            onChange={handleChange}
+                        />
+                    </StyledCard>
+                    <Headline size="XS">Relatives</Headline>
+                    <StyledCard>
+                        <Input
+                            size="textShort"
+                            label="Name"
+                            value={household.nameParentOne}
+                            name="nameParentOne"
+                            placeholder="Name"
+                            onChange={handleChange}
+                        />
+                        <Input
+                            size="textShort"
+                            label="Role"
+                            value={household.roleParentOne}
+                            placeholder="Role (e.g. father, mother, aunt)"
+                            name="roleParentOne"
+                            onChange={handleChange}
+                        />
+                        <Input
+                            size="numberLong"
+                            label="Phone"
+                            value={household.phoneParentOne}
+                            placeholder="PhoneNo."
+                            name="phoneParentOne"
+                            onChange={handleChange}
+                        />
+                    </StyledCard>
+                    <StyledCard>
+                        <Input
+                            size="textShort"
+                            label="Name"
+                            value={household.nameParentTwo}
+                            placeholder="Name"
+                            name="nameParentTwo"
+                            onChange={handleChange}
+                        />
 
-                    <Input
-                        label="Role"
-                        value={household.roleParentTwo}
-                        placeholder="Role (e.g. father, mother, aunt)"
-                        name="roleParentTwo"
-                        onChange={handleChange}
-                    />
-                    <Input
-                        label="Phone"
-                        value={household.phoneParentTwo}
-                        placeholder="PhoneNo."
-                        name="phoneParentTwo"
-                        onChange={handleChange}
-                    />
+                        <Input
+                            size="textShort"
+                            label="Role"
+                            value={household.roleParentTwo}
+                            placeholder="Role (e.g. father, mother, aunt)"
+                            name="roleParentTwo"
+                            onChange={handleChange}
+                        />
+                        <Input
+                            size="numberLong"
+                            label="Phone"
+                            value={household.phoneParentTwo}
+                            placeholder="PhoneNo."
+                            name="phoneParentTwo"
+                            onChange={handleChange}
+                        />
+                    </StyledCard>
+
                     <Headline size="XS">Address</Headline>
-                    <Input
-                        label="Street"
-                        name="street"
-                        value={household.street}
-                        placeholder="Street"
-                        onChange={handleChange}
-                    />
-                    <Input
-                        label="House No."
-                        name="houseNo"
-                        value={household.houseNo}
-                        placeholder="House No."
-                        onChange={handleChange}
-                    />
-                    <Input
-                        label="Zip-code"
-                        name="zip"
-                        value={household.zip}
-                        placeholder="Zip-code"
-                        onChange={handleChange}
-                    />
-                    <Input
-                        label="City"
-                        name="city"
-                        value={household.city}
-                        placeholder="City"
-                        onChange={handleChange}
-                    />
+                    <StyledCard>
+                        <Input
+                            size="textMedium"
+                            label="Street"
+                            name="street"
+                            value={household.street}
+                            placeholder="Street"
+                            onChange={handleChange}
+                        />
+                        <Input
+                            size="numberShort"
+                            label="House No."
+                            name="houseNo"
+                            value={household.houseNo}
+                            placeholder="House No."
+                            onChange={handleChange}
+                        />
+                        <Input
+                            size="numberMedium"
+                            label="Zip-code"
+                            name="zip"
+                            value={household.zip}
+                            placeholder="Zip-code"
+                            onChange={handleChange}
+                        />
+                        <Input
+                            size="textMedium"
+                            label="City"
+                            name="city"
+                            value={household.city}
+                            placeholder="City"
+                            onChange={handleChange}
+                        />
+                    </StyledCard>
                 </StyledForm>
             </GridBody>
         </Grid>
@@ -161,16 +188,3 @@ function HouseholdForm({ history }) {
 }
 
 export default HouseholdForm;
-
-/*
-<AddChild
-                        household={household}
-                        setHousehold={setHousehold}
-                        name="firstName"
-                        //value={household.children}
-                        placeholder="First name"
-                        // onCreate={handleAddChildren}
-                    />
-                    {household.children.map(child => (
-                        <ChildrenCardOutput name={child.firstName} />
-                    ))}*/

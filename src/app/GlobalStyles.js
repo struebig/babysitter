@@ -11,6 +11,7 @@ body {
     font-family: sans-serif;
     flex-wrap: wrap;
     word-wrap: break-word;
+    color: #004242;
 }
 button {
     display: flex;

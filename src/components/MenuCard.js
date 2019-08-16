@@ -16,7 +16,7 @@ const StyledCard = styled.div`
 const StyledIcon = styled.div`
     background-color: transparent;
     font-size: 60px;
-    color: black;
+    color: #004242;
 `;
 const StyledTitle = styled.div`
     font-size: 24px;

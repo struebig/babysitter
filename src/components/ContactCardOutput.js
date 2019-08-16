@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
+import CardOutputFooter from "../components/CardOutputFooter";
 
 const ContactCardOutput = styled.div`
     display: flex;
@@ -11,6 +12,7 @@ const ContactCardOutput = styled.div`
     padding: 3px;
     background: lightgrey;
     margin-bottom: 10px;
+    box-shadow: 5px 5px 8px grey;
 `;
 
 const StyledCardHead = styled.div`
@@ -48,6 +50,7 @@ function ShowContactCard({ category, name, phoneNo, description }) {
                 <div>{phoneNo}</div>
             </StyledContact>
             <StyledCardBody>{description}</StyledCardBody>
+            <CardOutputFooter />
         </ContactCardOutput>
     );
 }

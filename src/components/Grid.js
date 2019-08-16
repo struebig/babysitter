@@ -5,6 +5,7 @@ const types = {
     main: "10% 10% 20% 20% 10% 30%",
     showData: "10% auto 10%",
     form: "10% 20% auto",
+    formShort: "10% 10% auto",
     logIn: "20% 10% 35% 35%",
     sitter: "10% auto auto auto"
 };

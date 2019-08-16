@@ -12,17 +12,18 @@
     "city": "Springfield",
     "children": [
         {
-            "id": "",
-            "profilePicture": "",
-            "profileColor": "",
+            // "id": "",
+            // "profilePicture": "",
+            // "profileColor": "",
             "firstName": "",
             "lastName": "",
             "birthday": "",
             "bloodType": "",
-            "diet": "",
-            "medicalInfo": [{ "category": "", "title": "", "description": "" }],
-            "food": [{ "category": "", "title": "", "description": "" }],
-            "clothing": [
+            "diet": ""
+        }],
+    "medicalInfo": [{ "category": "", "title": "", "description": "" }],
+    "food": [{ "category": "", "title": "", "description": "" }],
+    "clothing": [
                 {
                     "category": "",
                     "temperature": "",
@@ -31,7 +32,7 @@
                 }
             ],
 
-            "contacts": [
+    "contacts": [
                 {
                     "category": "",
                     "name": "",
@@ -40,5 +41,5 @@
                 }
             ]
         }
-    ]
+    
 }

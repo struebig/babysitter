@@ -6,6 +6,10 @@ import WeatherCardInput from "../components/WeatherCardInput";
 import ShowWeatherCard from "../components/WeatherCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import {
+    getHouseholdFromStorage,
+    setHouseholdtoStorage
+} from "../utils/storage";
 
 const StyledForm = styled.form``;
 
@@ -20,6 +24,9 @@ const GridBody = styled.div`
 `;
 
 function AddClothingData({ history }) {
+    const [household, setHousehold] = React.useState(
+        getHouseholdFromStorage() || {}
+    );
     const [weatherConditions, setWeatherConditions] = React.useState([]);
     const [renderAddWeatherCard, setRenderAddWeatherCard] = React.useState(
         null

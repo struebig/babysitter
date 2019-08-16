@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
+import CardOutputFooter from "../components/CardOutputFooter";
 
 const FoodCardOutput = styled.div`
     display: flex;
@@ -11,6 +12,7 @@ const FoodCardOutput = styled.div`
     padding: 3px;
     background: lightgrey;
     margin-bottom: 10px;
+    box-shadow: 5px 5px 8px grey;
 `;
 const StyledCardHead = styled.div`
     display: flex;
@@ -43,6 +45,7 @@ function ShowFoodCard({ category, name, description }) {
 
             <StyledTitle>{name}</StyledTitle>
             <StyledCardBody>{description}</StyledCardBody>
+            <CardOutputFooter />
         </FoodCardOutput>
     );
 }

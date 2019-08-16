@@ -40,17 +40,18 @@ function AddChildrenData({ history }) {
             city: "",
             children: [
                 {
-                    firstName: "John",
-                    lastName: "Doe",
-                    birthday: "21.12.2019",
-                    bloodtype: "ab+",
-                    diet: "vegan"
+                    firstName: "",
+                    lastName: "",
+                    birthday: "",
+                    bloodtype: "",
+                    diet: ""
                 }
             ]
         }
     );
     console.log(household);
-    /*React.useEffect(() => {
+    /*console.log(household);
+    React.useEffect(() => {
         console.log(household);
     }, [household]);*/
     const [renderAddChildCard, setRenderAddChildCard] = React.useState(null);
@@ -58,14 +59,15 @@ function AddChildrenData({ history }) {
     //const [children, setChildren] = React.useState([]);
 
     function handleChange(event) {
-        setHousehold({ ...household, [event.target.name]: event.target.value });
-        console.log(event.target.name);
-        console.log(event.target.value);
+        setHousehold({
+            ...household.children,
+            [event.target.name]: event.target.value
+        });
     }
 
     function handleSubmit(event) {
         event.preventDefault();
-        //setHouseholdtoStorage(household);
+        setHouseholdtoStorage(household);
         history.replace("/familyMenu");
     }
     function handleCancel() {

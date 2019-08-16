@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
-import InputLong from "./InputLong";
 import Headline from "./Headline";
 
 const StyledCard = styled.form`
-    border-radius: 5%;
+    border-radius: 5px;
     width: 96%;
-    height: 500px;
+    min-height: 300px;
     position: absolute;
     top: 70px;
     left: 2%;
@@ -31,6 +30,20 @@ const StyledButton = styled.button`
     background-color: lightgrey;
     font-weight: bold;
     color: ${props => getType(props.type)};
+`;
+
+const StyledFooter = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+`;
+
+const StyledTemperature = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-end;
 `;
 
 function WeatherCardInput({ onCreate, onClose }) {
@@ -59,35 +72,39 @@ function WeatherCardInput({ onCreate, onClose }) {
                 <option value="fa-wind">Wind</option>
                 <option value="fa-snowflake">Snow</option>
             </DropDown>
-            <div>
+            <StyledTemperature>
                 <DropDown /*onChange={handleChange}*/ name="temperatur">
-                    <option value="">Degrees</option>
+                    <option value=""> below or above </option>
                     <option value="">---</option>
                     <option value="below">below</option>
                     <option value="above">above</option>
                 </DropDown>
                 <Input
+                    size="numberShort"
                     label="Degree c°"
                     //   value={household.}
                     name="degree"
                     placeholder="Degree c°"
                     //   onChange={handleChange}
                 />
-            </div>
+            </StyledTemperature>
 
-            <InputLong
+            <Input
+                size="textLong"
                 label="Description"
                 //   value={household.}
                 name="description"
                 placeholder="Description"
                 //   onChange={handleChange}
             />
-            <StyledButton type="submit">
-                <i class="far fa-check-circle" />
-            </StyledButton>
-            <StyledButton type="button" onClick={onClose}>
-                <i class="far fa-window-close" />
-            </StyledButton>
+            <StyledFooter>
+                <StyledButton type="submit">
+                    <i class="far fa-check-circle" />
+                </StyledButton>
+                <StyledButton type="button" onClick={onClose}>
+                    <i class="far fa-window-close" />
+                </StyledButton>
+            </StyledFooter>
         </StyledCard>
     );
 }

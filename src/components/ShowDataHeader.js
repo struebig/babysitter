@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logoIcon from "../ressources/logoIcon.png";
+import logoSmall from "../ressources/logoSmall.png";
 import Headline from "../components/Headline";
 
 const StyledHeaderData = styled.div`
@@ -8,7 +8,7 @@ const StyledHeaderData = styled.div`
     justify-content: space-between;
     width: 100%;
     height: auto;
-    background-color: #6175b3;
+    background-color: #004242;
     color: #a2ebef;
     box-shadow: 0px 5px 8px grey;
 `;
@@ -22,14 +22,14 @@ const StyledButton = styled.button`
     height: 100%;
     font-size: 50px;
     border: none;
-    background-color: #6175b3;
+    background-color: #004242;
     color: #960000;
 `;
 
 function HeaderData({ button, handleCancel, title }) {
     return (
         <StyledHeaderData>
-            <StyledIcon src={logoIcon} alt="Logo" />
+            <StyledIcon src={logoSmall} alt="Logo" />
             <Headline size="M">{title}</Headline>
             <StyledButton type={button} onClick={handleCancel}>
                 <i class="far fa-window-close" />

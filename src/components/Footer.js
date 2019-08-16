@@ -8,8 +8,8 @@ const StyledFooter = styled.div`
     justify-content: space-evenly;
     align-items: center;
     width: 100%;
-    height: 60px;
-    background-color: white;
+    height: 100%;
+    background-color: #004242;
     box-shadow: 0px -5px 8px grey;
 `;
 
@@ -18,6 +18,13 @@ function ShowPages({ active, onClick }) {
         <StyledFooter>
             <ButtonLink to="/generalData" active={active} onClick={onClick}>
                 <i class="far fa-address-card" />
+            </ButtonLink>
+            <ButtonLink
+                to="/medicalDataOutput"
+                active={active}
+                onClick={onClick}
+            >
+                <i class="fas fa-first-aid" />
             </ButtonLink>
             <ButtonLink to="/foodDataOutput" active={active} onClick={onClick}>
                 <i class="fas fa-utensils" />
