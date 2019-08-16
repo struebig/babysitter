@@ -26,7 +26,10 @@ const StyledButton = styled.button`
     color: #960000;
 `;
 
-function HeaderData({ button, handleCancel, title }) {
+function HeaderData({ button, title, direction, history }) {
+    function handleCancel() {
+        history.push(direction);
+    }
     return (
         <StyledHeaderData>
             <StyledIcon src={logoSmall} alt="Logo" />

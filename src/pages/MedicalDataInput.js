@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import MedicalCardInput from "../components/MedicalCardInput";
 import ShowMedicalCard from "../components/MedicalCardOutput";
@@ -12,8 +11,6 @@ import {
 } from "../utils/storage";
 
 const StyledForm = styled.form``;
-
-const StyledSection = styled.form``;
 
 const GridBody = styled.div`
     display: flex;
@@ -65,16 +62,13 @@ function AddMedicalData({ history }) {
                 button="button"
                 handleCancel={handleCancel}
             />
-            <StyledSection>
-                <Headline size="S">Medical</Headline>
-                <AddSection
-                    onClick={showAddMedicalCard}
-                    titleHeadline="Add information"
-                />
-            </StyledSection>
-
+            <AddSection
+                onClick={showAddMedicalCard}
+                titleSection="Medical"
+                titleHeadline="Add information"
+            />
             <GridBody>
-                <StyledForm /* onSubmit={handleSubmit}*/>
+                <StyledForm>
                     {renderAddMedicalCard && (
                         <MedicalCardInput
                             household={household}

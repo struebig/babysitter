@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import WeatherCardInput from "../components/WeatherCardInput";
 import ShowWeatherCard from "../components/WeatherCardOutput";
@@ -12,8 +11,6 @@ import {
 } from "../utils/storage";
 
 const StyledForm = styled.form``;
-
-const StyledSection = styled.form``;
 
 const GridBody = styled.div`
     display: flex;
@@ -27,11 +24,10 @@ function AddClothingData({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {}
     );
-    const [weatherConditions, setWeatherConditions] = React.useState([]);
+
     const [renderAddWeatherCard, setRenderAddWeatherCard] = React.useState(
         null
     );
-    const [values, setValues] = React.useState([]);
 
     function handleChange(event) {
         setHousehold({
@@ -48,9 +44,7 @@ function AddClothingData({ history }) {
     function handleCancel() {
         history.push("/familyMenu");
     }
-    function handleAddWeatherCard(weatherCondition) {
-        setWeatherConditions([...weatherConditions, weatherCondition]);
-    }
+
     function showAddWeatherCard() {
         setRenderAddWeatherCard(true);
     }
@@ -66,21 +60,18 @@ function AddClothingData({ history }) {
                 button="button"
                 handleCancel={handleCancel}
             />
-            <StyledSection>
-                <Headline size="S">Clothing</Headline>
-                <AddSection
-                    onClick={showAddWeatherCard}
-                    titleHeadline="Add information"
-                />
-            </StyledSection>
-
+            <AddSection
+                onClick={showAddWeatherCard}
+                titleSection="Clothing"
+                titleHeadline="Add information"
+            />
             <GridBody>
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     {renderAddWeatherCard && (
                         <WeatherCardInput
                             household={household}
                             setHousehold={setHousehold}
-                            onCreate={handleAddWeatherCard}
+                            onChange={handleChange}
                             onClose={hideAddWeatherCard}
                         />
                     )}

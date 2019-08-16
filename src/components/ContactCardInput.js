@@ -64,13 +64,15 @@ function ContactCardInput({ household, setHousehold, onClose }) {
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add contact information</Headline>
             <DropDown /*onChange={handleChange}*/ name="category">
-                <option value="other">Type</option>
-                <option value="other">---</option>
-                <option value="ice">In case of emergency</option>
-                <option value="family">Family</option>
-                <option value="doctor">Doctor</option>
-                <option value="friend">Friend</option>
-                <option value="other">Other</option>
+                <option value="Other">Type</option>
+                <option value="Other">---</option>
+                <option value="In case of emergency">
+                    In case of emergency
+                </option>
+                <option value="Family">Family</option>
+                <option value="Doctor">Doctor</option>
+                <option value="Friend">Friend</option>
+                <option value="Other">Other</option>
             </DropDown>
             <Input
                 size="textShort"

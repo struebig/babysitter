@@ -7,7 +7,7 @@ const StyledHeaderForm = styled.div`
     justify-content: space-evenly;
     width: 100%;
     height: 60px;
-    background-color: #6175b3;
+    background-color: #004242;
     box-shadow: 0px 5px 8px grey;
 `;
 const types = {
@@ -23,7 +23,7 @@ const StyledButton = styled.button`
     height: 50px;
     font-size: 50px;
     border: none;
-    background-color: #6175b3;
+    background-color: #004242;
     font-weight: bold;
     color: ${props => getType(props.type)};
 `;

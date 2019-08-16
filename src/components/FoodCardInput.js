@@ -63,10 +63,10 @@ function FoodCardInput({ household, setHousehold, onClose }) {
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add preferences / dislikes</Headline>
             <DropDown /*onChange={handleChange}*/ name="category">
-                <option value="other">Type</option>
-                <option value="other">---</option>
-                <option value="preference">Preference</option>
-                <option value="dislike">Dislike</option>
+                <option value="Other">Type</option>
+                <option value="Other">---</option>
+                <option value="Preference">Preference</option>
+                <option value="Dislike">Dislike</option>
             </DropDown>
 
             <Input
