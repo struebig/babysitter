@@ -2,6 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: white;
+`;
+
 const PageSwitchButton = styled.button`
     width: 50px;
     height: 50px;
@@ -11,15 +16,16 @@ const PageSwitchButton = styled.button`
     background-color: #004242;
     border: #004242;
     color: white;
+    text-decoration: none;
 `;
 
 function ButtonLink({ active, onClick, children, to, ...other }) {
     return (
-        <Link to={to}>
+        <StyledLink to={to}>
             <PageSwitchButton active={active} onClick={onClick} {...other}>
                 {children}
             </PageSwitchButton>
-        </Link>
+        </StyledLink>
     );
 }
 

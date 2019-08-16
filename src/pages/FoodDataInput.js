@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import FoodCardInput from "../components/FoodCardInput";
 import ShowFoodCard from "../components/FoodCardOutput";
@@ -12,8 +11,6 @@ import {
 } from "../utils/storage";
 
 const StyledForm = styled.form``;
-
-const StyledSection = styled.form``;
 
 const GridBody = styled.div`
     display: flex;
@@ -60,14 +57,11 @@ function AddFoodData({ history }) {
                 button="button"
                 handleCancel={handleCancel}
             />
-            <StyledSection>
-                <Headline size="S">Food</Headline>
-                <AddSection
-                    onClick={showAddFoodCard}
-                    titleHeadline="Add information"
-                />
-            </StyledSection>
-
+            <AddSection
+                onClick={showAddFoodCard}
+                titleSection="Food"
+                titleHeadline="Add information"
+            />
             <GridBody>
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     {renderAddFoodCard && (

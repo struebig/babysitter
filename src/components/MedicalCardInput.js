@@ -63,13 +63,13 @@ function MedicalCardInput({ household, setHousehold, onClose }) {
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add medical information</Headline>
             <DropDown name="category">
-                <option value="medicalCondition">Type</option>
-                <option value="medicalCondition">---</option>
-                <option value="medicalCondition">Medical condition</option>
-                <option value="allergyFood">Food allergy</option>
-                <option value="allergyOther">Other allergy</option>
-                <option value="intoleranceFood">Food intolerance</option>
-                <option value="intoleranceOther">Other intolerance</option>
+                <option value="Medical Condition">Type</option>
+                <option value="Medical Condition">---</option>
+                <option value="Medical Condition">Medical condition</option>
+                <option value="Allergy Food">Food allergy</option>
+                <option value="Allergy Other">Other allergy</option>
+                <option value="Intolerance Food">Food intolerance</option>
+                <option value="Intolerance Other">Other intolerance</option>
             </DropDown>
             <Input
                 size="textShort"

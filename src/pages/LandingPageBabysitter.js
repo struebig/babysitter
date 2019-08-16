@@ -1,5 +1,4 @@
 import React from "react";
-/*import Headline from "../components/Headline";*/
 import styled from "styled-components";
 import Grid from "../components/Grid";
 import Headline from "../components/Headline";
@@ -29,19 +28,13 @@ const MenuButton = styled.button`
 `;
 
 function BabysitterMenu({ history }) {
-    function showData() {
-        history.push("generalData");
-    }
-
-    function handleCancel() {
-        history.replace("/");
-    }
     return (
         <Grid type="sitter">
             <HeaderData
                 title="Menu"
                 button="button"
-                handleCancel={handleCancel}
+                direction="/"
+                history={history}
             />
 
             <Main>
@@ -49,7 +42,8 @@ function BabysitterMenu({ history }) {
                 <MenuCard
                     icon="fa-baby-carriage"
                     title="Babysitter"
-                    onClick={showData}
+                    direction="generalData"
+                    history={history}
                 />
             </Main>
             <Main>

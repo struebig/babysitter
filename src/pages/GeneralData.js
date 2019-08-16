@@ -7,6 +7,8 @@ import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
 import ChildrenCardOutput from "../components/ChildrenCardOutput";
+import ParentCard from "../components/ParentCard";
+import ShowAddressCard from "../components/AddressCardOutput";
 
 const Container = styled.div`
     display: flex;
@@ -27,32 +29,7 @@ const GeneralCardOutput = styled.div`
 `;
 
 function ShowGeneralData({ history }) {
-    const data = getHouseholdFromStorage() || {
-        familyName: "",
-        nameParentOne: "",
-        roleParentOne: "",
-        phoneParentOne: "",
-        nameParentTwo: "",
-        roleParentTwo: "",
-        phoneParentTwo: "",
-        street: "",
-        houseNo: "",
-        zip: "",
-        city: "",
-        children: [
-            {
-                firstName: "",
-                lastName: "",
-                birthday: "",
-                bloodtype: "",
-                diet: ""
-            }
-        ]
-    };
-
-    function handleCancel() {
-        history.replace("babysitterMenu");
-    }
+    const data = getHouseholdFromStorage() || {};
 
     return (
         <>
@@ -60,27 +37,27 @@ function ShowGeneralData({ history }) {
                 <HeaderData
                     title="Family Data"
                     button="button"
-                    handleCancel={handleCancel}
+                    direction="babysitterMenu"
+                    history={history}
                 />
                 <Container>
                     <Headline size="XS">Family {data.familyName}</Headline>
-                    <GeneralCardOutput>
-                        <Headline size="XS">{data.roleParentOne}</Headline>
-                        <Output label="Name" name={data.nameParentOne} />
-                        <Output label="Phone" name={data.phoneParentOne} />
-                    </GeneralCardOutput>
-                    <GeneralCardOutput>
-                        <Headline size="XS">{data.roleParentTwo}</Headline>
-                        <Output label="Name" name={data.nameParentTwo} />
-                        <Output label="Phone" name={data.phoneParentTwo} />
-                    </GeneralCardOutput>
-                    <GeneralCardOutput>
-                        <Headline size="XS">Address</Headline>
-                        <Output label="Street" name={data.street} />
-                        <Output label="HouseNo." name={data.houseNo} />
-                        <Output label="Zip-code" name={data.zip} />
-                        <Output label="City" name={data.city} />
-                    </GeneralCardOutput>
+                    <ParentCard
+                        parentName={data.nameParentOne}
+                        phone={data.phoneParentOne}
+                        title={data.roleParentOne}
+                    />
+                    <ParentCard
+                        parentName={data.nameParentTwo}
+                        phone={data.phoneParentTwo}
+                        title={data.roleParentTwo}
+                    />
+                    <ShowAddressCard
+                        street={data.street}
+                        houseNo={data.houseNo}
+                        zip={data.zip}
+                        city={data.city}
+                    />
                     <Headline size="XS">Children</Headline>
                     {data.children &&
                         data.children.map(child => (

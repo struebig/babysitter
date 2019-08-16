@@ -23,9 +23,13 @@ const StyledTitle = styled.div`
     color: black;
 `;
 
-function MenuCard({ title, className, icon, onClick }) {
+function MenuCard({ title, className, icon, history, direction }) {
+    function handleClick() {
+        history.push(direction);
+    }
+    console.log(history);
     return (
-        <StyledCard onClick={onClick}>
+        <StyledCard onClick={handleClick}>
             <StyledIcon className={className} icon={icon} title={title}>
                 <i className={`fas ${icon}`} />
             </StyledIcon>

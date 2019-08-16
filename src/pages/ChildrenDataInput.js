@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import ChildrenCardInput from "../components/ChildrenCardInput";
 import ChildrenCardOutput from "../components/ChildrenCardOutput";
@@ -14,8 +13,6 @@ import AddSection from "../components/AddSectionForm";
 
 const StyledForm = styled.form``;
 
-const StyledSection = styled.form``;
-
 const GridBody = styled.div`
     display: flex;
     flex-direction: column;
@@ -26,29 +23,9 @@ const GridBody = styled.div`
 
 function AddChildrenData({ history }) {
     const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {
-            familyName: "",
-            nameParentOne: "",
-            roleParentOne: "",
-            phoneParentOne: "",
-            nameParentTwo: "",
-            roleParentTwo: "",
-            phoneParentTwo: "",
-            street: "",
-            houseNo: "",
-            zip: "",
-            city: "",
-            children: [
-                {
-                    firstName: "",
-                    lastName: "",
-                    birthday: "",
-                    bloodtype: "",
-                    diet: ""
-                }
-            ]
-        }
+        getHouseholdFromStorage() || {}
     );
+
     const [renderAddChildCard, setRenderAddChildCard] = React.useState(null);
 
     function handleChange(event) {
@@ -81,15 +58,13 @@ function AddChildrenData({ history }) {
                 button="button"
                 handleCancel={handleCancel}
             />
-            <StyledSection>
-                <Headline size="S">Children</Headline>
-                <AddSection
-                    onClick={showAddChildCard}
-                    titleHeadline="Add child"
-                />
-            </StyledSection>
+            <AddSection
+                onClick={showAddChildCard}
+                titleSection="Children"
+                titleHeadline="Add child"
+            />
             <GridBody>
-                <StyledForm /* onSubmit={handleSubmit}*/>
+                <StyledForm>
                     {renderAddChildCard && (
                         <ChildrenCardInput
                             household={household}

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import ContactCardInput from "../components/ContactCardInput";
 import ShowContactCard from "../components/ContactCardOutput";
@@ -13,8 +12,6 @@ import {
 
 const StyledForm = styled.form``;
 
-const StyledSection = styled.form``;
-
 const GridBody = styled.div`
     display: flex;
     flex-direction: column;
@@ -23,8 +20,7 @@ const GridBody = styled.div`
     overflow: auto;
 `;
 
-function AddContactsData({ history, child }) {
-    const [contacts, setContacts] = React.useState([]);
+function AddContactsData({ history }) {
     const [renderAddContactCard, setRenderAddContactCard] = React.useState(
         null
     );
@@ -47,9 +43,7 @@ function AddContactsData({ history, child }) {
     function handleCancel() {
         history.push("/familyMenu");
     }
-    function handleAddContact(contact) {
-        setContacts([...contacts, contact]);
-    }
+
     function showAddContactCard() {
         setRenderAddContactCard(true);
     }
@@ -65,21 +59,18 @@ function AddContactsData({ history, child }) {
                 button="button"
                 handleCancel={handleCancel}
             />
-            <StyledSection>
-                <Headline size="S">Contacts</Headline>
-                <AddSection
-                    onClick={showAddContactCard}
-                    titleHeadline="Add contact"
-                />
-            </StyledSection>
-
+            <AddSection
+                onClick={showAddContactCard}
+                titleSection="Contacts"
+                titleHeadline="Add contact"
+            />
             <GridBody>
-                <StyledForm /* onSubmit={handleSubmit}*/>
+                <StyledForm>
                     {renderAddContactCard && (
                         <ContactCardInput
                             household={household}
                             setHousehold={setHousehold}
-                            onCreate={handleAddContact}
+                            onChange={handleChange}
                             onClose={hideAddContactCard}
                         />
                     )}

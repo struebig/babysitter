@@ -17,17 +17,14 @@ const Container = styled.div`
 function ShowClothingData({ history }) {
     const data = getHouseholdFromStorage() || {};
 
-    function handleCancel() {
-        history.replace("babysitterMenu");
-    }
-
     return (
         <>
             <Grid type="showData">
                 <HeaderData
                     title="Clothing"
                     button="button"
-                    handleCancel={handleCancel}
+                    direction="babysitterMenu"
+                    history={history}
                 />
                 <Container>
                     {data.clothing &&

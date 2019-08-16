@@ -8,7 +8,7 @@ const AddButton = styled.button`
     font-size: 40px;
     border: none;
     font-weight: bold;
-    background-color: white
+    background-color: white;
     color: #00965f;
     position: absolute;
     right: 10px;
@@ -16,20 +16,25 @@ const AddButton = styled.button`
     font-weight: bold;
 `;
 
+const StyledSection = styled.form``;
+
 const Section = styled.div`
     display: flex;
     position: relative;
     justify-content: center;
 `;
 
-function AddSection({ titleHeadline, onClick }) {
+function AddSection({ titleHeadline, onClick, titleSection }) {
     return (
-        <Section>
-            <Headline size="S">{titleHeadline}</Headline>
-            <AddButton type="button" onClick={onClick}>
-                <i class="far fa-plus-square" />
-            </AddButton>
-        </Section>
+        <StyledSection>
+            <Headline size="S">{titleSection}</Headline>
+            <Section>
+                <Headline size="S">{titleHeadline}</Headline>
+                <AddButton type="button" onClick={onClick}>
+                    <i class="far fa-plus-square" />
+                </AddButton>
+            </Section>
+        </StyledSection>
     );
 }
 
