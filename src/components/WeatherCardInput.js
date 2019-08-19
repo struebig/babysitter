@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
 import Headline from "./Headline";
+//import AssignChildren from "../components/AssignChildren";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -59,7 +60,8 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
                     category: form.category.value,
                     temperatur: form.temperatur.value,
                     degree: form.degree.value,
-                    description: form.description.value
+                    description: form.description.value,
+                    assigned: form.assigned.value
                 }
             ]
         });
@@ -115,3 +117,5 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
 }
 
 export default WeatherCardInput;
+
+//<AssignChildren household={household} name="assigned" />

@@ -21,7 +21,7 @@
             "bloodType": "",
             "diet": ""
         }],
-    "medicalInfo": [{ "category": "", "title": "", "description": "" }],
+    "medicalInfo": [{ "category": "", "title": "", "description": "", "assigned":[] }],
     "food": [{ "category": "", "title": "", "description": "" }],
     "clothing": [
                 {
