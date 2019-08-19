@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
+import PicUploader from "../components/PicUploader";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -82,6 +83,7 @@ function HouseholdForm({ history }) {
             <GridBody>
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     <StyledCard>
+                        <PicUploader />
                         <Input
                             size="textShort"
                             label="Family name"

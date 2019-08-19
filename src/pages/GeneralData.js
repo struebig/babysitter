@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "../components/Headline";
-import Output from "../components/Output";
 import ShowPages from "../components/Footer";
 import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
@@ -15,17 +14,6 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
-`;
-const GeneralCardOutput = styled.div`
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    height: auto;
-    width: 320px;
-    padding: 3px;
-    background: lightgrey;
-    margin-bottom: 20px;
-    box-shadow: 5px 5px 8px grey;
 `;
 
 function ShowGeneralData({ history }) {

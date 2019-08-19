@@ -5,26 +5,16 @@ import Headline from "../components/Headline";
 import HeaderData from "../components/ShowDataHeader";
 
 import MenuCard from "../components/MenuCard";
-import {
+/*import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
-} from "../utils/storage";
+} from "../utils/storage";*/
 
 const Main = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-`;
-
-const MenuButton = styled.button`
-    height: 100px;
-    width: 100px;
-    border: solid 5px #a2ebef;
-    border-radius: 10%;
-    font-size: 80px;
-    background-color: transparent;
-    color: #a2ebef;
 `;
 
 function BabysitterMenu({ history }) {
