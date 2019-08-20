@@ -10,7 +10,6 @@ import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
-
 import CardOutputFooter from "../components/CardOutputFooter";
 
 const StyledForm = styled.form``;
@@ -76,7 +75,7 @@ function AddMedicalData({ history }) {
                 <StyledForm>
                     {(renderAddMedicalCard || selectedId)(
                         <MedicalCardInput
-                            defaultValues={household.clothing.find(
+                            defaultValues={household.medicalConditions.find(
                                 item => item.id === selectedId
                             )}
                             household={household}
@@ -89,6 +88,7 @@ function AddMedicalData({ history }) {
                         household.medicalConditions.map(medicalCondition => (
                             <StyledCardOutput>
                                 <ShowMedicalCard
+                                    key={medicalCondition.id}
                                     category={medicalCondition.category}
                                     title={medicalCondition.title}
                                     description={medicalCondition.description}

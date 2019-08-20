@@ -86,7 +86,10 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add clothing information</Headline>
-            <DropDown /*onChange={handleChange}*/ name="category">
+            <DropDown
+                name="category"
+                defaultValue={household.clothing.category}
+            >
                 <option value="fa-question-circle">Weather</option>
                 <option value="fa-question-circle">---</option>
                 <option value="fa-sun">Sun</option>
@@ -95,7 +98,10 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
                 <option value="fa-snowflake">Snow</option>
             </DropDown>
             <StyledTemperature>
-                <DropDown /*onChange={handleChange}*/ name="temperatur">
+                <DropDown
+                    name="temperatur"
+                    defaultValue={household.clothing.temperatur}
+                >
                     <option value=""> below or above </option>
                     <option value="">---</option>
                     <option value="below">below</option>
@@ -104,7 +110,7 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
                 <Input
                     size="numberShort"
                     label="Degree c°"
-                    //   value={household.}
+                    defaultValue={household.clothing.degree}
                     name="degree"
                     placeholder="Degree c°"
                     //   onChange={handleChange}
@@ -114,7 +120,7 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
             <Input
                 size="textLong"
                 label="Description"
-                //   value={household.}
+                defaultValue={household.clothing.description}
                 name="description"
                 placeholder="Description"
                 //   onChange={handleChange}
@@ -137,5 +143,3 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
 }
 
 export default WeatherCardInput;
-
-//<AssignChildren household={household} />

@@ -5,10 +5,12 @@ import WeatherCardInput from "../components/WeatherCardInput";
 import ShowWeatherCard from "../components/WeatherCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import CardOutputFooter from "../components/CardOutputFooter";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
+import StyledCardOutput from "../components/StyledCardOutput";
 
 const StyledForm = styled.form``;
 
@@ -24,6 +26,8 @@ function AddClothingData({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {}
     );
+
+    const [selectedId, setSelectedId] = React.useState(null);
 
     const [renderAddWeatherCard, setRenderAddWeatherCard] = React.useState(
         null
@@ -67,8 +71,11 @@ function AddClothingData({ history }) {
             />
             <GridBody>
                 <StyledForm /* onSubmit={handleSubmit}*/>
-                    {renderAddWeatherCard && (
+                    {(renderAddWeatherCard || selectedId)(
                         <WeatherCardInput
+                            defaultValues={household.clothing.find(
+                                item => item.id === selectedId
+                            )}
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -77,12 +84,20 @@ function AddClothingData({ history }) {
                     )}
                     {household.clothing &&
                         household.clothing.map(clothes => (
-                            <ShowWeatherCard
-                                category={clothes.category}
-                                temperatur={clothes.temperatur}
-                                degree={clothes.degree}
-                                description={clothes.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowWeatherCard
+                                    key={clothes.id}
+                                    category={clothes.category}
+                                    temperatur={clothes.temperatur}
+                                    degree={clothes.degree}
+                                    description={clothes.description}
+                                />
+                                <CardOutputFooter
+                                    onEditClick={() =>
+                                        setSelectedId(clothes.id)
+                                    }
+                                />
+                            </StyledCardOutput>
                         ))}
                 </StyledForm>
             </GridBody>

@@ -1,50 +1,31 @@
-/*import React from "react";
+import React from "react";
 import styled from "styled-components";
 
 const StyledSection = styled.div`
     display: flex;
 `;
 
-
-
-function handleChange(id) {
-    setHousehold({
-        ...household,
-        clothing: [
-            ...(household.clothing || []),
-            {
-                category: form.category.value,
-                temperatur: form.temperatur.value,
-                degree: form.degree.value,
-                description: form.description.value,
-                assigned: childrenIds
-            }
-        ]
-    });
-}
-
-function AssignChildren({ household, setHousehold }) {
-    const [childrenIds, setCildrenIds] = React.useState()
-
-    handleChange(id) {
-        childrenIds.includes(id) {
-
-        }
+function AssignChildren({ children, selectedChildren, onChange }) {
+    function handleChange(id) {
+        onChange(id);
     }
-
 
     return (
         <StyledSection>
-            {household.children &&
-                household.children.map(child => (
-                    <input
-                        type="checkbox"
-                        name={child.firstName}
-                        onChange={() => handleChange(child.id)}
-                    />
+            {children &&
+                children.map(child => (
+                    <label key={child.id}>
+                        {child.firstName}
+                        <input
+                            type="checkbox"
+                            name={child.id}
+                            checked={selectedChildren.includes(child.id)}
+                            onChange={() => handleChange(child.id)}
+                        />
+                    </label>
                 ))}
         </StyledSection>
     );
 }
 
-export default AssignChildren;*/
+export default AssignChildren;

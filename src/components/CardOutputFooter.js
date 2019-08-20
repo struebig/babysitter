@@ -26,13 +26,13 @@ const StyledButton = styled.button`
     color: ${props => getType(props.type)};
 `;
 
-function CardOutputFooter({ onClick }) {
+function CardOutputFooter({ onEditClick, onDeleteClick }) {
     return (
         <StyledFooter>
-            <StyledButton type="edit" onClick={onClick}>
+            <StyledButton type="edit" onClick={onEditClick}>
                 <i className="far fa-edit" />
             </StyledButton>
-            <StyledButton type="delete" onClick={onClick}>
+            <StyledButton type="delete" onClick={onDeleteClick}>
                 <i className="fas fa-trash-alt" />
             </StyledButton>
         </StyledFooter>
