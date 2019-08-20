@@ -40,7 +40,6 @@ function ShowWeatherCard({ category, temperatur, degree, description }) {
                     {temperatur} {degree} °C
                 </StyledTemperature>
             </StyledCardHead>
-
             <StyledCardBody>{description}</StyledCardBody>
         </>
     );

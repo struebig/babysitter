@@ -4,7 +4,7 @@ import DropDown from "./Dropdown";
 import Headline from "./Headline";
 import Input from "../components/Input";
 import { v1 } from "uuid";
-import AssignChildren from "../components/AssignChildren";
+import AssignChildren from "../components/AssignedChildrenInput";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -48,9 +48,9 @@ const StyledTemperature = styled.div`
     align-items: flex-end;
 `;
 
-function WeatherCardInput({ household, setHousehold, onClose }) {
+function WeatherCardInput({ household, setHousehold, defaultValues, onClose }) {
     const [selectedChildren, setSelectedChildren] = React.useState([]);
-
+    console.log(defaultValues);
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -81,14 +81,12 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
         );
     }
 
-    console.log(selectedChildren);
-
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add clothing information</Headline>
             <DropDown
                 name="category"
-                defaultValue={household.clothing.category}
+                defaultValue={defaultValues && defaultValues.category}
             >
                 <option value="fa-question-circle">Weather</option>
                 <option value="fa-question-circle">---</option>
@@ -100,7 +98,7 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
             <StyledTemperature>
                 <DropDown
                     name="temperatur"
-                    defaultValue={household.clothing.temperatur}
+                    defaultValue={defaultValues && defaultValues.temperatur}
                 >
                     <option value=""> below or above </option>
                     <option value="">---</option>
@@ -110,20 +108,17 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
                 <Input
                     size="numberShort"
                     label="Degree c°"
-                    defaultValue={household.clothing.degree}
+                    defaultValue={defaultValues && defaultValues.degree}
                     name="degree"
                     placeholder="Degree c°"
-                    //   onChange={handleChange}
                 />
             </StyledTemperature>
-
             <Input
                 size="textLong"
                 label="Description"
-                defaultValue={household.clothing.description}
+                defaultValue={defaultValues && defaultValues.description}
                 name="description"
                 placeholder="Description"
-                //   onChange={handleChange}
             />
             <AssignChildren
                 selectedChildren={selectedChildren}

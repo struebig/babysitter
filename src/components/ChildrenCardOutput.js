@@ -1,18 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import CardOutputFooter from "../components/CardOutputFooter";
-
-const StyledChildrenCardOutput = styled.div`
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    height: auto;
-    width: 320px;
-    padding: 3px;
-    background: lightgrey;
-    margin-bottom: 20px;
-    box-shadow: 5px 5px 8px grey;
-`;
 
 const StyledName = styled.div`
     display: flex;
@@ -39,24 +26,21 @@ function ChildrenCardOutput({
 }) {
     return (
         <>
-            <StyledChildrenCardOutput>
-                <StyledName>
-                    {firstName} {lastName}
-                </StyledName>
-                <StyledInfo>
-                    <div>Birthday:</div>
-                    <div>{birthday}</div>
-                </StyledInfo>
-                <StyledInfo>
-                    <div>Bloodtype:</div>
-                    <div>{bloodtype}</div>
-                </StyledInfo>
-                <StyledInfo>
-                    <div>Diet:</div>
-                    <div>{diet}</div>
-                </StyledInfo>
-                <CardOutputFooter />
-            </StyledChildrenCardOutput>
+            <StyledName>
+                {firstName} {lastName}
+            </StyledName>
+            <StyledInfo>
+                <div>Birthday:</div>
+                <div>{birthday}</div>
+            </StyledInfo>
+            <StyledInfo>
+                <div>Bloodtype:</div>
+                <div>{bloodtype}</div>
+            </StyledInfo>
+            <StyledInfo>
+                <div>Diet:</div>
+                <div>{diet}</div>
+            </StyledInfo>
         </>
     );
 }

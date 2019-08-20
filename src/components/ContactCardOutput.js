@@ -1,19 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
-import CardOutputFooter from "../components/CardOutputFooter";
-
-const ContactCardOutput = styled.div`
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    height: auto;
-    width: 320px;
-    padding: 3px;
-    background: lightgrey;
-    margin-bottom: 20px;
-    box-shadow: 5px 5px 8px grey;
-`;
 
 const StyledCardHead = styled.div`
     display: flex;
@@ -40,7 +27,7 @@ const StyledCardBody = styled.div`
 
 function ShowContactCard({ category, name, phoneNo, description }) {
     return (
-        <ContactCardOutput>
+        <>
             <StyledCardHead>
                 <Headline size="XS">{category}</Headline>
             </StyledCardHead>
@@ -50,8 +37,7 @@ function ShowContactCard({ category, name, phoneNo, description }) {
                 <div>{phoneNo}</div>
             </StyledContact>
             <StyledCardBody>{description}</StyledCardBody>
-            <CardOutputFooter />
-        </ContactCardOutput>
+        </>
     );
 }
 

@@ -8,7 +8,8 @@ import {
     setHouseholdtoStorage
 } from "../utils/storage";
 import HeaderForm from "../components/HeaderForm";
-
+import StyledCardOutput from "../components/StyledCardOutput";
+import CardOutputFooter from "../components/CardOutputFooter";
 import AddSection from "../components/AddSectionForm";
 
 const StyledForm = styled.form``;
@@ -25,6 +26,8 @@ function AddChildrenData({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {}
     );
+
+    const [selectedId, setSelectedId] = React.useState(null);
 
     const [renderAddChildCard, setRenderAddChildCard] = React.useState(null);
 
@@ -67,6 +70,9 @@ function AddChildrenData({ history }) {
                 <StyledForm>
                     {renderAddChildCard && (
                         <ChildrenCardInput
+                            defaultValues={household.children.find(
+                                item => item.id === selectedId
+                            )}
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -75,13 +81,21 @@ function AddChildrenData({ history }) {
                     )}
                     {household.children &&
                         household.children.map(child => (
-                            <ChildrenCardOutput
-                                firstName={child.firstName}
-                                lastName={child.lastName}
-                                birthday={child.birthday}
-                                bloodtype={child.bloodtype}
-                                diet={child.diet}
-                            />
+                            <StyledCardOutput>
+                                <ChildrenCardOutput
+                                    firstName={child.firstName}
+                                    lastName={child.lastName}
+                                    birthday={child.birthday}
+                                    bloodtype={child.bloodtype}
+                                    diet={child.diet}
+                                />
+                                <CardOutputFooter
+                                    onEditClick={() => {
+                                        setSelectedId(child.id);
+                                        setRenderAddChildCard(true);
+                                    }}
+                                />
+                            </StyledCardOutput>
                         ))}
                 </StyledForm>
             </GridBody>

@@ -5,6 +5,7 @@ import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
 import ShowFoodCard from "../components/FoodCardOutput";
+import StyledCardOutput from "../components/StyledCardOutput";
 
 const Container = styled.div`
     display: flex;
@@ -29,11 +30,13 @@ function ShowFoodData({ history }) {
                 <Container>
                     {data.foodPreferences &&
                         data.foodPreferences.map(foodPreference => (
-                            <ShowFoodCard
-                                category={foodPreference.category}
-                                name={foodPreference.name}
-                                description={foodPreference.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowFoodCard
+                                    category={foodPreference.category}
+                                    name={foodPreference.name}
+                                    description={foodPreference.description}
+                                />
+                            </StyledCardOutput>
                         ))}
                 </Container>
                 <ShowPages />

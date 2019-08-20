@@ -54,7 +54,16 @@ function getSize(size) {
     return sizes[size] || size.textShort;
 }
 
-function Input({ size, className, value, name, placeholder, onChange, label }) {
+function Input({
+    size,
+    className,
+    value,
+    name,
+    placeholder,
+    onChange,
+    label,
+    defaultValue
+}) {
     return (
         <Container className={className}>
             <StyledLabel>
@@ -63,6 +72,7 @@ function Input({ size, className, value, name, placeholder, onChange, label }) {
                     size={size}
                     value={value}
                     name={name}
+                    defaultValue={defaultValue}
                     placeholder={placeholder}
                     onChange={onChange}
                 />

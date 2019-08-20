@@ -6,11 +6,11 @@ import ShowWeatherCard from "../components/WeatherCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
 import CardOutputFooter from "../components/CardOutputFooter";
+import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
-import StyledCardOutput from "../components/StyledCardOutput";
 
 const StyledForm = styled.form``;
 
@@ -30,7 +30,7 @@ function AddClothingData({ history }) {
     const [selectedId, setSelectedId] = React.useState(null);
 
     const [renderAddWeatherCard, setRenderAddWeatherCard] = React.useState(
-        null
+        false
     );
 
     function handleChange(event) {
@@ -53,7 +53,7 @@ function AddClothingData({ history }) {
         setRenderAddWeatherCard(true);
     }
     function hideAddWeatherCard() {
-        setRenderAddWeatherCard(null);
+        setRenderAddWeatherCard(false);
     }
 
     return (
@@ -70,8 +70,8 @@ function AddClothingData({ history }) {
                 titleHeadline="Add information"
             />
             <GridBody>
-                <StyledForm /* onSubmit={handleSubmit}*/>
-                    {(renderAddWeatherCard || selectedId)(
+                <StyledForm>
+                    {renderAddWeatherCard && (
                         <WeatherCardInput
                             defaultValues={household.clothing.find(
                                 item => item.id === selectedId
@@ -93,9 +93,10 @@ function AddClothingData({ history }) {
                                     description={clothes.description}
                                 />
                                 <CardOutputFooter
-                                    onEditClick={() =>
-                                        setSelectedId(clothes.id)
-                                    }
+                                    onEditClick={() => {
+                                        setSelectedId(clothes.id);
+                                        setRenderAddWeatherCard(true);
+                                    }}
                                 />
                             </StyledCardOutput>
                         ))}

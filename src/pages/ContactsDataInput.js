@@ -5,6 +5,8 @@ import ContactCardInput from "../components/ContactCardInput";
 import ShowContactCard from "../components/ContactCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import CardOutputFooter from "../components/CardOutputFooter";
+import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -24,6 +26,9 @@ function AddContactsData({ history }) {
     const [renderAddContactCard, setRenderAddContactCard] = React.useState(
         null
     );
+
+    const [selectedId, setSelectedId] = React.useState(null);
+
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {}
     );
@@ -68,6 +73,9 @@ function AddContactsData({ history }) {
                 <StyledForm>
                     {renderAddContactCard && (
                         <ContactCardInput
+                            defaultValues={household.contacts.find(
+                                item => item.id === selectedId
+                            )}
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -76,12 +84,20 @@ function AddContactsData({ history }) {
                     )}
                     {household.contacts &&
                         household.contacts.map(contact => (
-                            <ShowContactCard
-                                category={contact.category}
-                                name={contact.name}
-                                phoneNo={contact.phoneNo}
-                                description={contact.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowContactCard
+                                    category={contact.category}
+                                    name={contact.name}
+                                    phoneNo={contact.phoneNo}
+                                    description={contact.description}
+                                />
+                                <CardOutputFooter
+                                    onEditClick={() => {
+                                        setSelectedId(contact.id);
+                                        setRenderAddContactCard(true);
+                                    }}
+                                />
+                            </StyledCardOutput>
                         ))}
                 </StyledForm>
             </GridBody>

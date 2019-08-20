@@ -5,6 +5,7 @@ import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
 import ShowWeatherCard from "../components/WeatherCardOutput";
+import StyledCardOutput from "../components/StyledCardOutput";
 
 const Container = styled.div`
     display: flex;
@@ -29,12 +30,14 @@ function ShowClothingData({ history }) {
                 <Container>
                     {data.clothing &&
                         data.clothing.map(clothes => (
-                            <ShowWeatherCard
-                                category={clothes.category}
-                                temperatur={clothes.temperatur}
-                                degree={clothes.degree}
-                                description={clothes.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowWeatherCard
+                                    category={clothes.category}
+                                    temperatur={clothes.temperatur}
+                                    degree={clothes.degree}
+                                    description={clothes.description}
+                                />
+                            </StyledCardOutput>
                         ))}
                 </Container>
                 <ShowPages />

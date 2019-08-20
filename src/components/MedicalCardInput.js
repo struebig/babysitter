@@ -4,6 +4,7 @@ import DropDown from "./Dropdown";
 import Input from "./Input";
 import Headline from "./Headline";
 import { v1 } from "uuid";
+import AssignChildren from "../components/AssignedChildrenInput";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -41,6 +42,8 @@ const StyledFooter = styled.div`
 `;
 
 function MedicalCardInput({ household, setHousehold, defaultValues, onClose }) {
+    const [selectedChildren, setSelectedChildren] = React.useState([]);
+
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -53,7 +56,8 @@ function MedicalCardInput({ household, setHousehold, defaultValues, onClose }) {
                     id: v1(),
                     category: form.category.value,
                     title: form.title.value,
-                    description: form.description.value
+                    description: form.description.value,
+                    assigned: selectedChildren
                 }
             ]
         });
@@ -61,10 +65,21 @@ function MedicalCardInput({ household, setHousehold, defaultValues, onClose }) {
         form.reset();
         onClose();
     }
+
+    function handleChildrenChange(id) {
+        setSelectedChildren(
+            selectedChildren.includes(id)
+                ? selectedChildren.filter(item => item !== id)
+                : [id, ...selectedChildren]
+        );
+    }
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add medical information</Headline>
-            <DropDown name="category">
+            <DropDown
+                defaultValue={defaultValues && defaultValues.category}
+                name="category"
+            >
                 <option value="Medical Condition">Type</option>
                 <option value="Medical Condition">---</option>
                 <option value="Medical Condition">Medical condition</option>
@@ -76,14 +91,21 @@ function MedicalCardInput({ household, setHousehold, defaultValues, onClose }) {
             <Input
                 size="textShort"
                 label="Name"
-                name="firstName"
+                defaultValue={defaultValues && defaultValues.name}
+                name="name"
                 placeholder="Name"
             />
             <Input
                 size="textShort"
                 label="Description"
+                defaultValue={defaultValues && defaultValues.description}
                 name="description"
                 placeholder="Description"
+            />
+            <AssignChildren
+                selectedChildren={selectedChildren}
+                children={household.children}
+                onChange={handleChildrenChange}
             />
             <StyledFooter>
                 <StyledButton type="submit">

@@ -27,7 +27,6 @@ function MenuCard({ title, className, icon, history, direction }) {
     function handleClick() {
         history.push(direction);
     }
-    console.log(history);
     return (
         <StyledCard onClick={handleClick}>
             <StyledIcon className={className} icon={icon} title={title}>

@@ -73,7 +73,7 @@ function AddMedicalData({ history }) {
             />
             <GridBody>
                 <StyledForm>
-                    {(renderAddMedicalCard || selectedId)(
+                    {(renderAddMedicalCard || selectedId) && (
                         <MedicalCardInput
                             defaultValues={household.medicalConditions.find(
                                 item => item.id === selectedId
@@ -94,9 +94,10 @@ function AddMedicalData({ history }) {
                                     description={medicalCondition.description}
                                 />
                                 <CardOutputFooter
-                                    onEditClick={() =>
-                                        setSelectedId(medicalCondition.id)
-                                    }
+                                    onEditClick={() => {
+                                        setSelectedId(medicalCondition.id);
+                                        setRenderAddMedicalCard(true);
+                                    }}
                                 />
                             </StyledCardOutput>
                         ))}

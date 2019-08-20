@@ -39,5 +39,3 @@ function ShowMedicalCard({ category, title, description }) {
 }
 
 export default ShowMedicalCard;
-
-// <CardOutputFooter />

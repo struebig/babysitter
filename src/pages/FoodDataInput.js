@@ -5,6 +5,8 @@ import FoodCardInput from "../components/FoodCardInput";
 import ShowFoodCard from "../components/FoodCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import CardOutputFooter from "../components/CardOutputFooter";
+import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -24,6 +26,9 @@ function AddFoodData({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {}
     );
+
+    const [selectedId, setSelectedId] = React.useState(null);
+
     const [renderAddFoodCard, setRenderAddFoodCard] = React.useState(null);
 
     function handleChange(event) {
@@ -63,9 +68,12 @@ function AddFoodData({ history }) {
                 titleHeadline="Add information"
             />
             <GridBody>
-                <StyledForm /* onSubmit={handleSubmit}*/>
+                <StyledForm>
                     {renderAddFoodCard && (
                         <FoodCardInput
+                            defaultValues={household.foodPreferences.find(
+                                item => item.id === selectedId
+                            )}
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -74,11 +82,20 @@ function AddFoodData({ history }) {
                     )}
                     {household.foodPreferences &&
                         household.foodPreferences.map(foodPreference => (
-                            <ShowFoodCard
-                                category={foodPreference.category}
-                                name={foodPreference.name}
-                                description={foodPreference.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowFoodCard
+                                    key={foodPreference.id}
+                                    category={foodPreference.category}
+                                    name={foodPreference.name}
+                                    description={foodPreference.description}
+                                />
+                                <CardOutputFooter
+                                    onEditClick={() => {
+                                        setSelectedId(foodPreference.id);
+                                        setRenderAddFoodCard(true);
+                                    }}
+                                />
+                            </StyledCardOutput>
                         ))}
                 </StyledForm>
             </GridBody>
