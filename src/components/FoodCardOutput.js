@@ -11,7 +11,7 @@ const FoodCardOutput = styled.div`
     width: 320px;
     padding: 3px;
     background: lightgrey;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     box-shadow: 5px 5px 8px grey;
 `;
 const StyledCardHead = styled.div`

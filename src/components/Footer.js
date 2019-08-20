@@ -17,31 +17,31 @@ function ShowPages({ active, onClick }) {
     return (
         <StyledFooter>
             <ButtonLink to="/generalData" active={active} onClick={onClick}>
-                <i class="far fa-address-card" />
+                <i className="far fa-address-card" />
             </ButtonLink>
             <ButtonLink
                 to="/medicalDataOutput"
                 active={active}
                 onClick={onClick}
             >
-                <i class="fas fa-first-aid" />
+                <i className="fas fa-first-aid" />
             </ButtonLink>
             <ButtonLink to="/foodDataOutput" active={active} onClick={onClick}>
-                <i class="fas fa-utensils" />
+                <i className="fas fa-utensils" />
             </ButtonLink>
             <ButtonLink
                 to="/clothingDataOutput"
                 active={active}
                 onClick={onClick}
             >
-                <i class="fas fa-tshirt" />
+                <i className="fas fa-tshirt" />
             </ButtonLink>
             <ButtonLink
                 to="/contactsDataOutput"
                 active={active}
                 onClick={onClick}
             >
-                <i class="far fa-address-book" />
+                <i className="far fa-address-book" />
             </ButtonLink>
         </StyledFooter>
     );

@@ -30,10 +30,10 @@ function CardOutputFooter({ onClick }) {
     return (
         <StyledFooter>
             <StyledButton type="edit" onClick={onClick}>
-                <i class="far fa-edit" />
+                <i className="far fa-edit" />
             </StyledButton>
             <StyledButton type="delete" onClick={onClick}>
-                <i class="fas fa-trash-alt" />
+                <i className="fas fa-trash-alt" />
             </StyledButton>
         </StyledFooter>
     );

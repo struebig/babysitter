@@ -31,7 +31,7 @@ function AddSection({ titleHeadline, onClick, titleSection }) {
             <Section>
                 <Headline size="S">{titleHeadline}</Headline>
                 <AddButton type="button" onClick={onClick}>
-                    <i class="far fa-plus-square" />
+                    <i className="far fa-plus-square" />
                 </AddButton>
             </Section>
         </StyledSection>

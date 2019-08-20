@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import DropDown from "./Dropdown";
-import Input from "./Input";
 import Headline from "./Headline";
-//import AssignChildren from "../components/AssignChildren";
+import Input from "../components/Input";
+import { v1 } from "uuid";
+import AssignChildren from "../components/AssignChildren";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -48,6 +49,8 @@ const StyledTemperature = styled.div`
 `;
 
 function WeatherCardInput({ household, setHousehold, onClose }) {
+    const [selectedChildren, setSelectedChildren] = React.useState([]);
+
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -57,17 +60,29 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
             clothing: [
                 ...(household.clothing || []),
                 {
+                    id: v1(),
                     category: form.category.value,
                     temperatur: form.temperatur.value,
                     degree: form.degree.value,
                     description: form.description.value,
-                    assigned: form.assigned.value
+                    assigned: selectedChildren
                 }
             ]
         });
         form.reset();
         onClose();
     }
+
+    function handleChildrenChange(id) {
+        setSelectedChildren(
+            selectedChildren.includes(id)
+                ? selectedChildren.filter(item => item !== id)
+                : [id, ...selectedChildren]
+        );
+    }
+
+    console.log(selectedChildren);
+
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add clothing information</Headline>
@@ -104,12 +119,17 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
                 placeholder="Description"
                 //   onChange={handleChange}
             />
+            <AssignChildren
+                selectedChildren={selectedChildren}
+                children={household.children}
+                onChange={handleChildrenChange}
+            />
             <StyledFooter>
                 <StyledButton type="submit">
-                    <i class="far fa-check-circle" />
+                    <i className="far fa-check-circle" />
                 </StyledButton>
                 <StyledButton type="button" onClick={onClose}>
-                    <i class="far fa-window-close" />
+                    <i className="far fa-window-close" />
                 </StyledButton>
             </StyledFooter>
         </StyledCard>
@@ -118,4 +138,4 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
 
 export default WeatherCardInput;
 
-//<AssignChildren household={household} name="assigned" />
+//<AssignChildren household={household} />

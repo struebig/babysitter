@@ -5,10 +5,13 @@ import MedicalCardInput from "../components/MedicalCardInput";
 import ShowMedicalCard from "../components/MedicalCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
+
+import CardOutputFooter from "../components/CardOutputFooter";
 
 const StyledForm = styled.form``;
 
@@ -24,6 +27,8 @@ function AddMedicalData({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {}
     );
+
+    const [selectedId, setSelectedId] = React.useState(null);
 
     const [renderAddMedicalCard, setRenderAddMedicalCard] = React.useState(
         null
@@ -69,8 +74,11 @@ function AddMedicalData({ history }) {
             />
             <GridBody>
                 <StyledForm>
-                    {renderAddMedicalCard && (
+                    {(renderAddMedicalCard || selectedId)(
                         <MedicalCardInput
+                            defaultValues={household.clothing.find(
+                                item => item.id === selectedId
+                            )}
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -79,11 +87,18 @@ function AddMedicalData({ history }) {
                     )}
                     {household.medicalConditions &&
                         household.medicalConditions.map(medicalCondition => (
-                            <ShowMedicalCard
-                                category={medicalCondition.category}
-                                title={medicalCondition.title}
-                                description={medicalCondition.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowMedicalCard
+                                    category={medicalCondition.category}
+                                    title={medicalCondition.title}
+                                    description={medicalCondition.description}
+                                />
+                                <CardOutputFooter
+                                    onEditClick={() =>
+                                        setSelectedId(medicalCondition.id)
+                                    }
+                                />
+                            </StyledCardOutput>
                         ))}
                 </StyledForm>
             </GridBody>

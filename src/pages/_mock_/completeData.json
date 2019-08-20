@@ -12,9 +12,9 @@
     "city": "Springfield",
     "children": [
         {
-            // "id": "",
-            // "profilePicture": "",
-            // "profileColor": "",
+            "id": "",
+            "profilePicture": "",
+            "profileColor": "",
             "firstName": "",
             "lastName": "",
             "birthday": "",
@@ -28,7 +28,8 @@
                     "category": "",
                     "temperature": "",
                     "degree": "",
-                    "description": ""
+                    "description": "",
+                    "assigned": []
                 }
             ],
 

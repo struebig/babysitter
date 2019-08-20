@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
 import Headline from "./Headline";
+import { v1 } from "uuid";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -49,6 +50,7 @@ function ContactCardInput({ household, setHousehold, onClose }) {
             contacts: [
                 ...(household.contacts || []),
                 {
+                    id: v1(),
                     category: form.category.value,
                     name: form.name.value,
                     phoneNo: form.phoneNo.value,
@@ -100,10 +102,10 @@ function ContactCardInput({ household, setHousehold, onClose }) {
             />
             <StyledFooter>
                 <StyledButton type="submit">
-                    <i class="far fa-check-circle" />
+                    <i className="far fa-check-circle" />
                 </StyledButton>
                 <StyledButton type="button" onClick={onClose}>
-                    <i class="far fa-window-close" />
+                    <i className="far fa-window-close" />
                 </StyledButton>
             </StyledFooter>
         </StyledCard>

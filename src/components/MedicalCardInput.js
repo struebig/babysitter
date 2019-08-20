@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
 import Headline from "./Headline";
+import { v1 } from "uuid";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -39,7 +40,7 @@ const StyledFooter = styled.div`
     margin-bottom: 10px;
 `;
 
-function MedicalCardInput({ household, setHousehold, onClose }) {
+function MedicalCardInput({ household, setHousehold, defaultValues, onClose }) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -49,6 +50,7 @@ function MedicalCardInput({ household, setHousehold, onClose }) {
             medicalConditions: [
                 ...(household.medicalConditions || []),
                 {
+                    id: v1(),
                     category: form.category.value,
                     title: form.title.value,
                     description: form.description.value
@@ -85,10 +87,10 @@ function MedicalCardInput({ household, setHousehold, onClose }) {
             />
             <StyledFooter>
                 <StyledButton type="submit">
-                    <i class="far fa-check-circle" />
+                    <i className="far fa-check-circle" />
                 </StyledButton>
                 <StyledButton type="button" onClick={onClose}>
-                    <i class="far fa-window-close" />
+                    <i className="far fa-window-close" />
                 </StyledButton>
             </StyledFooter>
         </StyledCard>

@@ -32,10 +32,10 @@ function HeaderForm({ submit, handleSubmit, button, handleCancel }) {
     return (
         <StyledHeaderForm>
             <StyledButton type={submit} onClick={handleSubmit}>
-                <i class="far fa-check-circle" />
+                <i className="far fa-check-circle" />
             </StyledButton>
             <StyledButton type={button} onClick={handleCancel}>
-                <i class="far fa-window-close" />
+                <i className="far fa-window-close" />
             </StyledButton>
         </StyledHeaderForm>
     );

@@ -5,6 +5,7 @@ import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
 import ShowMedicalCard from "../components/MedicalCardOutput";
+import StyledCardOutput from "../components/StyledCardOutput";
 
 const Container = styled.div`
     display: flex;
@@ -29,11 +30,13 @@ function ShowMedicalData({ history }) {
                 <Container>
                     {data.medicalConditions &&
                         data.medicalConditions.map(medicalCondition => (
-                            <ShowMedicalCard
-                                category={medicalCondition.category}
-                                title={medicalCondition.title}
-                                description={medicalCondition.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowMedicalCard
+                                    category={medicalCondition.category}
+                                    title={medicalCondition.title}
+                                    description={medicalCondition.description}
+                                />
+                            </StyledCardOutput>
                         ))}
                 </Container>
                 <ShowPages />

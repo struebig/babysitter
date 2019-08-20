@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
 import Headline from "./Headline";
+import { v1 } from "uuid";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -48,6 +49,7 @@ function ChildrenCardInput({ household, setHousehold, onClose }) {
             children: [
                 ...(household.children || []),
                 {
+                    id: v1(),
                     firstName: form.firstName.value,
                     lastName: form.lastName.value,
                     birthday: form.birthday.value,
@@ -107,10 +109,10 @@ function ChildrenCardInput({ household, setHousehold, onClose }) {
             </DropDown>
             <StyledFooter>
                 <StyledButton type="submit">
-                    <i class="far fa-check-circle" />
+                    <i className="far fa-check-circle" />
                 </StyledButton>
                 <StyledButton type="button" onClick={onClose}>
-                    <i class="far fa-window-close" />
+                    <i className="far fa-window-close" />
                 </StyledButton>
             </StyledFooter>
         </StyledCard>
