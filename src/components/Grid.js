@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const types = {
-    main: "10% 10% 20% 20% 10% 30%",
+    main: "10% 10% 25% 25% 25% 5%",
     showData: "10% auto 10%",
     form: "10% 20% auto",
     formShort: "10% 10% auto",

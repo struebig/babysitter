@@ -3,6 +3,8 @@ import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
 import Headline from "./Headline";
+import { v1 } from "uuid";
+import AssignChildren from "../components/AssignedChildrenInput";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -39,19 +41,37 @@ const StyledFooter = styled.div`
     margin-bottom: 10px;
 `;
 
-function MedicalCardInput({ household, setHousehold, onClose }) {
+function MedicalCardInput({ household, setHousehold, defaultValues, onClose }) {
+    const [selectedChildren, setSelectedChildren] = React.useState([]);
+
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.medicalConditions) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.medicalConditions.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.medicalConditions;
+            }
+        }
+
         setHousehold({
             ...household,
             medicalConditions: [
-                ...(household.medicalConditions || []),
+                ...oldState,
                 {
+                    id:
+                        defaultValues && defaultValues.id
+                            ? defaultValues.id
+                            : v1(),
                     category: form.category.value,
                     title: form.title.value,
-                    description: form.description.value
+                    description: form.description.value,
+                    assigned: selectedChildren
                 }
             ]
         });
@@ -59,10 +79,21 @@ function MedicalCardInput({ household, setHousehold, onClose }) {
         form.reset();
         onClose();
     }
+
+    function handleChildrenChange(id) {
+        setSelectedChildren(
+            selectedChildren.includes(id)
+                ? selectedChildren.filter(item => item !== id)
+                : [id, ...selectedChildren]
+        );
+    }
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add medical information</Headline>
-            <DropDown name="category">
+            <DropDown
+                defaultValue={defaultValues && defaultValues.category}
+                name="category"
+            >
                 <option value="Medical Condition">Type</option>
                 <option value="Medical Condition">---</option>
                 <option value="Medical Condition">Medical condition</option>
@@ -73,22 +104,30 @@ function MedicalCardInput({ household, setHousehold, onClose }) {
             </DropDown>
             <Input
                 size="textShort"
-                label="Name"
-                name="firstName"
-                placeholder="Name"
+                label="Title"
+                defaultValue={defaultValues && defaultValues.title}
+                name="title"
+                placeholder="Title"
+                required
             />
             <Input
                 size="textShort"
                 label="Description"
+                defaultValue={defaultValues && defaultValues.description}
                 name="description"
                 placeholder="Description"
             />
+            <AssignChildren
+                selectedChildren={selectedChildren}
+                children={household.children}
+                onChange={handleChildrenChange}
+            />
             <StyledFooter>
                 <StyledButton type="submit">
-                    <i class="far fa-check-circle" />
+                    <i className="far fa-check-circle" />
                 </StyledButton>
                 <StyledButton type="button" onClick={onClose}>
-                    <i class="far fa-window-close" />
+                    <i className="far fa-window-close" />
                 </StyledButton>
             </StyledFooter>
         </StyledCard>

@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import DropDown from "./Dropdown";
-import Input from "./Input";
 import Headline from "./Headline";
+import Input from "../components/Input";
+import { v1 } from "uuid";
+import AssignChildren from "../components/AssignedChildrenInput";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -46,30 +48,59 @@ const StyledTemperature = styled.div`
     align-items: flex-end;
 `;
 
-function WeatherCardInput({ household, setHousehold, onClose }) {
+function WeatherCardInput({ household, setHousehold, defaultValues, onClose }) {
+    const [selectedChildren, setSelectedChildren] = React.useState([]);
+
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.clothing) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.clothing.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.clothing;
+            }
+        }
         setHousehold({
             ...household,
             clothing: [
-                ...(household.clothing || []),
+                ...oldState,
                 {
+                    id:
+                        defaultValues && defaultValues.id
+                            ? defaultValues.id
+                            : v1(),
                     category: form.category.value,
                     temperatur: form.temperatur.value,
                     degree: form.degree.value,
-                    description: form.description.value
+                    description: form.description.value,
+                    assigned: selectedChildren
                 }
             ]
         });
         form.reset();
         onClose();
     }
+
+    function handleChildrenChange(id) {
+        setSelectedChildren(
+            selectedChildren.includes(id)
+                ? selectedChildren.filter(item => item !== id)
+                : [id, ...selectedChildren]
+        );
+    }
+
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add clothing information</Headline>
-            <DropDown /*onChange={handleChange}*/ name="category">
+            <DropDown
+                name="category"
+                defaultValue={defaultValues && defaultValues.category}
+            >
                 <option value="fa-question-circle">Weather</option>
                 <option value="fa-question-circle">---</option>
                 <option value="fa-sun">Sun</option>
@@ -78,7 +109,10 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
                 <option value="fa-snowflake">Snow</option>
             </DropDown>
             <StyledTemperature>
-                <DropDown /*onChange={handleChange}*/ name="temperatur">
+                <DropDown
+                    name="temperatur"
+                    defaultValue={defaultValues && defaultValues.temperatur}
+                >
                     <option value=""> below or above </option>
                     <option value="">---</option>
                     <option value="below">below</option>
@@ -87,27 +121,29 @@ function WeatherCardInput({ household, setHousehold, onClose }) {
                 <Input
                     size="numberShort"
                     label="Degree c°"
-                    //   value={household.}
+                    defaultValue={defaultValues && defaultValues.degree}
                     name="degree"
                     placeholder="Degree c°"
-                    //   onChange={handleChange}
                 />
             </StyledTemperature>
-
             <Input
                 size="textLong"
                 label="Description"
-                //   value={household.}
+                defaultValue={defaultValues && defaultValues.description}
                 name="description"
                 placeholder="Description"
-                //   onChange={handleChange}
+            />
+            <AssignChildren
+                selectedChildren={selectedChildren}
+                children={household.children}
+                onChange={handleChildrenChange}
             />
             <StyledFooter>
                 <StyledButton type="submit">
-                    <i class="far fa-check-circle" />
+                    <i className="far fa-check-circle" />
                 </StyledButton>
                 <StyledButton type="button" onClick={onClose}>
-                    <i class="far fa-window-close" />
+                    <i className="far fa-window-close" />
                 </StyledButton>
             </StyledFooter>
         </StyledCard>

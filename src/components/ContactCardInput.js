@@ -3,6 +3,8 @@ import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
 import Headline from "./Headline";
+import { v1 } from "uuid";
+import AssignChildren from "../components/AssignedChildrenInput";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -39,20 +41,34 @@ const StyledFooter = styled.div`
     margin-bottom: 10px;
 `;
 
-function ContactCardInput({ household, setHousehold, onClose }) {
+function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
+    const [selectedChildren, setSelectedChildren] = React.useState([]);
+
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.contacts) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.contacts.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.contacts;
+            }
+        }
         setHousehold({
             ...household,
             contacts: [
-                ...(household.contacts || []),
+                ...oldState,
                 {
+                    id: v1(),
                     category: form.category.value,
                     name: form.name.value,
                     phoneNo: form.phoneNo.value,
-                    description: form.description.value
+                    description: form.description.value,
+                    assigned: selectedChildren
                 }
             ]
         });
@@ -60,10 +76,22 @@ function ContactCardInput({ household, setHousehold, onClose }) {
         form.reset();
         onClose();
     }
+
+    function handleChildrenChange(id) {
+        setSelectedChildren(
+            selectedChildren.includes(id)
+                ? selectedChildren.filter(item => item !== id)
+                : [id, ...selectedChildren]
+        );
+    }
+
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add contact information</Headline>
-            <DropDown /*onChange={handleChange}*/ name="category">
+            <DropDown
+                defaultValue={defaultValues && defaultValues.category}
+                name="category"
+            >
                 <option value="Other">Type</option>
                 <option value="Other">---</option>
                 <option value="In case of emergency">
@@ -77,33 +105,36 @@ function ContactCardInput({ household, setHousehold, onClose }) {
             <Input
                 size="textShort"
                 label="Name"
-                //   value={household.}
+                defaultValue={defaultValues && defaultValues.name}
                 name="name"
                 placeholder="Name"
-                //   onChange={handleChange}
+                required
             />
             <Input
                 size="numberLong"
                 label="Phone No."
-                //   value={household.}
+                defaultValue={defaultValues && defaultValues.phoneNo}
                 name="phoneNo"
                 placeholder="Phone No."
-                //   onChange={handleChange}
             />
             <Input
                 size="textLong"
                 label="Description"
-                //   value={household.}
+                defaultValue={defaultValues && defaultValues.description}
                 name="description"
                 placeholder="Description"
-                //   onChange={handleChange}
+            />
+            <AssignChildren
+                selectedChildren={selectedChildren}
+                children={household.children}
+                onChange={handleChildrenChange}
             />
             <StyledFooter>
                 <StyledButton type="submit">
-                    <i class="far fa-check-circle" />
+                    <i className="far fa-check-circle" />
                 </StyledButton>
                 <StyledButton type="button" onClick={onClose}>
-                    <i class="far fa-window-close" />
+                    <i className="far fa-window-close" />
                 </StyledButton>
             </StyledFooter>
         </StyledCard>

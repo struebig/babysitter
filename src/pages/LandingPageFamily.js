@@ -35,20 +35,23 @@ function Menu({ history }) {
                     direction="childrenDataInput"
                     history={history}
                 />
+            </Main>
+            <Main>
                 <MenuCard
                     icon="fa-first-aid"
                     title="Medical"
                     direction="medicalDataInput"
                     history={history}
                 />
-            </Main>
-            <Main>
+
                 <MenuCard
                     icon="fa-utensils"
                     title="Food"
                     direction="foodDataInput"
                     history={history}
                 />
+            </Main>
+            <Main>
                 <MenuCard
                     icon="fa-tshirt"
                     title="Clothing"
@@ -62,7 +65,15 @@ function Menu({ history }) {
                     history={history}
                 />
             </Main>
-            <Headline size="M">Other functions</Headline>
+            <div />
+        </Grid>
+    );
+}
+
+export default Menu;
+
+/*
+<Headline size="M">Other functions</Headline>
             <Main>
                 <MenuCard
                     icon="fa-baby-carriage"
@@ -71,8 +82,4 @@ function Menu({ history }) {
                     history={history}
                 />
             </Main>
-        </Grid>
-    );
-}
-
-export default Menu;
+            */

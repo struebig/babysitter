@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
 import Headline from "./Headline";
+import { v1 } from "uuid";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -38,16 +39,35 @@ const StyledFooter = styled.div`
     margin-bottom: 10px;
 `;
 
-function ChildrenCardInput({ household, setHousehold, onClose }) {
+function ChildrenCardInput({
+    household,
+    defaultValues,
+    setHousehold,
+    onClose
+}) {
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.children) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.children.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.children;
+            }
+        }
         setHousehold({
             ...household,
             children: [
-                ...(household.children || []),
+                ...oldState,
                 {
+                    id:
+                        defaultValues && defaultValues.id
+                            ? defaultValues.id
+                            : v1(),
                     firstName: form.firstName.value,
                     lastName: form.lastName.value,
                     birthday: form.birthday.value,
@@ -60,34 +80,36 @@ function ChildrenCardInput({ household, setHousehold, onClose }) {
         form.reset();
         onClose();
     }
+
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add child information</Headline>
             <Input
                 size="textShort"
                 label="First Name"
-                //value={household.children.firstName}
+                defaultValue={defaultValues && defaultValues.firstName}
                 name="firstName"
                 placeholder="First Name"
-                //   onChange={handleChange}
+                required
             />
             <Input
                 size="textShort"
                 label="Last Name"
-                //value={household.children.lastName}
+                defaultValue={defaultValues && defaultValues.lastName}
                 name="lastName"
                 placeholder="Last Name"
-                //   onChange={handleChange}
             />
             <Input
                 size="numberMedium"
                 label="Birthday"
-                //value={household.children.birthday}
+                defaultValue={defaultValues && defaultValues.birthday}
                 name="birthday"
                 placeholder="Birthday"
-                //   onChange={handleChange}
             />
-            <DropDown /*onChange={handleChange}*/ name="bloodtype">
+            <DropDown
+                defaultValue={defaultValues && defaultValues.bloodtype}
+                name="bloodtype"
+            >
                 <option value="">Select bloodtype</option>
                 <option value="">---</option>
                 <option value="A positiv">A positiv</option>
@@ -99,18 +121,22 @@ function ChildrenCardInput({ household, setHousehold, onClose }) {
                 <option value="AB negativ">AB negativ</option>
                 <option value="0 negativ">0 negativ</option>
             </DropDown>
-            <DropDown /*onChange={handleChange}*/ name="diet">
+            <DropDown
+                defaultValue={defaultValues && defaultValues.diet}
+                name="diet"
+            >
                 <option value="">Select diet</option>
                 <option value="">---</option>
                 <option value="vegetarian">Vegetarian</option>
                 <option value="vegan">Vegan</option>
             </DropDown>
+
             <StyledFooter>
                 <StyledButton type="submit">
-                    <i class="far fa-check-circle" />
+                    <i className="far fa-check-circle" />
                 </StyledButton>
                 <StyledButton type="button" onClick={onClose}>
-                    <i class="far fa-window-close" />
+                    <i className="far fa-window-close" />
                 </StyledButton>
             </StyledFooter>
         </StyledCard>

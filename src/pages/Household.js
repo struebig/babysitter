@@ -50,9 +50,9 @@ function HouseholdForm({ history }) {
         }
     );
 
-    React.useEffect(() => {
+    /*React.useEffect(() => {
         console.log(household);
-    }, [household]);
+    }, [household]);*/
 
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });

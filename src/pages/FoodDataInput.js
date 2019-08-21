@@ -5,6 +5,9 @@ import FoodCardInput from "../components/FoodCardInput";
 import ShowFoodCard from "../components/FoodCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import ShowAssignedChildren from "../components/AssignedChildrenOutput";
+import CardOutputFooter from "../components/CardOutputFooter";
+import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -21,9 +24,10 @@ const GridBody = styled.div`
 `;
 
 function AddFoodData({ history }) {
-    const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {}
-    );
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+
+    const [selectedId, setSelectedId] = React.useState(null);
+
     const [renderAddFoodCard, setRenderAddFoodCard] = React.useState(null);
 
     function handleChange(event) {
@@ -49,6 +53,17 @@ function AddFoodData({ history }) {
         setRenderAddFoodCard(null);
     }
 
+    function handleDelete(id) {
+        const newPreferences = household.foodPreferences.filter(
+            card => card.id !== id
+        );
+
+        setHousehold({
+            ...household,
+            ["foodPreferences"]: newPreferences
+        });
+    }
+
     return (
         <Grid type="form">
             <HeaderForm
@@ -63,9 +78,15 @@ function AddFoodData({ history }) {
                 titleHeadline="Add information"
             />
             <GridBody>
-                <StyledForm /* onSubmit={handleSubmit}*/>
+                <StyledForm>
                     {renderAddFoodCard && (
                         <FoodCardInput
+                            defaultValues={
+                                household.foodPreferences &&
+                                household.foodPreferences.find(
+                                    item => item.id === selectedId
+                                )
+                            }
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -74,11 +95,27 @@ function AddFoodData({ history }) {
                     )}
                     {household.foodPreferences &&
                         household.foodPreferences.map(foodPreference => (
-                            <ShowFoodCard
-                                category={foodPreference.category}
-                                name={foodPreference.name}
-                                description={foodPreference.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowFoodCard
+                                    key={foodPreference.id}
+                                    category={foodPreference.category}
+                                    name={foodPreference.name}
+                                    description={foodPreference.description}
+                                />
+                                <ShowAssignedChildren
+                                    assigned={foodPreference.assigned}
+                                    household={household}
+                                />
+                                <CardOutputFooter
+                                    onEditClick={() => {
+                                        setSelectedId(foodPreference.id);
+                                        setRenderAddFoodCard(true);
+                                    }}
+                                    onDeleteClick={() =>
+                                        handleDelete(foodPreference.id)
+                                    }
+                                />
+                            </StyledCardOutput>
                         ))}
                 </StyledForm>
             </GridBody>

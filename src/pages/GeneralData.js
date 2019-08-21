@@ -9,6 +9,8 @@ import ChildrenCardOutput from "../components/ChildrenCardOutput";
 import ParentCard from "../components/ParentCard";
 import ShowAddressCard from "../components/AddressCardOutput";
 
+import StyledCardOutput from "../components/StyledCardOutput";
+
 const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -49,13 +51,15 @@ function ShowGeneralData({ history }) {
                     <Headline size="XS">Children</Headline>
                     {data.children &&
                         data.children.map(child => (
-                            <ChildrenCardOutput
-                                firstName={child.firstName}
-                                lastName={child.lastName}
-                                birthday={child.birthday}
-                                bloodtype={child.bloodtype}
-                                diet={child.diet}
-                            />
+                            <StyledCardOutput>
+                                <ChildrenCardOutput
+                                    firstName={child.firstName}
+                                    lastName={child.lastName}
+                                    birthday={child.birthday}
+                                    bloodtype={child.bloodtype}
+                                    diet={child.diet}
+                                />
+                            </StyledCardOutput>
                         ))}
                 </Container>
                 <ShowPages />

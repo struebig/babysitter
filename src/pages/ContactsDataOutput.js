@@ -5,6 +5,7 @@ import { getHouseholdFromStorage } from "../utils/storage";
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
 import ShowContactCard from "../components/ContactCardOutput";
+import StyledCardOutput from "../components/StyledCardOutput";
 
 const Container = styled.div`
     display: flex;
@@ -30,12 +31,14 @@ function ShowContactsData({ history }) {
                 <Container>
                     {data.contacts &&
                         data.contacts.map(contact => (
-                            <ShowContactCard
-                                category={contact.category}
-                                name={contact.name}
-                                phoneNo={contact.phoneNo}
-                                description={contact.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowContactCard
+                                    category={contact.category}
+                                    name={contact.name}
+                                    phoneNo={contact.phoneNo}
+                                    description={contact.description}
+                                />
+                            </StyledCardOutput>
                         ))}
                 </Container>
                 <ShowPages />

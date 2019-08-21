@@ -5,6 +5,9 @@ import WeatherCardInput from "../components/WeatherCardInput";
 import ShowWeatherCard from "../components/WeatherCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import CardOutputFooter from "../components/CardOutputFooter";
+import ShowAssignedChildren from "../components/AssignedChildrenOutput";
+import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -21,12 +24,12 @@ const GridBody = styled.div`
 `;
 
 function AddClothingData({ history }) {
-    const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {}
-    );
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+
+    const [selectedId, setSelectedId] = React.useState(null);
 
     const [renderAddWeatherCard, setRenderAddWeatherCard] = React.useState(
-        null
+        false
     );
 
     function handleChange(event) {
@@ -49,7 +52,16 @@ function AddClothingData({ history }) {
         setRenderAddWeatherCard(true);
     }
     function hideAddWeatherCard() {
-        setRenderAddWeatherCard(null);
+        setRenderAddWeatherCard(false);
+    }
+
+    function handleDelete(id) {
+        const newClothing = household.clothing.filter(card => card.id !== id);
+
+        setHousehold({
+            ...household,
+            ["clothing"]: newClothing
+        });
     }
 
     return (
@@ -66,9 +78,15 @@ function AddClothingData({ history }) {
                 titleHeadline="Add information"
             />
             <GridBody>
-                <StyledForm /* onSubmit={handleSubmit}*/>
+                <StyledForm>
                     {renderAddWeatherCard && (
                         <WeatherCardInput
+                            defaultValues={
+                                household.clothing &&
+                                household.clothing.find(
+                                    item => item.id === selectedId
+                                )
+                            }
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -77,12 +95,28 @@ function AddClothingData({ history }) {
                     )}
                     {household.clothing &&
                         household.clothing.map(clothes => (
-                            <ShowWeatherCard
-                                category={clothes.category}
-                                temperatur={clothes.temperatur}
-                                degree={clothes.degree}
-                                description={clothes.description}
-                            />
+                            <StyledCardOutput>
+                                <ShowWeatherCard
+                                    key={clothes.id}
+                                    category={clothes.category}
+                                    temperatur={clothes.temperatur}
+                                    degree={clothes.degree}
+                                    description={clothes.description}
+                                />
+                                <ShowAssignedChildren
+                                    assigned={clothes.assigned}
+                                    household={household}
+                                />
+                                <CardOutputFooter
+                                    onEditClick={() => {
+                                        setSelectedId(clothes.id);
+                                        setRenderAddWeatherCard(true);
+                                    }}
+                                    onDeleteClick={() =>
+                                        handleDelete(clothes.id)
+                                    }
+                                />
+                            </StyledCardOutput>
                         ))}
                 </StyledForm>
             </GridBody>
