@@ -23,9 +23,9 @@ const GridBody = styled.div`
 `;
 
 function AddChildrenData({ history }) {
-    const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {}
-    );
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+
+    console.log(household);
 
     const [selectedId, setSelectedId] = React.useState(null);
 
@@ -53,6 +53,15 @@ function AddChildrenData({ history }) {
         setRenderAddChildCard(null);
     }
 
+    function handleDelete(id) {
+        const newChildren = household.children.filter(card => card.id !== id);
+
+        setHousehold({
+            ...household,
+            ["children"]: newChildren
+        });
+    }
+
     return (
         <Grid type="form">
             <HeaderForm
@@ -70,9 +79,12 @@ function AddChildrenData({ history }) {
                 <StyledForm>
                     {renderAddChildCard && (
                         <ChildrenCardInput
-                            defaultValues={household.children.find(
-                                item => item.id === selectedId
-                            )}
+                            defaultValues={
+                                household.children &&
+                                household.children.find(
+                                    item => item.id === selectedId
+                                )
+                            }
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -94,6 +106,7 @@ function AddChildrenData({ history }) {
                                         setSelectedId(child.id);
                                         setRenderAddChildCard(true);
                                     }}
+                                    onDeleteClick={() => handleDelete(child.id)}
                                 />
                             </StyledCardOutput>
                         ))}

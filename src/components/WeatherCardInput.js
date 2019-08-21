@@ -50,17 +50,30 @@ const StyledTemperature = styled.div`
 
 function WeatherCardInput({ household, setHousehold, defaultValues, onClose }) {
     const [selectedChildren, setSelectedChildren] = React.useState([]);
-    console.log(defaultValues);
+
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.clothing) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.clothing.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.clothing;
+            }
+        }
         setHousehold({
             ...household,
             clothing: [
-                ...(household.clothing || []),
+                ...oldState,
                 {
-                    id: v1(),
+                    id:
+                        defaultValues && defaultValues.id
+                            ? defaultValues.id
+                            : v1(),
                     category: form.category.value,
                     temperatur: form.temperatur.value,
                     degree: form.degree.value,

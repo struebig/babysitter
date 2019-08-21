@@ -48,12 +48,26 @@ function MedicalCardInput({ household, setHousehold, defaultValues, onClose }) {
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.medicalConditions) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.medicalConditions.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.medicalConditions;
+            }
+        }
+
         setHousehold({
             ...household,
             medicalConditions: [
-                ...(household.medicalConditions || []),
+                ...oldState,
                 {
-                    id: v1(),
+                    id:
+                        defaultValues && defaultValues.id
+                            ? defaultValues.id
+                            : v1(),
                     category: form.category.value,
                     title: form.title.value,
                     description: form.description.value,
@@ -90,10 +104,11 @@ function MedicalCardInput({ household, setHousehold, defaultValues, onClose }) {
             </DropDown>
             <Input
                 size="textShort"
-                label="Name"
-                defaultValue={defaultValues && defaultValues.name}
-                name="name"
-                placeholder="Name"
+                label="Title"
+                defaultValue={defaultValues && defaultValues.title}
+                name="title"
+                placeholder="Title"
+                required
             />
             <Input
                 size="textShort"

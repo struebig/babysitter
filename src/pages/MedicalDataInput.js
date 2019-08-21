@@ -5,12 +5,13 @@ import MedicalCardInput from "../components/MedicalCardInput";
 import ShowMedicalCard from "../components/MedicalCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
+import CardOutputFooter from "../components/CardOutputFooter";
+import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
 } from "../utils/storage";
-import CardOutputFooter from "../components/CardOutputFooter";
 
 const StyledForm = styled.form``;
 
@@ -23,14 +24,12 @@ const GridBody = styled.div`
 `;
 
 function AddMedicalData({ history }) {
-    const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {}
-    );
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
 
     const [selectedId, setSelectedId] = React.useState(null);
 
     const [renderAddMedicalCard, setRenderAddMedicalCard] = React.useState(
-        null
+        false
     );
 
     function handleChange(event) {
@@ -55,9 +54,18 @@ function AddMedicalData({ history }) {
     }
 
     function hideAddMedicalCard() {
-        setRenderAddMedicalCard(null);
+        setRenderAddMedicalCard(false);
     }
+    function handleDelete(id) {
+        const newConditions = household.medicalConditions.filter(
+            card => card.id !== id
+        );
 
+        setHousehold({
+            ...household,
+            ["medicalConditions"]: newConditions
+        });
+    }
     return (
         <Grid type="form">
             <HeaderForm
@@ -73,11 +81,14 @@ function AddMedicalData({ history }) {
             />
             <GridBody>
                 <StyledForm>
-                    {(renderAddMedicalCard || selectedId) && (
+                    {renderAddMedicalCard && (
                         <MedicalCardInput
-                            defaultValues={household.medicalConditions.find(
-                                item => item.id === selectedId
-                            )}
+                            defaultValues={
+                                household.medicalConditions &&
+                                household.medicalConditions.find(
+                                    item => item.id === selectedId
+                                )
+                            }
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -98,6 +109,9 @@ function AddMedicalData({ history }) {
                                         setSelectedId(medicalCondition.id);
                                         setRenderAddMedicalCard(true);
                                     }}
+                                    onDeleteClick={() =>
+                                        handleDelete(medicalCondition.id)
+                                    }
                                 />
                             </StyledCardOutput>
                         ))}

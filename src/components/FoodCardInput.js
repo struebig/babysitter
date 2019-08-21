@@ -48,12 +48,25 @@ function FoodCardInput({ household, setHousehold, defaultValues, onClose }) {
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.foodPreferences) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.foodPreferences.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.foodPreferences;
+            }
+        }
         setHousehold({
             ...household,
             foodPreferences: [
-                ...(household.foodPreferences || []),
+                ...oldState,
                 {
-                    id: v1(),
+                    id:
+                        defaultValues && defaultValues.id
+                            ? defaultValues.id
+                            : v1(),
                     category: form.category.value,
                     name: form.name.value,
                     description: form.description.value,
@@ -93,6 +106,7 @@ function FoodCardInput({ household, setHousehold, defaultValues, onClose }) {
                 defaultValue={defaultValues && defaultValues.name}
                 name="name"
                 placeholder="Name"
+                required
             />
             <Input
                 size="textLong"

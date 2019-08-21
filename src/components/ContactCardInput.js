@@ -48,10 +48,20 @@ function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.contacts) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.contacts.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.contacts;
+            }
+        }
         setHousehold({
             ...household,
             contacts: [
-                ...(household.contacts || []),
+                ...oldState,
                 {
                     id: v1(),
                     category: form.category.value,
@@ -98,6 +108,7 @@ function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
                 defaultValue={defaultValues && defaultValues.name}
                 name="name"
                 placeholder="Name"
+                required
             />
             <Input
                 size="numberLong"

@@ -4,6 +4,7 @@ import Grid from "../components/Grid";
 import ContactCardInput from "../components/ContactCardInput";
 import ShowContactCard from "../components/ContactCardOutput";
 import AddSection from "../components/AddSectionForm";
+import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 import HeaderForm from "../components/HeaderForm";
 import CardOutputFooter from "../components/CardOutputFooter";
 import StyledCardOutput from "../components/StyledCardOutput";
@@ -29,9 +30,7 @@ function AddContactsData({ history }) {
 
     const [selectedId, setSelectedId] = React.useState(null);
 
-    const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {}
-    );
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
 
     function handleChange(event) {
         setHousehold({
@@ -55,7 +54,14 @@ function AddContactsData({ history }) {
     function hideAddContactCard() {
         setRenderAddContactCard(null);
     }
+    function handleDelete(id) {
+        const newContacts = household.contacts.filter(card => card.id !== id);
 
+        setHousehold({
+            ...household,
+            ["contacts"]: newContacts
+        });
+    }
     return (
         <Grid type="form">
             <HeaderForm
@@ -73,9 +79,12 @@ function AddContactsData({ history }) {
                 <StyledForm>
                     {renderAddContactCard && (
                         <ContactCardInput
-                            defaultValues={household.contacts.find(
-                                item => item.id === selectedId
-                            )}
+                            defaultValues={
+                                household.contacts &&
+                                household.contacts.find(
+                                    item => item.id === selectedId
+                                )
+                            }
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -91,11 +100,18 @@ function AddContactsData({ history }) {
                                     phoneNo={contact.phoneNo}
                                     description={contact.description}
                                 />
+                                <ShowAssignedChildren
+                                    assigned={contact.assigned}
+                                    household={household}
+                                />
                                 <CardOutputFooter
                                     onEditClick={() => {
                                         setSelectedId(contact.id);
                                         setRenderAddContactCard(true);
                                     }}
+                                    onDeleteClick={() =>
+                                        handleDelete(contact.id)
+                                    }
                                 />
                             </StyledCardOutput>
                         ))}

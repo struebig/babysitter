@@ -62,7 +62,8 @@ function Input({
     placeholder,
     onChange,
     label,
-    defaultValue
+    defaultValue,
+    required
 }) {
     return (
         <Container className={className}>
@@ -75,6 +76,7 @@ function Input({
                     defaultValue={defaultValue}
                     placeholder={placeholder}
                     onChange={onChange}
+                    required={required}
                 />
             </StyledLabel>
         </Container>

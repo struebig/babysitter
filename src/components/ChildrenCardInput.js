@@ -49,12 +49,25 @@ function ChildrenCardInput({
         event.preventDefault();
         const form = event.target;
 
+        let oldState = [];
+        if (household.children) {
+            if (defaultValues && defaultValues.id) {
+                oldState = household.children.filter(
+                    s => s.id !== defaultValues.id
+                );
+            } else {
+                oldState = household.children;
+            }
+        }
         setHousehold({
             ...household,
             children: [
-                ...(household.children || []),
+                ...oldState,
                 {
-                    id: v1(),
+                    id:
+                        defaultValues && defaultValues.id
+                            ? defaultValues.id
+                            : v1(),
                     firstName: form.firstName.value,
                     lastName: form.lastName.value,
                     birthday: form.birthday.value,
@@ -67,6 +80,7 @@ function ChildrenCardInput({
         form.reset();
         onClose();
     }
+
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add child information</Headline>
@@ -76,6 +90,7 @@ function ChildrenCardInput({
                 defaultValue={defaultValues && defaultValues.firstName}
                 name="firstName"
                 placeholder="First Name"
+                required
             />
             <Input
                 size="textShort"
@@ -115,6 +130,7 @@ function ChildrenCardInput({
                 <option value="vegetarian">Vegetarian</option>
                 <option value="vegan">Vegan</option>
             </DropDown>
+
             <StyledFooter>
                 <StyledButton type="submit">
                     <i className="far fa-check-circle" />

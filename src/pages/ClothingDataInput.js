@@ -6,6 +6,7 @@ import ShowWeatherCard from "../components/WeatherCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
 import CardOutputFooter from "../components/CardOutputFooter";
+import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
@@ -23,9 +24,7 @@ const GridBody = styled.div`
 `;
 
 function AddClothingData({ history }) {
-    const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {}
-    );
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
 
     const [selectedId, setSelectedId] = React.useState(null);
 
@@ -56,6 +55,15 @@ function AddClothingData({ history }) {
         setRenderAddWeatherCard(false);
     }
 
+    function handleDelete(id) {
+        const newClothing = household.clothing.filter(card => card.id !== id);
+
+        setHousehold({
+            ...household,
+            ["clothing"]: newClothing
+        });
+    }
+
     return (
         <Grid type="form">
             <HeaderForm
@@ -73,9 +81,12 @@ function AddClothingData({ history }) {
                 <StyledForm>
                     {renderAddWeatherCard && (
                         <WeatherCardInput
-                            defaultValues={household.clothing.find(
-                                item => item.id === selectedId
-                            )}
+                            defaultValues={
+                                household.clothing &&
+                                household.clothing.find(
+                                    item => item.id === selectedId
+                                )
+                            }
                             household={household}
                             setHousehold={setHousehold}
                             onChange={handleChange}
@@ -92,11 +103,18 @@ function AddClothingData({ history }) {
                                     degree={clothes.degree}
                                     description={clothes.description}
                                 />
+                                <ShowAssignedChildren
+                                    assigned={clothes.assigned}
+                                    household={household}
+                                />
                                 <CardOutputFooter
                                     onEditClick={() => {
                                         setSelectedId(clothes.id);
                                         setRenderAddWeatherCard(true);
                                     }}
+                                    onDeleteClick={() =>
+                                        handleDelete(clothes.id)
+                                    }
                                 />
                             </StyledCardOutput>
                         ))}

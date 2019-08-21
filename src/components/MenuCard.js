@@ -6,8 +6,8 @@ const StyledCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 110px;
-    height: 120px;
+    width: 140px;
+    height: 150px;
     background-color: lightgrey;
     border-radius: 10px;
     margin: 5px;
@@ -15,7 +15,7 @@ const StyledCard = styled.div`
 `;
 const StyledIcon = styled.div`
     background-color: transparent;
-    font-size: 60px;
+    font-size: 70px;
     color: #004242;
 `;
 const StyledTitle = styled.div`
