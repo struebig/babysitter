@@ -10,23 +10,18 @@ const StyledName = styled.div`
 `;
 
 function ShowAssignedChildren({ household, assigned }) {
-    console.log(assigned);
-    console.log(
-        household.children &&
-            household.children.find(item => item.id === assigned)
+    const { children } = household;
+
+    const assignedChildren = assigned.map(id =>
+        children.find(child => child.id === id)
     );
-    return <></>;
-    /*
-
-
-
     return (
         <>
-            {household.children &&
-                household.children.find(item => item.id === assigned)}
-            }
+            {assignedChildren.map(child => (
+                <StyledName>{child.firstName}</StyledName>
+            ))}
         </>
-    );*/
+    );
 }
 
 export default ShowAssignedChildren;

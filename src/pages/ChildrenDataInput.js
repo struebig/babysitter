@@ -25,8 +25,6 @@ const GridBody = styled.div`
 function AddChildrenData({ history }) {
     const [household, setHousehold] = React.useState(getHouseholdFromStorage());
 
-    console.log(household);
-
     const [selectedId, setSelectedId] = React.useState(null);
 
     const [renderAddChildCard, setRenderAddChildCard] = React.useState(null);
@@ -54,11 +52,9 @@ function AddChildrenData({ history }) {
     }
 
     function handleDelete(id) {
-        const newChildren = household.children.filter(card => card.id !== id);
-
         setHousehold({
             ...household,
-            ["children"]: newChildren
+            children: household.children.filter(card => card.id !== id)
         });
     }
 

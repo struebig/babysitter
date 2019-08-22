@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 function ShowClothingData({ history }) {
-    const data = getHouseholdFromStorage() || {};
+    const household = getHouseholdFromStorage() || {};
 
     return (
         <>
@@ -28,14 +28,16 @@ function ShowClothingData({ history }) {
                     history={history}
                 />
                 <Container>
-                    {data.clothing &&
-                        data.clothing.map(clothes => (
+                    {household.clothing &&
+                        household.clothing.map(clothes => (
                             <StyledCardOutput>
                                 <ShowWeatherCard
                                     category={clothes.category}
                                     temperatur={clothes.temperatur}
                                     degree={clothes.degree}
                                     description={clothes.description}
+                                    assigned={clothes.assigned}
+                                    household={household}
                                 />
                             </StyledCardOutput>
                         ))}

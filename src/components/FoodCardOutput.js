@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
+import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 
 const StyledCardHead = styled.div`
     display: flex;
@@ -24,7 +25,7 @@ const StyledCardBody = styled.div`
     border-radius: 10px;
 `;
 
-function ShowFoodCard({ category, name, description }) {
+function ShowFoodCard({ category, name, description, assigned, household }) {
     return (
         <>
             <StyledCardHead>
@@ -33,6 +34,7 @@ function ShowFoodCard({ category, name, description }) {
 
             <StyledTitle>{name}</StyledTitle>
             <StyledCardBody>{description}</StyledCardBody>
+            <ShowAssignedChildren assigned={assigned} household={household} />
         </>
     );
 }

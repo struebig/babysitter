@@ -5,7 +5,6 @@ import FoodCardInput from "../components/FoodCardInput";
 import ShowFoodCard from "../components/FoodCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
-import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 import CardOutputFooter from "../components/CardOutputFooter";
 import StyledCardOutput from "../components/StyledCardOutput";
 import {
@@ -54,13 +53,11 @@ function AddFoodData({ history }) {
     }
 
     function handleDelete(id) {
-        const newPreferences = household.foodPreferences.filter(
-            card => card.id !== id
-        );
-
         setHousehold({
             ...household,
-            ["foodPreferences"]: newPreferences
+            foodPreferences: household.foodPreferences.filter(
+                card => card.id !== id
+            )
         });
     }
 
@@ -101,8 +98,6 @@ function AddFoodData({ history }) {
                                     category={foodPreference.category}
                                     name={foodPreference.name}
                                     description={foodPreference.description}
-                                />
-                                <ShowAssignedChildren
                                     assigned={foodPreference.assigned}
                                     household={household}
                                 />

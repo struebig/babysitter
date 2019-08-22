@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 function ShowFoodData({ history }) {
-    const data = getHouseholdFromStorage() || {};
+    const household = getHouseholdFromStorage() || {};
 
     return (
         <>
@@ -28,13 +28,15 @@ function ShowFoodData({ history }) {
                     history={history}
                 />
                 <Container>
-                    {data.foodPreferences &&
-                        data.foodPreferences.map(foodPreference => (
+                    {household.foodPreferences &&
+                        household.foodPreferences.map(foodPreference => (
                             <StyledCardOutput>
                                 <ShowFoodCard
                                     category={foodPreference.category}
                                     name={foodPreference.name}
                                     description={foodPreference.description}
+                                    assigned={foodPreference.assigned}
+                                    household={household}
                                 />
                             </StyledCardOutput>
                         ))}

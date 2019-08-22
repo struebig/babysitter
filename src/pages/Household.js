@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
-//import PicUploader from "../components/PicUploader";
+import PicUploader from "../components/PicUploader";
 import {
     getHouseholdFromStorage,
     setHouseholdtoStorage
@@ -31,23 +31,11 @@ const StyledCard = styled.div`
     margin-bottom: 20px;
     box-shadow: 5px 5px 8px grey;
 `;
+const StyledPicture = styled.div``;
 
 function HouseholdForm({ history }) {
     const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {
-            familyName: "",
-            nameParentOne: "",
-            roleParentOne: "Mother",
-            phoneParentOne: "",
-            nameParentTwo: "",
-            roleParentTwo: "Father",
-            phoneParentTwo: "",
-            street: "",
-            houseNo: "",
-            zip: "",
-            city: "",
-            children: []
-        }
+        getHouseholdFromStorage() || {}
     );
 
     /*React.useEffect(() => {
@@ -56,8 +44,6 @@ function HouseholdForm({ history }) {
 
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });
-        console.log(event.target.name);
-        console.log(event.target.value);
     }
 
     function handleSubmit(event) {
@@ -67,6 +53,13 @@ function HouseholdForm({ history }) {
     }
     function handleCancel() {
         history.push("/familyMenu");
+    }
+
+    function handleImageChange(url) {
+        setHousehold({
+            ...household,
+            familyImg: url
+        });
     }
 
     return (
@@ -83,6 +76,13 @@ function HouseholdForm({ history }) {
             <GridBody>
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     <StyledCard>
+                        <StyledPicture>
+                            <PicUploader
+                                image={household.familyImg}
+                                onImageChange={handleImageChange}
+                            />
+                        </StyledPicture>
+
                         <Input
                             size="textShort"
                             label="Family name"

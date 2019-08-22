@@ -4,7 +4,6 @@ import Grid from "../components/Grid";
 import ContactCardInput from "../components/ContactCardInput";
 import ShowContactCard from "../components/ContactCardOutput";
 import AddSection from "../components/AddSectionForm";
-import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 import HeaderForm from "../components/HeaderForm";
 import CardOutputFooter from "../components/CardOutputFooter";
 import StyledCardOutput from "../components/StyledCardOutput";
@@ -55,11 +54,9 @@ function AddContactsData({ history }) {
         setRenderAddContactCard(null);
     }
     function handleDelete(id) {
-        const newContacts = household.contacts.filter(card => card.id !== id);
-
         setHousehold({
             ...household,
-            ["contacts"]: newContacts
+            contacts: household.contacts.filter(card => card.id !== id)
         });
     }
     return (
@@ -99,8 +96,6 @@ function AddContactsData({ history }) {
                                     name={contact.name}
                                     phoneNo={contact.phoneNo}
                                     description={contact.description}
-                                />
-                                <ShowAssignedChildren
                                     assigned={contact.assigned}
                                     household={household}
                                 />

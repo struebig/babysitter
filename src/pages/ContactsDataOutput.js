@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 function ShowContactsData({ history }) {
-    const data = getHouseholdFromStorage() || {};
+    const household = getHouseholdFromStorage() || {};
 
     return (
         <>
@@ -29,14 +29,16 @@ function ShowContactsData({ history }) {
                 />
 
                 <Container>
-                    {data.contacts &&
-                        data.contacts.map(contact => (
+                    {household.contacts &&
+                        household.contacts.map(contact => (
                             <StyledCardOutput>
                                 <ShowContactCard
                                     category={contact.category}
                                     name={contact.name}
                                     phoneNo={contact.phoneNo}
                                     description={contact.description}
+                                    assigned={contact.assigned}
+                                    household={household}
                                 />
                             </StyledCardOutput>
                         ))}

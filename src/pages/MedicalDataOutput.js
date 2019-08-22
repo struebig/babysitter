@@ -16,7 +16,7 @@ const Container = styled.div`
 `;
 
 function ShowMedicalData({ history }) {
-    const data = getHouseholdFromStorage() || {};
+    const household = getHouseholdFromStorage() || {};
 
     return (
         <>
@@ -28,13 +28,15 @@ function ShowMedicalData({ history }) {
                     history={history}
                 />
                 <Container>
-                    {data.medicalConditions &&
-                        data.medicalConditions.map(medicalCondition => (
+                    {household.medicalConditions &&
+                        household.medicalConditions.map(medicalCondition => (
                             <StyledCardOutput>
                                 <ShowMedicalCard
                                     category={medicalCondition.category}
                                     title={medicalCondition.title}
                                     description={medicalCondition.description}
+                                    assigned={medicalCondition.assigned}
+                                    household={household}
                                 />
                             </StyledCardOutput>
                         ))}

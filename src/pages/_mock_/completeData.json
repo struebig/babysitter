@@ -20,27 +20,28 @@
             "birthday": "",
             "bloodType": "",
             "diet": ""
-        }],
-    "medicalInfo": [{ "category": "", "title": "", "description": "", "assigned":[] }],
+        }
+    ],
+    "medicalInfo": [
+        { "category": "", "title": "", "description": "", "assigned": [] }
+    ],
     "food": [{ "category": "", "title": "", "description": "" }],
     "clothing": [
-                {
-                    "category": "",
-                    "temperature": "",
-                    "degree": "",
-                    "description": "",
-                    "assigned": []
-                }
-            ],
+        {
+            "category": "",
+            "temperature": "",
+            "degree": "",
+            "description": "",
+            "assigned": []
+        }
+    ],
 
     "contacts": [
-                {
-                    "category": "",
-                    "name": "",
-                    "description": "",
-                    "phone": ""
-                }
-            ]
+        {
+            "category": "",
+            "name": "",
+            "description": "",
+            "phone": ""
         }
-    
+    ]
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 
 const StyledCardHead = styled.div`
     display: flex;
@@ -29,7 +30,14 @@ const StyledCategory = styled.div`
     font-size: 100px;
 `;
 
-function ShowWeatherCard({ category, temperatur, degree, description }) {
+function ShowWeatherCard({
+    category,
+    temperatur,
+    degree,
+    description,
+    household,
+    assigned
+}) {
     return (
         <>
             <StyledCardHead>
@@ -41,6 +49,7 @@ function ShowWeatherCard({ category, temperatur, degree, description }) {
                 </StyledTemperature>
             </StyledCardHead>
             <StyledCardBody>{description}</StyledCardBody>
+            <ShowAssignedChildren assigned={assigned} household={household} />
         </>
     );
 }

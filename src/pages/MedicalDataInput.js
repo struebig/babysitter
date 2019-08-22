@@ -6,7 +6,6 @@ import ShowMedicalCard from "../components/MedicalCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
 import CardOutputFooter from "../components/CardOutputFooter";
-import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
@@ -25,6 +24,7 @@ const GridBody = styled.div`
 
 function AddMedicalData({ history }) {
     const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+    const { medicalConditions } = household;
 
     const [selectedId, setSelectedId] = React.useState(null);
 
@@ -34,7 +34,7 @@ function AddMedicalData({ history }) {
 
     function handleChange(event) {
         setHousehold({
-            ...household.medicalConditions,
+            ...medicalConditions,
             [event.target.name]: event.target.value
         });
     }
@@ -57,13 +57,9 @@ function AddMedicalData({ history }) {
         setRenderAddMedicalCard(false);
     }
     function handleDelete(id) {
-        const newConditions = household.medicalConditions.filter(
-            card => card.id !== id
-        );
-
         setHousehold({
             ...household,
-            ["medicalConditions"]: newConditions
+            medicalConditions: medicalConditions.filter(card => card.id !== id)
         });
     }
     return (
@@ -84,8 +80,8 @@ function AddMedicalData({ history }) {
                     {renderAddMedicalCard && (
                         <MedicalCardInput
                             defaultValues={
-                                household.medicalConditions &&
-                                household.medicalConditions.find(
+                                medicalConditions &&
+                                medicalConditions.find(
                                     item => item.id === selectedId
                                 )
                             }
@@ -95,14 +91,16 @@ function AddMedicalData({ history }) {
                             onClose={hideAddMedicalCard}
                         />
                     )}
-                    {household.medicalConditions &&
-                        household.medicalConditions.map(medicalCondition => (
+                    {medicalConditions &&
+                        medicalConditions.map(medicalCondition => (
                             <StyledCardOutput>
                                 <ShowMedicalCard
                                     key={medicalCondition.id}
                                     category={medicalCondition.category}
                                     title={medicalCondition.title}
                                     description={medicalCondition.description}
+                                    assigned={medicalCondition.assigned}
+                                    household={household}
                                 />
                                 <CardOutputFooter
                                     onEditClick={() => {
