@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
+import InputDate from "./InputDate";
 import Headline from "./Headline";
 import { v1 } from "uuid";
 import PicUploader from "../components/PicUploader";
@@ -118,8 +119,7 @@ function ChildrenCardInput({
                 name="lastName"
                 placeholder="Last Name"
             />
-            <Input
-                size="numberMedium"
+            <InputDate
                 label="Birthday"
                 defaultValue={defaultValues && defaultValues.birthday}
                 name="birthday"

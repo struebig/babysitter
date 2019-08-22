@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
+import Textarea from "./Textarea";
 import Headline from "./Headline";
 import { v1 } from "uuid";
 import AssignChildren from "../components/AssignedChildrenInput";
@@ -108,8 +109,7 @@ function FoodCardInput({ household, setHousehold, defaultValues, onClose }) {
                 placeholder="Name"
                 required
             />
-            <Input
-                size="textLong"
+            <Textarea
                 label="Description"
                 defaultValue={defaultValues && defaultValues.description}
                 name="description"

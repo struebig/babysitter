@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Grid from "../components/Grid";
+import moment from "moment";
 import ChildrenCardInput from "../components/ChildrenCardInput";
 import ChildrenCardOutput from "../components/ChildrenCardOutput";
 import {
@@ -93,7 +94,9 @@ function AddChildrenData({ history }) {
                                 <ChildrenCardOutput
                                     firstName={child.firstName}
                                     lastName={child.lastName}
-                                    birthday={child.birthday}
+                                    birthday={moment(child.birthday).format(
+                                        "DD.MM.YYYY"
+                                    )}
                                     bloodtype={child.bloodtype}
                                     diet={child.diet}
                                 />

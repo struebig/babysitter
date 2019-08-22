@@ -3,6 +3,7 @@ import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Headline from "./Headline";
 import Input from "../components/Input";
+import Textarea from "./Textarea";
 import { v1 } from "uuid";
 import AssignChildren from "../components/AssignedChildrenInput";
 
@@ -113,7 +114,7 @@ function WeatherCardInput({ household, setHousehold, defaultValues, onClose }) {
                     name="temperatur"
                     defaultValue={defaultValues && defaultValues.temperatur}
                 >
-                    <option value=""> below or above </option>
+                    <option value=""> below / above </option>
                     <option value="">---</option>
                     <option value="below">below</option>
                     <option value="above">above</option>
@@ -123,11 +124,10 @@ function WeatherCardInput({ household, setHousehold, defaultValues, onClose }) {
                     label="Degree c°"
                     defaultValue={defaultValues && defaultValues.degree}
                     name="degree"
-                    placeholder="Degree c°"
+                    placeholder="C°"
                 />
             </StyledTemperature>
-            <Input
-                size="textLong"
+            <Textarea
                 label="Description"
                 defaultValue={defaultValues && defaultValues.description}
                 name="description"
