@@ -7,8 +7,8 @@ import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
 import ChildrenCardOutput from "../components/ChildrenCardOutput";
 import ParentCard from "../components/ParentCard";
+import FamilyCard from "../components/FamilyCard";
 import ShowAddressCard from "../components/AddressCardOutput";
-
 import StyledCardOutput from "../components/StyledCardOutput";
 
 const Container = styled.div`
@@ -16,6 +16,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
+    margin-top: 20px;
 `;
 
 function ShowGeneralData({ history }) {
@@ -31,7 +32,12 @@ function ShowGeneralData({ history }) {
                     history={history}
                 />
                 <Container>
-                    <Headline size="XS">Family {data.familyName}</Headline>
+                    <FamilyCard
+                        size="big"
+                        name={data.familyName}
+                        picture={data.familyImg}
+                    />
+
                     <ParentCard
                         parentName={data.nameParentOne}
                         phone={data.phoneParentOne}

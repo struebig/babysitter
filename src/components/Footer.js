@@ -47,6 +47,8 @@ function ShowPages({ active, onClick }) {
     );
 }
 
+export default ShowPages;
+
 /*
 PageSwitchButton.propTypes = {
     active: PropTypes.bool,
@@ -56,5 +58,3 @@ PageSwitchButton.propTypes = {
 PageSwitchButton.defaultProps = {
     active: false
 };*/
-
-export default ShowPages;

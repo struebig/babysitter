@@ -15,6 +15,7 @@ function ShowAssignedChildren({ household, assigned }) {
     const assignedChildren = assigned.map(id =>
         children.find(child => child.id === id)
     );
+
     return (
         <>
             {assignedChildren.map(child => (

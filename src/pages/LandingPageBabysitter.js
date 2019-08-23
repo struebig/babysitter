@@ -3,12 +3,8 @@ import styled from "styled-components";
 import Grid from "../components/Grid";
 import Headline from "../components/Headline";
 import HeaderData from "../components/ShowDataHeader";
-
-import MenuCard from "../components/MenuCard";
-/*import {
-    getHouseholdFromStorage,
-    setHouseholdtoStorage
-} from "../utils/storage";*/
+import FamilyCard from "../components/FamilyCard";
+import { getHouseholdFromStorage } from "../utils/storage";
 
 const Main = styled.div`
     display: flex;
@@ -18,6 +14,12 @@ const Main = styled.div`
 `;
 
 function BabysitterMenu({ history }) {
+    const household = getHouseholdFromStorage() || {};
+
+    function handleClick() {
+        history.push("generalData");
+    }
+
     return (
         <Grid type="sitter">
             <HeaderData
@@ -29,11 +31,11 @@ function BabysitterMenu({ history }) {
 
             <Main>
                 <Headline size="M">Upcoming</Headline>
-                <MenuCard
-                    icon="fa-baby-carriage"
-                    title="Babysitter"
-                    direction="generalData"
-                    history={history}
+                <FamilyCard
+                    size="small"
+                    name={household.familyName}
+                    picture={household.familyImg}
+                    onClick={handleClick}
                 />
             </Main>
             <Main>

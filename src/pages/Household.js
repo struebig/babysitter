@@ -20,6 +20,7 @@ const StyledForm = styled.form`
 const GridBody = styled.div`
     overflow: auto;
 `;
+
 const StyledCard = styled.div`
     display: flex;
     flex-direction: column;
@@ -37,10 +38,6 @@ function HouseholdForm({ history }) {
     const [household, setHousehold] = React.useState(
         getHouseholdFromStorage() || {}
     );
-
-    /*React.useEffect(() => {
-        console.log(household);
-    }, [household]);*/
 
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });

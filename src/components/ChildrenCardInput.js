@@ -94,14 +94,10 @@ function ChildrenCardInput({
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add child information</Headline>
-            <div /* 
 
             <PicUploader
                 image={household.children.childImg}
                 onImageChange={handleImageChange}
-            />
-            
-            */
             />
 
             <Input
