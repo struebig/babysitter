@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -10,10 +10,21 @@ const StyledInput = styled.input`
     border-color: black;
     padding: 5px;
 `;
+const StyledImage = styled.img`
+    display: flex;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 10px;
+    width: 96%;
+    border-radius: 10px;
+`;
 
-export default function PicUploader() {
-    const [image, setImage] = useState("");
+const StyledLabel = styled.div`
+    margin-left: 5px;
+    font-size: 18px;
+`;
 
+export default function PicUploader({ image, onImageChange }) {
     function upload(event) {
         const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
 
@@ -32,16 +43,19 @@ export default function PicUploader() {
     }
 
     function onImageSave(response) {
-        setImage(response.data.url);
+        onImageChange(response.data.url);
     }
 
     return (
         <>
-            {image ? (
-                <img src={image} alt="" style={{ width: "100%" }} />
-            ) : (
+            <div>
+                {image && <StyledImage src={image} alt="" />}
+
+                <StyledLabel>
+                    {image ? "Change picture" : "Add profile picture"}
+                </StyledLabel>
                 <StyledInput type="file" name="file" onChange={upload} />
-            )}
+            </div>
         </>
     );
 }

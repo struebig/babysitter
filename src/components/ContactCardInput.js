@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
+import Textarea from "./Textarea";
 import Headline from "./Headline";
 import { v1 } from "uuid";
 import AssignChildren from "../components/AssignedChildrenInput";
@@ -117,8 +118,7 @@ function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
                 name="phoneNo"
                 placeholder="Phone No."
             />
-            <Input
-                size="textLong"
+            <Textarea
                 label="Description"
                 defaultValue={defaultValues && defaultValues.description}
                 name="description"

@@ -3,6 +3,8 @@ import styled from "styled-components";
 
 const StyledSection = styled.div`
     display: flex;
+    margin-left: 5px;
+    align-items: space-around;
 `;
 
 function AssignChildren({ children, selectedChildren, onChange }) {

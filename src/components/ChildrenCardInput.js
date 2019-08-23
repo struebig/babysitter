@@ -2,8 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import DropDown from "./Dropdown";
 import Input from "./Input";
+import InputDate from "./InputDate";
 import Headline from "./Headline";
 import { v1 } from "uuid";
+import PicUploader from "../components/PicUploader";
 
 const StyledCard = styled.form`
     border-radius: 5px;
@@ -68,6 +70,7 @@ function ChildrenCardInput({
                         defaultValues && defaultValues.id
                             ? defaultValues.id
                             : v1(),
+
                     firstName: form.firstName.value,
                     lastName: form.lastName.value,
                     birthday: form.birthday.value,
@@ -80,10 +83,23 @@ function ChildrenCardInput({
         form.reset();
         onClose();
     }
+    function handleImageChange(url) {
+        console.log(url);
+        setHousehold({
+            ...household.children,
+            childImg: url
+        });
+    }
 
     return (
         <StyledCard onSubmit={handleSubmit}>
             <Headline size="XS">Add child information</Headline>
+
+            <PicUploader
+                image={household.children.childImg}
+                onImageChange={handleImageChange}
+            />
+
             <Input
                 size="textShort"
                 label="First Name"
@@ -99,8 +115,7 @@ function ChildrenCardInput({
                 name="lastName"
                 placeholder="Last Name"
             />
-            <Input
-                size="numberMedium"
+            <InputDate
                 label="Birthday"
                 defaultValue={defaultValues && defaultValues.birthday}
                 name="birthday"

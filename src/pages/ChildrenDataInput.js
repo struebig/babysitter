@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Grid from "../components/Grid";
+import moment from "moment";
 import ChildrenCardInput from "../components/ChildrenCardInput";
 import ChildrenCardOutput from "../components/ChildrenCardOutput";
 import {
@@ -24,8 +25,6 @@ const GridBody = styled.div`
 
 function AddChildrenData({ history }) {
     const [household, setHousehold] = React.useState(getHouseholdFromStorage());
-
-    console.log(household);
 
     const [selectedId, setSelectedId] = React.useState(null);
 
@@ -54,11 +53,9 @@ function AddChildrenData({ history }) {
     }
 
     function handleDelete(id) {
-        const newChildren = household.children.filter(card => card.id !== id);
-
         setHousehold({
             ...household,
-            ["children"]: newChildren
+            children: household.children.filter(card => card.id !== id)
         });
     }
 
@@ -97,7 +94,9 @@ function AddChildrenData({ history }) {
                                 <ChildrenCardOutput
                                     firstName={child.firstName}
                                     lastName={child.lastName}
-                                    birthday={child.birthday}
+                                    birthday={moment(child.birthday).format(
+                                        "DD.MM.YYYY"
+                                    )}
                                     bloodtype={child.bloodtype}
                                     diet={child.diet}
                                 />

@@ -20,14 +20,9 @@ const sizes = {
         height: "40",
         minHeight: "40px"
     },
-    textLong: {
-        width: "95%",
-        height: "auto",
-        minHeight: "120px"
-    },
 
     numberShort: {
-        width: "30%",
+        width: "35%",
         height: "40px",
         minHeight: "40px"
     },

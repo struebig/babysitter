@@ -6,7 +6,6 @@ import ShowWeatherCard from "../components/WeatherCardOutput";
 import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
 import CardOutputFooter from "../components/CardOutputFooter";
-import ShowAssignedChildren from "../components/AssignedChildrenOutput";
 import StyledCardOutput from "../components/StyledCardOutput";
 import {
     getHouseholdFromStorage,
@@ -56,14 +55,11 @@ function AddClothingData({ history }) {
     }
 
     function handleDelete(id) {
-        const newClothing = household.clothing.filter(card => card.id !== id);
-
         setHousehold({
             ...household,
-            ["clothing"]: newClothing
+            clothing: household.clothing.filter(card => card.id !== id)
         });
     }
-
     return (
         <Grid type="form">
             <HeaderForm
@@ -102,11 +98,10 @@ function AddClothingData({ history }) {
                                     temperatur={clothes.temperatur}
                                     degree={clothes.degree}
                                     description={clothes.description}
-                                />
-                                <ShowAssignedChildren
                                     assigned={clothes.assigned}
                                     household={household}
                                 />
+
                                 <CardOutputFooter
                                     onEditClick={() => {
                                         setSelectedId(clothes.id);
