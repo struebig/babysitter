@@ -4,10 +4,13 @@ import Grid from "../components/Grid";
 import moment from "moment";
 import ChildrenCardInput from "../components/ChildrenCardInput";
 import ChildrenCardOutput from "../components/ChildrenCardOutput";
-import {
-    getHouseholdFromStorage,
-    setHouseholdtoStorage
-} from "../utils/storage";
+/*
+Local Storage:
+import { getHouseholdFromStorage, setHouseholdtoStorage} from "../utils/storage";
+Backend:*/
+import { getCards, putCard, postCard } from "../utils/services";
+//-------
+
 import HeaderForm from "../components/HeaderForm";
 import StyledCardOutput from "../components/StyledCardOutput";
 import CardOutputFooter from "../components/CardOutputFooter";
@@ -24,7 +27,22 @@ const GridBody = styled.div`
 `;
 
 function AddChildrenData({ history }) {
+    /*
+    Local Storage:
+
     const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+    */
+
+    // Backend
+    const [household, setHousehold] = React.useState({});
+    React.useEffect(() => {
+        async function loadData() {
+            const result = await getCards();
+            setHousehold(result[0] || {});
+        }
+        loadData();
+    }, []);
+    // --------
 
     const [selectedId, setSelectedId] = React.useState(null);
 
@@ -39,7 +57,13 @@ function AddChildrenData({ history }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        setHouseholdtoStorage(household);
+        // Backend
+        if (household._id) {
+            putCard(household, household._id);
+        } else {
+            postCard(household);
+        }
+        // --------
         history.replace("/familyMenu");
     }
     function handleCancel() {

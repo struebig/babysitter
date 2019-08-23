@@ -7,10 +7,12 @@ import AddSection from "../components/AddSectionForm";
 import HeaderForm from "../components/HeaderForm";
 import CardOutputFooter from "../components/CardOutputFooter";
 import StyledCardOutput from "../components/StyledCardOutput";
-import {
-    getHouseholdFromStorage,
-    setHouseholdtoStorage
-} from "../utils/storage";
+/*
+Local Storage:
+import { getHouseholdFromStorage, setHouseholdtoStorage} from "../utils/storage";
+Backend:*/
+import { getCards, putCard, postCard } from "../utils/services";
+//-------
 
 const StyledForm = styled.form``;
 
@@ -23,7 +25,19 @@ const GridBody = styled.div`
 `;
 
 function AddMedicalData({ history }) {
+    /*
+    Local Storage:
     const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+    Backend:*/
+    const [household, setHousehold] = React.useState({});
+    React.useEffect(() => {
+        async function loadData() {
+            const result = await getCards();
+            setHousehold(result[0] || {});
+        }
+        loadData();
+    }, []);
+    // --------
     const { medicalConditions } = household;
 
     const [selectedId, setSelectedId] = React.useState(null);
@@ -41,7 +55,18 @@ function AddMedicalData({ history }) {
 
     function handleSubmit(event) {
         event.preventDefault();
-        setHouseholdtoStorage(household);
+        /*
+        Local Storage:
+       setHouseholdtoStorage(household);
+       */
+
+        // Backend
+        if (household._id) {
+            putCard(household, household._id);
+        } else {
+            postCard(household);
+        }
+        // --------
         history.replace("/familyMenu");
     }
 

@@ -4,7 +4,12 @@ import Grid from "../components/Grid";
 import Headline from "../components/Headline";
 import HeaderData from "../components/ShowDataHeader";
 import FamilyCard from "../components/FamilyCard";
-import { getHouseholdFromStorage } from "../utils/storage";
+/*
+Local Storage:
+import { getHouseholdFromStorage} from "../utils/storage";
+Backend:*/
+import { getCards } from "../utils/services";
+//-------
 
 const Main = styled.div`
     display: flex;
@@ -14,7 +19,19 @@ const Main = styled.div`
 `;
 
 function BabysitterMenu({ history }) {
-    const household = getHouseholdFromStorage() || {};
+    /*
+    Local Storage:
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+    Backend:*/
+    const [household, setHousehold] = React.useState({});
+    React.useEffect(() => {
+        async function loadData() {
+            const result = await getCards();
+            setHousehold(result[0] || {});
+        }
+        loadData();
+    }, []);
+    // --------
 
     function handleClick() {
         history.push("generalData");

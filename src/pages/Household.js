@@ -4,10 +4,14 @@ import Headline from "../components/Headline";
 import Grid from "../components/Grid";
 import Input from "../components/Input";
 import PicUploader from "../components/PicUploader";
-import {
-    getHouseholdFromStorage,
-    setHouseholdtoStorage
-} from "../utils/storage";
+//import { v1 } from "uuid";
+/*
+Local Storage:
+import { getHouseholdFromStorage, setHouseholdtoStorage} from "../utils/storage";
+Backend:*/
+import { getCards, putCard, postCard } from "../utils/services";
+//-------
+
 import HeaderForm from "../components/HeaderForm";
 
 const StyledForm = styled.form`
@@ -35,9 +39,21 @@ const StyledCard = styled.div`
 const StyledPicture = styled.div``;
 
 function HouseholdForm({ history }) {
-    const [household, setHousehold] = React.useState(
-        getHouseholdFromStorage() || {}
-    );
+    /*
+    Local Storage:
+
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+    */
+    // Backend
+    const [household, setHousehold] = React.useState({});
+    React.useEffect(() => {
+        async function loadData() {
+            const result = await getCards();
+            setHousehold(result[0] || {});
+        }
+        loadData();
+    }, []);
+    // --------
 
     function handleChange(event) {
         setHousehold({ ...household, [event.target.name]: event.target.value });
@@ -45,7 +61,19 @@ function HouseholdForm({ history }) {
 
     function handleSubmit(event) {
         event.preventDefault();
+        /*
+         Local Storage:
         setHouseholdtoStorage(household);
+        */
+
+        // Backend
+        if (household._id) {
+            putCard(household, household._id);
+        } else {
+            postCard(household);
+        }
+        // --------
+
         history.replace("/familyMenu");
     }
     function handleCancel() {

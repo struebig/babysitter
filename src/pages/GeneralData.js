@@ -2,7 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import Headline from "../components/Headline";
 import ShowPages from "../components/Footer";
-import { getHouseholdFromStorage } from "../utils/storage";
+/*
+Local Storage:
+import { getHouseholdFromStorage} from "../utils/storage";
+Backend:*/
+import { getCards } from "../utils/services";
+//-------
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
 import ChildrenCardOutput from "../components/ChildrenCardOutput";
@@ -20,8 +25,19 @@ const Container = styled.div`
 `;
 
 function ShowGeneralData({ history }) {
-    const data = getHouseholdFromStorage() || {};
-
+    /*
+    Local Storage:
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+    Backend:*/
+    const [household, setHousehold] = React.useState({});
+    React.useEffect(() => {
+        async function loadData() {
+            const result = await getCards();
+            setHousehold(result[0] || {});
+        }
+        loadData();
+    }, []);
+    // --------
     return (
         <>
             <Grid type="showData">
@@ -34,29 +50,29 @@ function ShowGeneralData({ history }) {
                 <Container>
                     <FamilyCard
                         size="big"
-                        name={data.familyName}
-                        picture={data.familyImg}
+                        name={household.familyName}
+                        picture={household.familyImg}
                     />
 
                     <ParentCard
-                        parentName={data.nameParentOne}
-                        phone={data.phoneParentOne}
-                        title={data.roleParentOne}
+                        parentName={household.nameParentOne}
+                        phone={household.phoneParentOne}
+                        title={household.roleParentOne}
                     />
                     <ParentCard
-                        parentName={data.nameParentTwo}
-                        phone={data.phoneParentTwo}
-                        title={data.roleParentTwo}
+                        parentName={household.nameParentTwo}
+                        phone={household.phoneParentTwo}
+                        title={household.roleParentTwo}
                     />
                     <ShowAddressCard
-                        street={data.street}
-                        houseNo={data.houseNo}
-                        zip={data.zip}
-                        city={data.city}
+                        street={household.street}
+                        houseNo={household.houseNo}
+                        zip={household.zip}
+                        city={household.city}
                     />
                     <Headline size="XS">Children</Headline>
-                    {data.children &&
-                        data.children.map(child => (
+                    {household.children &&
+                        household.children.map(child => (
                             <StyledCardOutput>
                                 <ChildrenCardOutput
                                     firstName={child.firstName}

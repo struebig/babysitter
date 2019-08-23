@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import ShowPages from "../components/Footer";
-import { getHouseholdFromStorage } from "../utils/storage";
+/*
+Local Storage:
+import { getHouseholdFromStorage} from "../utils/storage";
+Backend:*/
+import { getCards } from "../utils/services";
+//-------
 import HeaderData from "../components/ShowDataHeader";
 import Grid from "../components/Grid";
 import ShowWeatherCard from "../components/WeatherCardOutput";
@@ -16,7 +21,19 @@ const Container = styled.div`
 `;
 
 function ShowClothingData({ history }) {
-    const household = getHouseholdFromStorage() || {};
+    /*
+    Local Storage:
+    const [household, setHousehold] = React.useState(getHouseholdFromStorage());
+    Backend:*/
+    const [household, setHousehold] = React.useState({});
+    React.useEffect(() => {
+        async function loadData() {
+            const result = await getCards();
+            setHousehold(result[0] || {});
+        }
+        loadData();
+    }, []);
+    // --------
 
     return (
         <>
