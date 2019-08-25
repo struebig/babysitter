@@ -6,40 +6,8 @@ import InputDate from "./InputDate";
 import Headline from "./Headline";
 import { v1 } from "uuid";
 import PicUploader from "../components/PicUploader";
-
-const StyledCard = styled.form`
-    border-radius: 5px;
-    width: 96%;
-    min-height: 300px;
-    position: absolute;
-    top: 70px;
-    left: 2%;
-    right: 2%;
-    background: lightgrey;
-`;
-const types = {
-    button: "#960000",
-    submit: "#00965F"
-};
-function getType(type) {
-    return types[type] || type.button;
-}
-
-const StyledButton = styled.button`
-    width: 50px;
-    height: 50px;
-    font-size: 50px;
-    border: none;
-    background-color: lightgrey;
-    font-weight: bold;
-    color: ${props => getType(props.type)};
-`;
-const StyledFooter = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 10px;
-`;
+import StyledCardInput from "../components/StyledCardInput";
+import CardInputFooter from "../components/CardInputFooter";
 
 function ChildrenCardInput({
     household,
@@ -47,6 +15,11 @@ function ChildrenCardInput({
     setHousehold,
     onClose
 }) {
+    //-----
+    const [selectedImg, setSelectedImg] = React.useState(
+        household.children && household.children.childImg
+    );
+    //-----
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -75,7 +48,9 @@ function ChildrenCardInput({
                     lastName: form.lastName.value,
                     birthday: form.birthday.value,
                     bloodtype: form.bloodtype.value,
-                    diet: form.diet.value
+                    diet: form.diet.value,
+                    childImg: selectedImg,
+                    profileColor: form.profileColor.value
                 }
             ]
         });
@@ -85,23 +60,42 @@ function ChildrenCardInput({
     }
     function handleImageChange(url) {
         console.log(url);
-        setHousehold({
-            ...household.children,
-            childImg: url
-        });
+        /*setHousehold({
+            ...household,
+            children: url
+        });*/
+        setSelectedImg(url);
+        //childImg = url;
     }
 
     return (
-        <StyledCard onSubmit={handleSubmit}>
-            <Headline size="XS">Add child information</Headline>
+        <StyledCardInput onSubmit={handleSubmit}>
+            <Headline size="S">Add child information</Headline>
 
             <PicUploader
-                image={household.children.childImg}
+                image={
+                    (household.child && household.child.childImg) ||
+                    (defaultValues && defaultValues.childImg)
+                }
                 onImageChange={handleImageChange}
             />
+            <DropDown
+                defaultValue={defaultValues && defaultValues.profileColor}
+                name="profileColor"
+            >
+                <option value="black">Select color</option>
+                <option value="black">---</option>
+                <option value="blue">Blue</option>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
+                <option value="orange">Orange</option>
+                <option value="pink">Pink</option>
+                <option value="purple">Purple</option>
+            </DropDown>
 
             <Input
-                size="textShort"
+                size="inputLong"
                 label="First Name"
                 defaultValue={defaultValues && defaultValues.firstName}
                 name="firstName"
@@ -109,7 +103,7 @@ function ChildrenCardInput({
                 required
             />
             <Input
-                size="textShort"
+                size="inputLong"
                 label="Last Name"
                 defaultValue={defaultValues && defaultValues.lastName}
                 name="lastName"
@@ -145,16 +139,8 @@ function ChildrenCardInput({
                 <option value="vegetarian">Vegetarian</option>
                 <option value="vegan">Vegan</option>
             </DropDown>
-
-            <StyledFooter>
-                <StyledButton type="submit">
-                    <i className="far fa-check-circle" />
-                </StyledButton>
-                <StyledButton type="button" onClick={onClose}>
-                    <i className="far fa-window-close" />
-                </StyledButton>
-            </StyledFooter>
-        </StyledCard>
+            <CardInputFooter onClick={onClose} onSubmit={handleSubmit} />
+        </StyledCardInput>
     );
 }
 

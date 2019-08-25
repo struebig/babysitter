@@ -66,10 +66,10 @@ function AddContactsData({ history }) {
                 handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
+                title="Contacts"
             />
             <AddSection
                 onClick={showAddContactCard}
-                titleSection="Contacts"
                 titleHeadline="Add contact"
             />
             <GridBody>
@@ -92,6 +92,7 @@ function AddContactsData({ history }) {
                         household.contacts.map(contact => (
                             <StyledCardOutput>
                                 <ShowContactCard
+                                    key={contact.index}
                                     category={contact.category}
                                     name={contact.name}
                                     phoneNo={contact.phoneNo}

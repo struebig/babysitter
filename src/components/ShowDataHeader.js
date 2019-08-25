@@ -33,7 +33,7 @@ function HeaderData({ button, title, direction, history }) {
     return (
         <StyledHeaderData>
             <StyledIcon src={logoSmall} alt="Logo" />
-            <Headline size="M">{title}</Headline>
+            <Headline size="L">{title}</Headline>
             <StyledButton type={button} onClick={handleCancel}>
                 <i className="far fa-window-close" />
             </StyledButton>

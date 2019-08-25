@@ -11,7 +11,7 @@ const PageSwitchButton = styled.button`
     width: 50px;
     height: 50px;
     font-size: 100%;
-    /*color: ${props => (props.active ? "#1B4353" : "2892D7")};*/
+    /* color: ${props => (props.active ? "white" : "red")}; */
     background-color: #004242;
     border: #004242;
     color: white;

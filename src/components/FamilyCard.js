@@ -7,7 +7,7 @@ const GeneralCardOutput = styled.div`
     border-radius: 10px;
     height: auto;
     width: ${props => getSize(props.size).width};
-    height: auto;
+    min-height: ${props => getSize(props.size).height};
     padding: 3px;
     background: lightgrey;
     margin-bottom: 20px;
@@ -30,11 +30,13 @@ const StyledFamilyImg = styled.img`
 const sizes = {
     big: {
         fontSize: "24px",
-        width: "320px"
+        width: "320px",
+        height: "240"
     },
     small: {
         fontSize: "18px",
-        width: "140px"
+        width: "140px",
+        height: "120"
     }
 };
 function getSize(size) {

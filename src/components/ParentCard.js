@@ -24,7 +24,7 @@ const StyledInfo = styled.div`
 function ParentCard({ title, parentName, phone }) {
     return (
         <GeneralCardOutput>
-            <Headline size="XS">{title}</Headline>
+            <Headline size="S">{title}</Headline>
             <StyledInfo>
                 <div>Name:</div>
                 <div>{parentName}</div>

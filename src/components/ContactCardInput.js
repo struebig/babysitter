@@ -6,41 +6,8 @@ import Textarea from "./Textarea";
 import Headline from "./Headline";
 import { v1 } from "uuid";
 import AssignChildren from "../components/AssignedChildrenInput";
-
-const StyledCard = styled.form`
-    border-radius: 5px;
-    width: 96%;
-    min-height: 300px;
-    position: absolute;
-    top: 70px;
-    left: 2%;
-    right: 2%;
-    background: lightgrey;
-`;
-const types = {
-    button: "#960000",
-    submit: "#00965F"
-};
-function getType(type) {
-    return types[type] || type.button;
-}
-
-const StyledButton = styled.button`
-    width: 50px;
-    height: 50px;
-    font-size: 50px;
-    border: none;
-    background-color: lightgrey;
-    font-weight: bold;
-    color: ${props => getType(props.type)};
-`;
-
-const StyledFooter = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 10px;
-`;
+import StyledCardInput from "../components/StyledCardInput";
+import CardInputFooter from "../components/CardInputFooter";
 
 function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
     const [selectedChildren, setSelectedChildren] = React.useState([]);
@@ -87,8 +54,8 @@ function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
     }
 
     return (
-        <StyledCard onSubmit={handleSubmit}>
-            <Headline size="XS">Add contact information</Headline>
+        <StyledCardInput onSubmit={handleSubmit}>
+            <Headline size="S">Add contact information</Headline>
             <DropDown
                 defaultValue={defaultValues && defaultValues.category}
                 name="category"
@@ -104,7 +71,7 @@ function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
                 <option value="Other">Other</option>
             </DropDown>
             <Input
-                size="textShort"
+                size="inputLong"
                 label="Name"
                 defaultValue={defaultValues && defaultValues.name}
                 name="name"
@@ -112,7 +79,7 @@ function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
                 required
             />
             <Input
-                size="numberLong"
+                size="inputLong"
                 label="Phone No."
                 defaultValue={defaultValues && defaultValues.phoneNo}
                 name="phoneNo"
@@ -129,15 +96,8 @@ function ContactCardInput({ household, setHousehold, defaultValues, onClose }) {
                 children={household.children}
                 onChange={handleChildrenChange}
             />
-            <StyledFooter>
-                <StyledButton type="submit">
-                    <i className="far fa-check-circle" />
-                </StyledButton>
-                <StyledButton type="button" onClick={onClose}>
-                    <i className="far fa-window-close" />
-                </StyledButton>
-            </StyledFooter>
-        </StyledCard>
+            <CardInputFooter onClick={onClose} onSubmit={handleSubmit} />
+        </StyledCardInput>
     );
 }
 
