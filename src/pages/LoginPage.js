@@ -35,7 +35,7 @@ function LogIn({ history }) {
         <Grid type="logIn">
             <BrandName />
             <Main>
-                <Headline size="M">LOGIN</Headline>
+                <Headline size="L">LOGIN</Headline>
             </Main>
             <Main>
                 <MenuButton onClick={handleClick}>Family</MenuButton>

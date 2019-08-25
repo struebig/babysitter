@@ -1,18 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import Headline from "./Headline";
+import StyledCardOutput from "../components/StyledCardOutput";
 
-const GeneralCardOutput = styled.div`
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    height: auto;
-    width: 320px;
-    padding: 3px;
-    background: lightgrey;
-    margin-bottom: 20px;
-    box-shadow: 5px 5px 8px grey;
-`;
 const StyledInfo = styled.div`
     display: flex;
     justify-content: space-between;
@@ -23,8 +13,8 @@ const StyledInfo = styled.div`
 
 function ShowAddressCard({ street, houseNo, zip, city }) {
     return (
-        <GeneralCardOutput>
-            <Headline size="XS">Adress</Headline>
+        <StyledCardOutput>
+            <Headline size="S">Adress</Headline>
             <StyledInfo>
                 <div>{street}</div>
                 <div>{houseNo}</div>
@@ -33,7 +23,7 @@ function ShowAddressCard({ street, houseNo, zip, city }) {
                 <div>{zip}</div>
                 <div>{city}</div>
             </StyledInfo>
-        </GeneralCardOutput>
+        </StyledCardOutput>
     );
 }
 

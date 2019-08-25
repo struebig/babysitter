@@ -30,7 +30,7 @@ function BabysitterMenu({ history }) {
             />
 
             <Main>
-                <Headline size="M">Upcoming</Headline>
+                <Headline size="L">Upcoming</Headline>
                 <FamilyCard
                     size="small"
                     name={household.familyName}
@@ -39,10 +39,10 @@ function BabysitterMenu({ history }) {
                 />
             </Main>
             <Main>
-                <Headline size="M">Requests</Headline>
+                <Headline size="L">Requests</Headline>
             </Main>
             <Main>
-                <Headline size="M">History</Headline>
+                <Headline size="L">History</Headline>
             </Main>
         </Grid>
     );

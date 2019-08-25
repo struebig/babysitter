@@ -16,7 +16,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    margin-top: 20px;
+    padding-top: 20px;
 `;
 
 function ShowGeneralData({ history }) {
@@ -54,16 +54,19 @@ function ShowGeneralData({ history }) {
                         zip={data.zip}
                         city={data.city}
                     />
-                    <Headline size="XS">Children</Headline>
+                    <Headline size="S">Children</Headline>
                     {data.children &&
                         data.children.map(child => (
                             <StyledCardOutput>
                                 <ChildrenCardOutput
+                                    key={child.id}
                                     firstName={child.firstName}
                                     lastName={child.lastName}
                                     birthday={child.birthday}
                                     bloodtype={child.bloodtype}
                                     diet={child.diet}
+                                    picture={child.childImg}
+                                    household={data}
                                 />
                             </StyledCardOutput>
                         ))}

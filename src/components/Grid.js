@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const types = {
-    main: "10% 10% 25% 25% 25% 5%",
+    main: "10% 10% auto",
     showData: "10% auto 10%",
-    form: "10% 20% auto",
-    formShort: "10% 10% auto",
+    form: "10% 10% auto",
+    formShort: "10% auto",
     logIn: "20% 10% 35% 35%",
     sitter: "10% auto auto auto"
 };

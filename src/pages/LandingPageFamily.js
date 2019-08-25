@@ -8,8 +8,9 @@ import HeaderData from "../components/ShowDataHeader";
 const Main = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
+    flex-wrap: wrap;
 `;
 
 function Menu({ history }) {
@@ -21,7 +22,7 @@ function Menu({ history }) {
                 direction="/"
                 history={history}
             />
-            <Headline size="M">Information</Headline>
+            <Headline size="L">Information</Headline>
             <Main>
                 <MenuCard
                     icon="fa-home"
@@ -35,8 +36,7 @@ function Menu({ history }) {
                     direction="childrenDataInput"
                     history={history}
                 />
-            </Main>
-            <Main>
+
                 <MenuCard
                     icon="fa-first-aid"
                     title="Medical"
@@ -50,8 +50,7 @@ function Menu({ history }) {
                     direction="foodDataInput"
                     history={history}
                 />
-            </Main>
-            <Main>
+
                 <MenuCard
                     icon="fa-tshirt"
                     title="Clothing"
@@ -65,7 +64,6 @@ function Menu({ history }) {
                     history={history}
                 />
             </Main>
-            <div />
         </Grid>
     );
 }
@@ -73,7 +71,7 @@ function Menu({ history }) {
 export default Menu;
 
 /*
-<Headline size="M">Other functions</Headline>
+<Headline size="L">Other functions</Headline>
             <Main>
                 <MenuCard
                     icon="fa-baby-carriage"

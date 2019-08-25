@@ -67,10 +67,10 @@ function AddClothingData({ history }) {
                 handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
+                title="Clothing"
             />
             <AddSection
                 onClick={showAddWeatherCard}
-                titleSection="Clothing"
                 titleHeadline="Add information"
             />
             <GridBody>

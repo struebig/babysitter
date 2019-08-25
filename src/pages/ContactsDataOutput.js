@@ -7,12 +7,12 @@ import Grid from "../components/Grid";
 import ShowContactCard from "../components/ContactCardOutput";
 import StyledCardOutput from "../components/StyledCardOutput";
 
-const Container = styled.div`
+const StyledContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    margin-top: 20px;
+    padding-top: 20px;
 `;
 
 function ShowContactsData({ history }) {
@@ -28,7 +28,7 @@ function ShowContactsData({ history }) {
                     history={history}
                 />
 
-                <Container>
+                <StyledContainer>
                     {household.contacts &&
                         household.contacts.map(contact => (
                             <StyledCardOutput>
@@ -42,7 +42,7 @@ function ShowContactsData({ history }) {
                                 />
                             </StyledCardOutput>
                         ))}
-                </Container>
+                </StyledContainer>
                 <ShowPages />
             </Grid>
         </>

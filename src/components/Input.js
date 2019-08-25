@@ -7,37 +7,22 @@ const Container = styled.div`
 
 const StyledLabel = styled.label`
     display: block;
-    margin-left: 5px;
+    margin-left: 10px;
 `;
 const sizes = {
-    textShort: {
+    inputLong: {
         width: "95%",
         height: "40px",
         minHeight: "40px"
     },
-    textMedium: {
-        width: "60%",
-        height: "40",
-        minHeight: "40px"
-    },
-
-    numberShort: {
+    inputShort: {
         width: "35%",
-        height: "40px",
-        minHeight: "40px"
-    },
-    numberMedium: {
-        width: "120px",
-        height: "40px",
-        minHeight: "40px"
-    },
-    numberLong: {
-        width: "95%",
         height: "40px",
         minHeight: "40px"
     }
 };
 const StyledInput = styled.input`
+    padding: 5px;
     border: 1px gray solid;
     border-radius: 3px;
     font-size: 20px;
@@ -46,7 +31,7 @@ const StyledInput = styled.input`
     min-height: ${props => getSize(props.size).minHeight};
 `;
 function getSize(size) {
-    return sizes[size] || size.textShort;
+    return sizes[size] || size.inputLong;
 }
 
 function Input({

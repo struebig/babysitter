@@ -6,8 +6,12 @@ const StyledCard = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 140px;
-    height: 150px;
+    min-width: 140px;
+    width: auto;
+    max-width: 420px;
+    min-height: 150px;
+    height: auto;
+    max-height: 450px;
     background-color: lightgrey;
     border-radius: 10px;
     margin: 5px;

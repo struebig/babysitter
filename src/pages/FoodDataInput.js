@@ -68,10 +68,10 @@ function AddFoodData({ history }) {
                 handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
+                title="Food"
             />
             <AddSection
                 onClick={showAddFoodCard}
-                titleSection="Food"
                 titleHeadline="Add information"
             />
             <GridBody>
