@@ -26,15 +26,12 @@ const StyledPicture = styled.img`
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    /* border: solid 3px; */
     margin-right: 40px;
-    /* border-color: ${props => getColors(props.color)}; */
     box-shadow: 0 0 20px ${props => getColors(props.color)};
 `;
 
 const StyledSection = styled.div`
     display: flex;
-    /* justify-content: space-around; */
     padding-left: 20px;
     align-items: center;
 `;
