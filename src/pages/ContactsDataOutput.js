@@ -31,7 +31,7 @@ function ShowContactsData({ history }) {
                 <StyledContainer>
                     {household.contacts &&
                         household.contacts.map(contact => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={contact.id}>
                                 <ShowContactCard
                                     category={contact.category}
                                     name={contact.name}

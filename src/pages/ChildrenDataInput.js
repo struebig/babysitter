@@ -91,9 +91,8 @@ function AddChildrenData({ history }) {
                     )}
                     {household.children &&
                         household.children.map(child => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={child.id}>
                                 <ChildrenCardOutput
-                                    key={child.id}
                                     firstName={child.firstName}
                                     lastName={child.lastName}
                                     birthday={moment(child.birthday).format(

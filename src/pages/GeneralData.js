@@ -57,9 +57,8 @@ function ShowGeneralData({ history }) {
                     <Headline size="S">Children</Headline>
                     {data.children &&
                         data.children.map(child => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={child.id}>
                                 <ChildrenCardOutput
-                                    key={child.id}
                                     firstName={child.firstName}
                                     lastName={child.lastName}
                                     birthday={child.birthday}

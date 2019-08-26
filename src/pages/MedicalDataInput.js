@@ -93,9 +93,8 @@ function AddMedicalData({ history }) {
                     )}
                     {medicalConditions &&
                         medicalConditions.map(medicalCondition => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={medicalCondition.id}>
                                 <ShowMedicalCard
-                                    key={medicalCondition.id}
                                     category={medicalCondition.category}
                                     title={medicalCondition.title}
                                     description={medicalCondition.description}

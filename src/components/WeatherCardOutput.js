@@ -49,7 +49,7 @@ function ShowWeatherCard({
                 </StyledTemperature>
             </StyledCardHead>
             <StyledCardBody>{description}</StyledCardBody>
-            {/* <ShowAssignedChildren assigned={assigned} household={household} /> */}
+            <ShowAssignedChildren assigned={assigned} household={household} />
         </>
     );
 }

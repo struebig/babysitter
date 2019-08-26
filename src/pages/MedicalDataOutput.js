@@ -30,7 +30,7 @@ function ShowMedicalData({ history }) {
                 <Container>
                     {household.medicalConditions &&
                         household.medicalConditions.map(medicalCondition => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={medicalCondition.id}>
                                 <ShowMedicalCard
                                     category={medicalCondition.category}
                                     title={medicalCondition.title}

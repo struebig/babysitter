@@ -90,9 +90,8 @@ function AddContactsData({ history }) {
                     )}
                     {household.contacts &&
                         household.contacts.map(contact => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={contact.id}>
                                 <ShowContactCard
-                                    key={contact.index}
                                     category={contact.category}
                                     name={contact.name}
                                     phoneNo={contact.phoneNo}

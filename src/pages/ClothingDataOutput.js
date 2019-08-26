@@ -30,9 +30,8 @@ function ShowClothingData({ history }) {
                 <Container>
                     {household.clothing &&
                         household.clothing.map(clothes => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={clothes.id}>
                                 <ShowWeatherCard
-                                    key={clothes.id}
                                     category={clothes.category}
                                     temperatur={clothes.temperatur}
                                     degree={clothes.degree}

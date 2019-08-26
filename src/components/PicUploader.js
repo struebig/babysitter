@@ -25,7 +25,10 @@ const StyledLabel = styled.div`
 `;
 
 export default function PicUploader({ image, onImageChange }) {
+    // const [isLoading, setIsLoading] = React.useState(false);
+
     function upload(event) {
+        // setIsLoading(true);
         const url = `https://api.cloudinary.com/v1_1/${CLOUDNAME}/upload`;
 
         const formData = new FormData();
@@ -39,6 +42,7 @@ export default function PicUploader({ image, onImageChange }) {
                 }
             })
             .then(onImageSave)
+            // .then(setIsLoading(false))
             .catch(err => console.error(err));
     }
 
@@ -47,15 +51,13 @@ export default function PicUploader({ image, onImageChange }) {
     }
 
     return (
-        <>
-            <div>
-                {image && <StyledImage src={image} alt="" />}
-
-                <StyledLabel>
-                    {image ? "Change picture" : "Add profile picture"}
-                </StyledLabel>
-                <StyledInput type="file" name="file" onChange={upload} />
-            </div>
-        </>
+        <div>
+            {image && <StyledImage src={image} alt="" />}
+            <StyledLabel>
+                {image ? "Change picture" : "Add profile picture"}
+            </StyledLabel>
+            <StyledInput type="file" name="file" onChange={upload} />
+            {/* {isLoading ? <h1>...loading</h1> : null} */}
+        </div>
     );
 }

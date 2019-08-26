@@ -49,15 +49,17 @@ function ShowAssignedChildren({ household, assigned }) {
 
     return (
         <StyledContainer>
-            {assignedChildren.map(child => (
-                <StyledSection>
-                    <StyledPicture
-                        src={child.childImg}
-                        color={child.profileColor}
-                    />
-                    <StyledName>{child.firstName}</StyledName>
-                </StyledSection>
-            ))}
+            {assignedChildren.map((child, index) =>
+                child ? (
+                    <StyledSection key={index}>
+                        <StyledPicture
+                            src={child.childImg}
+                            color={child.profileColor}
+                        />
+                        <StyledName>{child.firstName}</StyledName>
+                    </StyledSection>
+                ) : null
+            )}
         </StyledContainer>
     );
 }

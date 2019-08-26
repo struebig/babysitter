@@ -30,7 +30,7 @@ function ShowFoodData({ history }) {
                 <Container>
                     {household.foodPreferences &&
                         household.foodPreferences.map(foodPreference => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={foodPreference.id}>
                                 <ShowFoodCard
                                     category={foodPreference.category}
                                     name={foodPreference.name}
