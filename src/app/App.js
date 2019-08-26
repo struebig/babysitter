@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-/*import styled from "styled-components";*/
 import GlobalStyles from "./GlobalStyles";
 import HouseholdForm from "../pages/Household";
 import Menu from "../pages/LandingPageFamily";
@@ -16,7 +15,6 @@ import ShowContactsData from "../pages/ContactsDataOutput";
 import AddChildrenData from "../pages/ChildrenDataInput";
 import AddMedicalData from "../pages/MedicalDataInput";
 import ShowMedicalData from "../pages/MedicalDataOutput";
-//import ChildrenDataOutput from "../pages/ChildrenDataOutput";
 
 function App() {
     return (
@@ -85,7 +83,4 @@ function App() {
 export default App;
 
 /*
-
-
-
 <Route component={Not Found} />*/
