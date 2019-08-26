@@ -15,7 +15,7 @@ function getType(type) {
 
 const StyledGrid = styled.div`
     display: grid;
-    height: 100vh;
+    height: 100%;
     grid-template-rows: ${props => getType(props.type)};
 `;
 
