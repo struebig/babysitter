@@ -44,7 +44,7 @@ function Headline({ size, ...props }) {
 }
 
 Headline.propTypes = {
-    size: PropTypes.oneOf(["L", "M", "S", "XS"])
+    size: PropTypes.oneOf(["L", "M", "S"])
 };
 
 Headline.defaultProps = {
