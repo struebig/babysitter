@@ -31,8 +31,6 @@ function ShowFoodCard({ category, name, description, assigned, household }) {
             <StyledCardHead>
                 <Headline size="S">{category}</Headline>
             </StyledCardHead>
-
-            <StyledTitle>{name}</StyledTitle>
             <StyledTitle>{name}</StyledTitle>
             <StyledCardBody>{description}</StyledCardBody>
             <ShowAssignedChildren assigned={assigned} household={household} />
