@@ -11,7 +11,6 @@ function AssignChildren({ children, selectedChildren, onChange }) {
     function handleChange(id) {
         onChange(id);
     }
-    console.log(selectedChildren);
 
     return (
         <StyledSection>

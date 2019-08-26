@@ -58,7 +58,6 @@ function ChildrenCardInput({
         onClose();
     }
     function handleImageChange(url) {
-        console.log(url);
         /*setHousehold({
             ...household,
             children: url
