@@ -14,11 +14,9 @@ function ChildrenCardInput({
     setHousehold,
     onClose
 }) {
-    //-----
     const [selectedImg, setSelectedImg] = React.useState(
         household.children && household.children.childImg
     );
-    //-----
     function handleSubmit(event) {
         event.preventDefault();
         const form = event.target;
@@ -58,12 +56,7 @@ function ChildrenCardInput({
         onClose();
     }
     function handleImageChange(url) {
-        /*setHousehold({
-            ...household,
-            children: url
-        });*/
         setSelectedImg(url);
-        //childImg = url;
     }
 
     return (
