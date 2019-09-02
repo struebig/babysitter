@@ -37,7 +37,7 @@ function ShowContactCard({
     return (
         <>
             <StyledCardHead>
-                <Headline size="XS">{category}</Headline>
+                <Headline size="S">{category}</Headline>
             </StyledCardHead>
 
             <StyledContact>

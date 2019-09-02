@@ -90,6 +90,7 @@ function AddChildrenData({ history }) {
                 handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
+                title="Children"
             />
             <AddSection
                 onClick={showAddChildCard}
@@ -114,7 +115,7 @@ function AddChildrenData({ history }) {
                     )}
                     {household.children &&
                         household.children.map(child => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={child.id}>
                                 <ChildrenCardOutput
                                     firstName={child.firstName}
                                     lastName={child.lastName}
@@ -123,6 +124,7 @@ function AddChildrenData({ history }) {
                                     )}
                                     bloodtype={child.bloodtype}
                                     diet={child.diet}
+                                    picture={child.childImg}
                                 />
                                 <CardOutputFooter
                                     onEditClick={() => {

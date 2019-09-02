@@ -1,4 +1,3 @@
-/*import PropTypes from "prop-types";*/
 import React from "react";
 import styled from "styled-components";
 import ButtonLink from "../components/LinkButton";
@@ -48,13 +47,3 @@ function ShowPages({ active, onClick }) {
 }
 
 export default ShowPages;
-
-/*
-PageSwitchButton.propTypes = {
-    active: PropTypes.bool,
-    onClick: PropTypes.func
-};
-
-PageSwitchButton.defaultProps = {
-    active: false
-};*/

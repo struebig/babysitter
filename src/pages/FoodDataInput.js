@@ -95,10 +95,10 @@ function AddFoodData({ history }) {
                 handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
+                title="Food"
             />
             <AddSection
                 onClick={showAddFoodCard}
-                titleSection="Food"
                 titleHeadline="Add information"
             />
             <GridBody>
@@ -119,9 +119,8 @@ function AddFoodData({ history }) {
                     )}
                     {household.foodPreferences &&
                         household.foodPreferences.map(foodPreference => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={foodPreference.id}>
                                 <ShowFoodCard
-                                    key={foodPreference.id}
                                     category={foodPreference.category}
                                     name={foodPreference.name}
                                     description={foodPreference.description}

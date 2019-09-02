@@ -4,28 +4,20 @@ import styled from "styled-components";
 
 const sizes = {
     L: {
-        fontSize: "40px",
-        decoration: "",
-        justifyContent: "center",
-        alignItems: "center",
-        marginBottom: "5px",
-        color: "#A2EBEF"
-    },
-    M: {
         fontSize: "32px",
         decoration: "",
         justifyContent: "center",
         alignItems: "center",
         marginBottom: "5px"
     },
-    S: {
+    M: {
         fontSize: "28px",
         decoration: "underline",
         justifyContent: "center",
         alignItems: "center",
         marginBottom: "10px"
     },
-    XS: {
+    S: {
         fontSize: "24px",
         decoration: "",
         justifyContent: "",
@@ -52,7 +44,7 @@ function Headline({ size, ...props }) {
 }
 
 Headline.propTypes = {
-    size: PropTypes.oneOf(["L", "M", "S", "XS"])
+    size: PropTypes.oneOf(["L", "M", "S"])
 };
 
 Headline.defaultProps = {

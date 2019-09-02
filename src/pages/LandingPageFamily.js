@@ -8,7 +8,15 @@ import HeaderData from "../components/ShowDataHeader";
 const Main = styled.div`
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 500px;
+`;
+
+const StyledBody = styled.div`
+    display: flex;
+    flex-direction: column;
     align-items: center;
 `;
 
@@ -21,51 +29,50 @@ function Menu({ history }) {
                 direction="/"
                 history={history}
             />
-            <Headline size="M">Information</Headline>
-            <Main>
-                <MenuCard
-                    icon="fa-home"
-                    title="Family"
-                    direction="familyData"
-                    history={history}
-                />
-                <MenuCard
-                    icon="fa-child"
-                    title="Children"
-                    direction="childrenDataInput"
-                    history={history}
-                />
-            </Main>
-            <Main>
-                <MenuCard
-                    icon="fa-first-aid"
-                    title="Medical"
-                    direction="medicalDataInput"
-                    history={history}
-                />
+            <Headline size="L">Information</Headline>
+            <StyledBody>
+                <Main>
+                    <MenuCard
+                        icon="fa-home"
+                        title="Family"
+                        direction="familyData"
+                        history={history}
+                    />
+                    <MenuCard
+                        icon="fa-child"
+                        title="Children"
+                        direction="childrenDataInput"
+                        history={history}
+                    />
 
-                <MenuCard
-                    icon="fa-utensils"
-                    title="Food"
-                    direction="foodDataInput"
-                    history={history}
-                />
-            </Main>
-            <Main>
-                <MenuCard
-                    icon="fa-tshirt"
-                    title="Clothing"
-                    direction="clothingDataInput"
-                    history={history}
-                />
-                <MenuCard
-                    icon="fa-address-book"
-                    title="Contacts"
-                    direction="contactsDataInput"
-                    history={history}
-                />
-            </Main>
-            <div />
+                    <MenuCard
+                        icon="fa-first-aid"
+                        title="Medical"
+                        direction="medicalDataInput"
+                        history={history}
+                    />
+
+                    <MenuCard
+                        icon="fa-utensils"
+                        title="Food"
+                        direction="foodDataInput"
+                        history={history}
+                    />
+
+                    <MenuCard
+                        icon="fa-tshirt"
+                        title="Clothing"
+                        direction="clothingDataInput"
+                        history={history}
+                    />
+                    <MenuCard
+                        icon="fa-address-book"
+                        title="Contacts"
+                        direction="contactsDataInput"
+                        history={history}
+                    />
+                </Main>
+            </StyledBody>
         </Grid>
     );
 }
@@ -73,7 +80,7 @@ function Menu({ history }) {
 export default Menu;
 
 /*
-<Headline size="M">Other functions</Headline>
+<Headline size="L">Other functions</Headline>
             <Main>
                 <MenuCard
                     icon="fa-baby-carriage"

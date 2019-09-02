@@ -47,15 +47,12 @@ export default function PicUploader({ image, onImageChange }) {
     }
 
     return (
-        <>
-            <div>
-                {image && <StyledImage src={image} alt="" />}
-
-                <StyledLabel>
-                    {image ? "Change picture" : "Add profile picture"}
-                </StyledLabel>
-                <StyledInput type="file" name="file" onChange={upload} />
-            </div>
-        </>
+        <div>
+            {image && <StyledImage src={image} alt="" />}
+            <StyledLabel>
+                {image ? "Change picture" : "Add profile picture"}
+            </StyledLabel>
+            <StyledInput type="file" name="file" onChange={upload} />
+        </div>
     );
 }

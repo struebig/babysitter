@@ -17,7 +17,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    margin-top: 20px;
+    padding-top: 20px;
 `;
 
 function ShowMedicalData({ history }) {
@@ -47,7 +47,7 @@ function ShowMedicalData({ history }) {
                 <Container>
                     {household.medicalConditions &&
                         household.medicalConditions.map(medicalCondition => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={medicalCondition.id}>
                                 <ShowMedicalCard
                                     category={medicalCondition.category}
                                     title={medicalCondition.title}

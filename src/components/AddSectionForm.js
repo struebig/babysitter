@@ -24,12 +24,11 @@ const Section = styled.div`
     justify-content: center;
 `;
 
-function AddSection({ titleHeadline, onClick, titleSection }) {
+function AddSection({ titleHeadline, onClick }) {
     return (
         <StyledSection>
-            <Headline size="S">{titleSection}</Headline>
             <Section>
-                <Headline size="S">{titleHeadline}</Headline>
+                <Headline size="M">{titleHeadline}</Headline>
                 <AddButton type="button" onClick={onClick}>
                     <i className="far fa-plus-square" />
                 </AddButton>

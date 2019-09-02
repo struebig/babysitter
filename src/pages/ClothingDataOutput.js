@@ -17,7 +17,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    margin-top: 20px;
+    padding-top: 20px;
 `;
 
 function ShowClothingData({ history }) {
@@ -47,7 +47,7 @@ function ShowClothingData({ history }) {
                 <Container>
                     {household.clothing &&
                         household.clothing.map(clothes => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={clothes.id}>
                                 <ShowWeatherCard
                                     category={clothes.category}
                                     temperatur={clothes.temperatur}

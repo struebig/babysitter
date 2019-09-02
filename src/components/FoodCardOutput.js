@@ -29,9 +29,8 @@ function ShowFoodCard({ category, name, description, assigned, household }) {
     return (
         <>
             <StyledCardHead>
-                <Headline size="XS">{category}</Headline>
+                <Headline size="S">{category}</Headline>
             </StyledCardHead>
-
             <StyledTitle>{name}</StyledTitle>
             <StyledCardBody>{description}</StyledCardBody>
             <ShowAssignedChildren assigned={assigned} household={household} />

@@ -9,6 +9,7 @@ const StyledCardOutput = styled.div`
     padding: 3px;
     background: lightgrey;
     margin-bottom: 20px;
+    margin: 20px;
     box-shadow: 5px 5px 8px grey;
 `;
 

@@ -94,10 +94,8 @@ function HouseholdForm({ history }) {
                 handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
+                title="Family Data"
             />
-
-            <Headline size="S">Family Data</Headline>
-            <div />
             <GridBody>
                 <StyledForm /* onSubmit={handleSubmit}*/>
                     <StyledCard>
@@ -109,7 +107,7 @@ function HouseholdForm({ history }) {
                         </StyledPicture>
 
                         <Input
-                            size="textShort"
+                            size="inputLong"
                             label="Family name"
                             value={household.familyName}
                             name="familyName"
@@ -117,10 +115,10 @@ function HouseholdForm({ history }) {
                             onChange={handleChange}
                         />
                     </StyledCard>
-                    <Headline size="XS">Relatives</Headline>
+                    <Headline size="S">Relatives</Headline>
                     <StyledCard>
                         <Input
-                            size="textShort"
+                            size="inputLong"
                             label="Name"
                             value={household.nameParentOne}
                             name="nameParentOne"
@@ -128,7 +126,7 @@ function HouseholdForm({ history }) {
                             onChange={handleChange}
                         />
                         <Input
-                            size="textShort"
+                            size="inputLong"
                             label="Role"
                             value={household.roleParentOne}
                             placeholder="Role (e.g. father, mother, aunt)"
@@ -136,7 +134,7 @@ function HouseholdForm({ history }) {
                             onChange={handleChange}
                         />
                         <Input
-                            size="numberLong"
+                            size="inputLong"
                             label="Phone"
                             value={household.phoneParentOne}
                             placeholder="PhoneNo."
@@ -146,7 +144,7 @@ function HouseholdForm({ history }) {
                     </StyledCard>
                     <StyledCard>
                         <Input
-                            size="textShort"
+                            size="inputLong"
                             label="Name"
                             value={household.nameParentTwo}
                             placeholder="Name"
@@ -155,7 +153,7 @@ function HouseholdForm({ history }) {
                         />
 
                         <Input
-                            size="textShort"
+                            size="inputLong"
                             label="Role"
                             value={household.roleParentTwo}
                             placeholder="Role (e.g. father, mother, aunt)"
@@ -163,7 +161,7 @@ function HouseholdForm({ history }) {
                             onChange={handleChange}
                         />
                         <Input
-                            size="numberLong"
+                            size="inputLong"
                             label="Phone"
                             value={household.phoneParentTwo}
                             placeholder="PhoneNo."
@@ -172,10 +170,10 @@ function HouseholdForm({ history }) {
                         />
                     </StyledCard>
 
-                    <Headline size="XS">Address</Headline>
+                    <Headline size="S">Address</Headline>
                     <StyledCard>
                         <Input
-                            size="textMedium"
+                            size="inputLong"
                             label="Street"
                             name="street"
                             value={household.street}
@@ -183,7 +181,7 @@ function HouseholdForm({ history }) {
                             onChange={handleChange}
                         />
                         <Input
-                            size="numberShort"
+                            size="inputLong"
                             label="House No."
                             name="houseNo"
                             value={household.houseNo}
@@ -191,7 +189,7 @@ function HouseholdForm({ history }) {
                             onChange={handleChange}
                         />
                         <Input
-                            size="numberMedium"
+                            size="inputLong"
                             label="Zip-code"
                             name="zip"
                             value={household.zip}
@@ -199,7 +197,7 @@ function HouseholdForm({ history }) {
                             onChange={handleChange}
                         />
                         <Input
-                            size="textMedium"
+                            size="inputLong"
                             label="City"
                             name="city"
                             value={household.city}

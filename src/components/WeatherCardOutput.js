@@ -10,7 +10,7 @@ const StyledCardHead = styled.div`
 `;
 
 const StyledCardBody = styled.div`
-    width: 290px;
+    min-width: 290px;
     height: auto;
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@ const StyledTemperature = styled.div`
 `;
 
 const StyledCategory = styled.div`
-    width: 100px;
+    min-width: 100px;
     height: 100px;
     font-size: 100px;
 `;

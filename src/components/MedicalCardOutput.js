@@ -36,7 +36,7 @@ function ShowMedicalCard({
     return (
         <>
             <StyledCardHead>
-                <Headline size="XS">{category}</Headline>
+                <Headline size="S">{category}</Headline>
             </StyledCardHead>
 
             <StyledTitle>{title}</StyledTitle>

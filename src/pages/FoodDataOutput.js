@@ -17,7 +17,7 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     overflow: auto;
-    margin-top: 20px;
+    padding-top: 20px;
 `;
 
 function ShowFoodData({ history }) {
@@ -47,7 +47,7 @@ function ShowFoodData({ history }) {
                 <Container>
                     {household.foodPreferences &&
                         household.foodPreferences.map(foodPreference => (
-                            <StyledCardOutput>
+                            <StyledCardOutput key={foodPreference.id}>
                                 <ShowFoodCard
                                     category={foodPreference.category}
                                     name={foodPreference.name}

@@ -6,41 +6,8 @@ import Input from "../components/Input";
 import Textarea from "./Textarea";
 import { v1 } from "uuid";
 import AssignChildren from "../components/AssignedChildrenInput";
-
-const StyledCard = styled.form`
-    border-radius: 5px;
-    width: 96%;
-    min-height: 300px;
-    position: absolute;
-    top: 70px;
-    left: 2%;
-    right: 2%;
-    background: lightgrey;
-`;
-const types = {
-    button: "#960000",
-    submit: "#00965F"
-};
-function getType(type) {
-    return types[type] || type.button;
-}
-
-const StyledButton = styled.button`
-    width: 50px;
-    height: 50px;
-    font-size: 50px;
-    border: none;
-    background-color: lightgrey;
-    font-weight: bold;
-    color: ${props => getType(props.type)};
-`;
-
-const StyledFooter = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-bottom: 10px;
-`;
+import StyledCardInput from "../components/StyledCardInput";
+import CardInputFooter from "../components/CardInputFooter";
 
 const StyledTemperature = styled.div`
     display: flex;
@@ -96,8 +63,8 @@ function WeatherCardInput({ household, setHousehold, defaultValues, onClose }) {
     }
 
     return (
-        <StyledCard onSubmit={handleSubmit}>
-            <Headline size="XS">Add clothing information</Headline>
+        <StyledCardInput onSubmit={handleSubmit}>
+            <Headline size="S">Add clothing information</Headline>
             <DropDown
                 name="category"
                 defaultValue={defaultValues && defaultValues.category}
@@ -120,7 +87,7 @@ function WeatherCardInput({ household, setHousehold, defaultValues, onClose }) {
                     <option value="above">above</option>
                 </DropDown>
                 <Input
-                    size="numberShort"
+                    size="inputShort"
                     label="Degree c°"
                     defaultValue={defaultValues && defaultValues.degree}
                     name="degree"
@@ -138,15 +105,8 @@ function WeatherCardInput({ household, setHousehold, defaultValues, onClose }) {
                 children={household.children}
                 onChange={handleChildrenChange}
             />
-            <StyledFooter>
-                <StyledButton type="submit">
-                    <i className="far fa-check-circle" />
-                </StyledButton>
-                <StyledButton type="button" onClick={onClose}>
-                    <i className="far fa-window-close" />
-                </StyledButton>
-            </StyledFooter>
-        </StyledCard>
+            <CardInputFooter onClick={onClose} onSubmit={handleSubmit} />
+        </StyledCardInput>
     );
 }
 

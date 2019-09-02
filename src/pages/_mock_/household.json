@@ -10,5 +10,38 @@
     "houseNo": "398",
     "zip": "NL-5638",
     "city": "Springfield",
-    "children": []
+    "children": [
+        {
+            "id": "",
+            "profilePicture": "",
+            "profileColor": "",
+            "firstName": "",
+            "lastName": "",
+            "birthday": "",
+            "bloodType": "",
+            "diet": ""
+        }
+    ],
+    "medicalInfo": [
+        { "category": "", "title": "", "description": "", "assigned": [] }
+    ],
+    "food": [{ "category": "", "title": "", "description": "" }],
+    "clothing": [
+        {
+            "category": "",
+            "temperature": "",
+            "degree": "",
+            "description": "",
+            "assigned": []
+        }
+    ],
+
+    "contacts": [
+        {
+            "category": "",
+            "name": "",
+            "description": "",
+            "phone": ""
+        }
+    ]
 }

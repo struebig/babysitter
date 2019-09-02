@@ -6,7 +6,7 @@ const StyledName = styled.div`
     justify-content: space-around;
     font-size: 26px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-top: 10px;
 `;
 
 const StyledInfo = styled.div`
@@ -17,18 +17,28 @@ const StyledInfo = styled.div`
     margin-bottom: 5px;
 `;
 
+const StyledChildImg = styled.img`
+    display: flex;
+    margin: 2%;
+    width: 96%;
+    border-radius: 10px;
+`;
+
 function ChildrenCardOutput({
     firstName,
     lastName,
     birthday,
     bloodtype,
-    diet
+    diet,
+    picture,
+    color
 }) {
     return (
         <>
             <StyledName>
                 {firstName} {lastName}
             </StyledName>
+            <StyledChildImg color={color} src={picture} />
             <StyledInfo>
                 <div>Birthday:</div>
                 <div>{birthday}</div>
