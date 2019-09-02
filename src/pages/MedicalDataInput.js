@@ -69,6 +69,7 @@ function AddMedicalData({ history }) {
                 handleSubmit={handleSubmit}
                 button="button"
                 handleCancel={handleCancel}
+                title="Medical Data"
             />
             <AddSection
                 onClick={showAddMedicalCard}

@@ -14,16 +14,17 @@ const StyledHeaderData = styled.div`
 `;
 
 const StyledIcon = styled.img`
-    margin-left: 5px;
+    margin-left: 15px;
 `;
 
 const StyledButton = styled.button`
-    width: 20%;
+    width: 50px;
     height: 100%;
     font-size: 50px;
     border: none;
     background-color: #004242;
     color: #960000;
+    margin-right: 15px;
 `;
 
 function HeaderData({ button, title, direction, history }) {

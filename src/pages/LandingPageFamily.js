@@ -11,6 +11,13 @@ const Main = styled.div`
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    max-width: 500px;
+`;
+
+const StyledBody = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 
 function Menu({ history }) {
@@ -23,47 +30,49 @@ function Menu({ history }) {
                 history={history}
             />
             <Headline size="L">Information</Headline>
-            <Main>
-                <MenuCard
-                    icon="fa-home"
-                    title="Family"
-                    direction="familyData"
-                    history={history}
-                />
-                <MenuCard
-                    icon="fa-child"
-                    title="Children"
-                    direction="childrenDataInput"
-                    history={history}
-                />
+            <StyledBody>
+                <Main>
+                    <MenuCard
+                        icon="fa-home"
+                        title="Family"
+                        direction="familyData"
+                        history={history}
+                    />
+                    <MenuCard
+                        icon="fa-child"
+                        title="Children"
+                        direction="childrenDataInput"
+                        history={history}
+                    />
 
-                <MenuCard
-                    icon="fa-first-aid"
-                    title="Medical"
-                    direction="medicalDataInput"
-                    history={history}
-                />
+                    <MenuCard
+                        icon="fa-first-aid"
+                        title="Medical"
+                        direction="medicalDataInput"
+                        history={history}
+                    />
 
-                <MenuCard
-                    icon="fa-utensils"
-                    title="Food"
-                    direction="foodDataInput"
-                    history={history}
-                />
+                    <MenuCard
+                        icon="fa-utensils"
+                        title="Food"
+                        direction="foodDataInput"
+                        history={history}
+                    />
 
-                <MenuCard
-                    icon="fa-tshirt"
-                    title="Clothing"
-                    direction="clothingDataInput"
-                    history={history}
-                />
-                <MenuCard
-                    icon="fa-address-book"
-                    title="Contacts"
-                    direction="contactsDataInput"
-                    history={history}
-                />
-            </Main>
+                    <MenuCard
+                        icon="fa-tshirt"
+                        title="Clothing"
+                        direction="clothingDataInput"
+                        history={history}
+                    />
+                    <MenuCard
+                        icon="fa-address-book"
+                        title="Contacts"
+                        direction="contactsDataInput"
+                        history={history}
+                    />
+                </Main>
+            </StyledBody>
         </Grid>
     );
 }

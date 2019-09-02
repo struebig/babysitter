@@ -15,6 +15,7 @@ const StyledCard = styled.div`
     background-color: lightgrey;
     border-radius: 10px;
     margin: 5px;
+    margin-bottom: 10px;
     box-shadow: 5px 5px 8px grey;
 `;
 const StyledIcon = styled.div`
